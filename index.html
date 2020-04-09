@@ -1,42 +1,92 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta name="author" content="Ольга Альбукова" />
-    <meta
-      name="description"
-      content="портфолио Ольги Альбуковой на Яндекс Практикум"
-    />
-    <link rel="stylesheet" href="./vendor/normalize.css" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="./fonts/fonts.css" />
-    <title lang="en">Mesto Russia</title>
-  </head>
 
-  <body>
-    <div class="page">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="author" content="Ольга Альбукова" />
+  <meta name="description" content="портфолио Ольги Альбуковой на Яндекс Практикум" />
+  <link rel="stylesheet" href="./vendor/normalize.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="./fonts/fonts.css" />
+  <title lang="en">Mesto Russia</title>
+</head>
 
-      <!-- header-->
-      <header class="header page__header">
-        <a class="logo" href="#" target="_blank">
-          <img class="logo__img" src="./images/logo.svg" alt="Mesto Russia" lang="en">
-        </a>
-        <hr class="header__line"  />
-      </header>
+<body>
+  <div class="page">
+    <!-- header-->
+    <header class="header page__header">
+      <a class="logo" href="#" target="_blank">
+        <img class="logo__img" src="./images/logo.svg" alt="Mesto Russia" lang="en" />
+      </a>
+      <hr class="header__line" />
+    </header>
 
-      <!--main-->
-      <main class="main">
-       
-        <!--profile-->
-        <section class="profile main__profile">
-          <div class="profile__container"
+    <!--main-->
+    <main class="main">
 
+      <!--profile-->
+      <section class="profile main__profile">
+        <div class="profile__container">
+          <img class="profile__img" src="./images/custo.jpg" alt="Жак-Ив Кусто" />
+          <div class="profile__info">
+            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <button class="edit-button">
+            </button>
+            <p class="profile__subtitle">Исследователь океана</p>
+          </div>
+        </div>
+        <button class="add-button">
+        </button>
+      </section>
+     
+      <!--elements-->  
+      <section class="elements main__elements">
+        <figure class="elements__item">
+          <img class="elements__img" src="./images/karachaevsk.jpg" alt="Карачаевск" />
+          <figcaption class="elements__caption">Карачаево-Ч...
+            <img class="like" src="./images/like.svg">
+          </figcaption>
+        </figure>
+        <figure class="elements__item">
+          <img class="elements__img" src="./images/elbrus.jpg" alt="гора Эльбрус" />
+          <figcaption class="elements__caption">Гора Эльбрус
+            <img class="like" src="./images/like.svg">
+          </figcaption>
+        </figure>
+        <figure class="elements__item">
+          <img class="elements__img" src="./images/dombay.jpg" alt="Домбай" />
+          <figcaption class="elements__caption">Домбай
+            <img class="like" src="./images/like.svg">
+          </figcaption>
+        </figure>
+        <figure class="elements__item">
+          <img class="elements__img" src="./images/elbrus.jpg" alt="гора Эльбрус" />
+          <figcaption class="elements__caption">Гора Эльбрус
+            <img class="like" src="./images/like.svg">
+          </figcaption>
+        </figure>
+        <figure class="elements__item">
+          <img class="elements__img" src="./images/dombay.jpg" alt="Домбай" />
+          <figcaption class="elements__caption">Домбай
+            <img class="like" src="./images/like.svg">
+          </figcaption>
+        </figure>
+        <figure class="elements__item">
+          <img class="elements__img" src="./images/karachaevo-cherkesk.jpg" alt=" Карачаево-Черкесия" />
+          <figcaption class="elements__caption">Карачаево-Ч...
+            <img class="like" src="./images/like.svg">
+          </figcaption>
+        </figure>
+      </section>
+    </main>
 
+    <!--footer-->
+    <footer class="footer main__footer">
+      <p class="footer__content">&#169; 2020 Mesto Russia</p>
+    </footer>
+  </div>
+</body>
 
-        </section>  
-      </main>  
-    </div>
-  </body>
 </html>
