@@ -78,6 +78,7 @@
   display: flex;
   justify-content: space-between;
   padding-bottom: 51px;
+  position: relative;
 }
 
 @media (max-width: 1000px) {
@@ -155,6 +156,12 @@
   cursor: pointer;
   margin-left: 14px;
   border: 1px solid #ffffff;
+  -webkit-transition: opacity linear 0.5s;
+  transition: opacity linear 0.5s;
+}
+
+.edit-button:hover {
+  opacity: .6;
 }
 
 @media (max-width: 1000px) {
@@ -200,6 +207,12 @@
   outline: none;
   border-radius: 2px;
   border: 2px solid #ffffff;
+  -webkit-transition: opacity linear 0.5s;
+  transition: opacity linear 0.5s;
+}
+
+.add-button:hover {
+  opacity: .6;
 }
 
 @media (max-width: 700px) {
@@ -207,6 +220,98 @@
     background-image: url(./images/add2.svg);
     width: 282px;
   }
+}
+
+/*popup*/
+.popup {
+  /*display: none; */
+  content: '';
+  background-color: black;
+  position: absolute;
+  border-radius: 10px;
+  top: 185px;
+  right: calc((100% - 430px)/2);
+  max-width: 430px;
+  z-index: 1;
+}
+
+.popup_opened {
+display: block;
+}
+
+.popup__container {
+font-family: 'Inter', Arial, sans-serif;
+opacity: .85;
+min-height: 330px;
+background-color: white;
+box-sizing: border-box;
+padding: 15px 33px;
+font-size: 14px;
+line-height: 17px;
+border-radius: 10px;
+}
+
+.popup__title {
+color: #000000;
+font-weight: 900;
+font-size: 24px;
+line-height: 29px;
+}
+
+.popup__button {
+border: none;
+cursor: pointer;
+outline: none;
+-webkit-transition: opacity linear 0.5s;
+transition: opacity linear 0.5s;
+
+}
+
+.popup__button_type_save {
+background-color: black;
+color: white;
+padding: 16px 20px;
+width: 100%;
+margin-top: 47px;
+margin-bottom:10px;
+font-size: 15px;
+font-weight: bold;
+border-radius: 2px;
+}
+
+.popup__button_type_save:hover {
+opacity: .8;
+}
+
+.popup__button_type_cancel {
+background-image: url(./images/Close_Icon.svg);
+width: 32px;
+height: 33px;
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center;
+background-color: transparent;
+position: absolute;
+top: -34px;
+right: -32px;
+}
+
+.popup__button_type_cancel:hover {
+opacity: .6;
+}
+
+.popup__imput {
+box-sizing: border-box;
+width: 100%;
+padding: 12px 12px 12px 0;
+margin-top: 16px;
+border: none;
+border-bottom: 1px solid rgba(0, 0, 0, .2);
+}
+
+.popup__imput:focus {
+background-color: #ddd;
+outline: none;
 }
 
 
@@ -264,15 +369,33 @@
   font-size: 24px;
   font-weight: 900;
   border-radius: 0 0 10px 10px;
-  min-height: 80px;
+  min-height: 83px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding-left: 8%;
+  margin-top: -3px;
 }
 
+
 .like {
+  background-image: url(./images/like.svg);
+  background-size: cover;
+  width: 21px;
+  height: 18px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  border: none;
   margin-right: 8%;
+  -webkit-transition: opacity linear 0.5s;
+  transition: opacity linear 0.5s;
+}
+
+.like:hover {
+  opacity: .6;
 }
 
 /*footer*/
