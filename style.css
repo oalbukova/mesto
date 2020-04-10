@@ -235,6 +235,13 @@
   z-index: 1;
 }
 
+@media (max-width: 520px) {
+  .popup {
+    right: calc((100% - 290px)/2);
+    max-width: 290px;
+  }
+}
+
 .popup_opened {
 display: block;
 }
@@ -298,6 +305,13 @@ right: -32px;
 
 .popup__button_type_cancel:hover {
 opacity: .6;
+}
+
+@media (max-width: 520px) {
+  .popup__button_type_cancel {
+    top: -39px;
+    right: -3px;
+  }
 }
 
 .popup__imput {
