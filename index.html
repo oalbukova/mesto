@@ -27,7 +27,6 @@
             lang="en"
           />
         </a>
-        <hr class="header__line" />
       </header>
 
       <!--main-->
@@ -42,11 +41,14 @@
             />
             <div class="profile__info">
               <h1 class="profile__title">Жак-Ив Кусто</h1>
-              <button class="edit-button" onclick="openForm()"></button>
+              <button
+                class="profile__edit-button"
+                onclick="openForm()"
+              ></button>
               <p class="profile__subtitle">Исследователь океана</p>
             </div>
           </div>
-          <button class="add-button"></button>
+          <button class="profile__add-button"></button>
         </section>
 
         <!--popup-->
@@ -68,7 +70,7 @@
                 class="popup__imput"
                 type="text"
                 placeholder="Исследователь океана"
-                name="about you"
+                name="job"
                 required
               />
             </label>
@@ -93,7 +95,7 @@
             />
             <figcaption class="elements__caption">
               Карачаево-Ч...
-              <button class="like"></button>
+              <button class="elements__like"></button>
             </figcaption>
           </figure>
           <figure class="elements__item">
@@ -104,14 +106,14 @@
             />
             <figcaption class="elements__caption">
               Гора Эльбрус
-              <button class="like"></button>
+              <button class="elements__like"></button>
             </figcaption>
           </figure>
           <figure class="elements__item">
             <img class="elements__img" src="./images/dombay.jpg" alt="Домбай" />
             <figcaption class="elements__caption">
               Домбай
-              <button class="like"></button>
+              <button class="elements__like"></button>
             </figcaption>
           </figure>
           <figure class="elements__item">
@@ -122,14 +124,14 @@
             />
             <figcaption class="elements__caption">
               Гора Эльбрус
-              <button class="like"></button>
+              <button class="elements__like"></button>
             </figcaption>
           </figure>
           <figure class="elements__item">
             <img class="elements__img" src="./images/dombay.jpg" alt="Домбай" />
             <figcaption class="elements__caption">
               Домбай
-              <button class="like"></button>
+              <button class="elements__like"></button>
             </figcaption>
           </figure>
           <figure class="elements__item">
@@ -140,7 +142,7 @@
             />
             <figcaption class="elements__caption">
               Карачаево-Ч...
-              <button class="like"></button>
+              <button class="elements__like"></button>
             </figcaption>
           </figure>
         </section>
@@ -151,5 +153,6 @@
         <p class="footer__content">&#169; 2020 Mesto Russia</p>
       </footer>
     </div>
+    <script src="script.js"></script>
   </body>
 </html>
