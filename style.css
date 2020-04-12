@@ -236,7 +236,11 @@
   box-sizing: border-box;
 }
 
-.popup_opened .popup__container {
+.popup_opened {
+  display: block;
+}
+
+.popup__container {
   max-width: 430px;
   background-color: white;
   box-sizing: border-box;
