@@ -1,0 +1,16 @@
+.popup__button_type_save {
+  background-color: black;
+  color: white;
+  padding: 4.1% 5%;
+  width: 100%;
+  margin-top: 13%;
+  margin-bottom: 7%;
+  font-size: 1.1em;
+  font-weight: bold;
+  border-radius: 2px;
+}
+
+.popup__button_type_save:hover {
+  opacity: .8;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+}
