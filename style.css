@@ -1,3 +1,10 @@
+.body {
+  max-width: 1280px;
+  min-width: 300px;
+  background-color: #000000;
+  margin: 0 auto;
+}
+
 .page {
   font-family: 'Inter', Arial, sans-serif;
   -moz-osx-font-smoothing: grayscale;
@@ -6,10 +13,7 @@
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
-  max-width: 1280px;
-  min-width: 300px;
-  background-color: #000000;
-  margin: 0 auto;
+
 }
 
 /*header*/
@@ -216,47 +220,36 @@
 
 /*popup*/
 
-
 .popup {
   display: none; 
   font-family: 'Inter', Arial, sans-serif;
   content: '';
-  background-color: black;
-  position: absolute;
-  border-radius: 10px;
-  top: 185px;
-  right: calc((100% - 430px)/2);
-  max-width: 430px;
   z-index: 1;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.5);
+  padding: 0 5px;
+  box-sizing: border-box;
 }
-
-@media (max-width: 520px) {
-  .popup {
-    right: calc((100% - 290px)/2);
-    max-width: 290px;
-  }
-}
-
-.popup_opened {
-}
-
 
 .popup__container { 
-  opacity: .85;
-  min-height: 330px;
+  max-width: 430px;
   background-color: white;
   box-sizing: border-box;
-  padding: 15px 33px;
-  font-size: 14px;
-  line-height: 17px;
+  padding: 1% 2.7%;
+  font-size: .9em;
   border-radius: 10px;
+  margin: 185px auto 0;
+  position: relative;
 }
 
 .popup__title {
   color: #000000;
   font-weight: 900;
-  font-size: 24px;
-  line-height: 29px;
+  font-size: 1.7em;
 }
 
 .popup__button {
@@ -271,11 +264,11 @@
 .popup__button_type_save {
   background-color: black;
   color: white;
-  padding: 16px 20px;
+  padding: 4.1% 5%;
   width: 100%;
-  margin-top: 47px;
-  margin-bottom: 10px;
-  font-size: 15px;
+  margin-top: 13%;
+  margin-bottom: 7%;
+  font-size: 1.1em;
   font-weight: bold;
   border-radius: 2px;
 }
@@ -284,30 +277,32 @@
   opacity: .8;
 }
 
-.popup__button_type_cancel {
+.popup__button_type_close {
   background-image: url(./images/Close_Icon.svg);
-  width: 32px;
-  height: 33px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  width: 32px;
+  height: 33px;
   background-color: transparent;
   position: absolute;
   top: -34px;
-  right: -32px;
+  left: 432px;
+  padding: 1px 6px;
+  outline: none;
 }
 
-.popup__button_type_cancel:hover {
+.popup__button_type_close:hover {
   opacity: .6;
 }
-
-@media (max-width: 520px) {
-  .popup__button_type_cancel {
+/*
+@media (max-width: 530px) {
+  .popup__button_type_close {
     top: -39px;
-    right: -3px;
+    left: 279px;
   }
 }
-
+*/
 .popup__imput {
   box-sizing: border-box;
   width: 100%;

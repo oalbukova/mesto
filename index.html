@@ -1,31 +1,24 @@
-<!DOCTYPE html>
-<html lang="ru">
+  <!DOCTYPE html>
+  <html lang="ru">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="author" content="Ольга Альбукова" />
-    <meta
-      name="description"
-      content="портфолио Ольги Альбуковой на Яндекс Практикум"
-    />
+    <meta name="description" content="портфолио Ольги Альбуковой на Яндекс Практикум" />
     <link rel="stylesheet" href="./vendor/normalize.css" />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="./fonts/fonts.css" />
     <title lang="en">Mesto Russia</title>
   </head>
 
-  <body>
+  <body class="body">
     <div class="page">
       <!-- header-->
       <header class="header page__header">
         <a class="logo" href="#" target="_blank">
-          <img
-            class="logo__img"
-            src="./images/logo.svg"
-            alt="Mesto Russia"
-            lang="en"
-          />
+          <img class="logo__img" src="./images/logo.svg" alt="Mesto Russia" lang="en" />
         </a>
       </header>
 
@@ -34,17 +27,10 @@
         <!--profile-->
         <section class="profile main__profile">
           <div class="profile__container">
-            <img
-              class="profile__img"
-              src="./images/custo.jpg"
-              alt="Жак-Ив Кусто"
-            />
+            <img class="profile__img" src="./images/custo.jpg" alt="Жак-Ив Кусто" />
             <div class="profile__info">
               <h1 class="profile__title">Жак-Ив Кусто</h1>
-              <button
-                class="profile__edit-button"
-                onclick="openForm()"
-              ></button>
+              <button class="profile__edit-button"></button>
               <p class="profile__subtitle">Исследователь океана</p>
             </div>
           </div>
@@ -52,58 +38,33 @@
         </section>
 
         <!--popup-->
-        <section class="popup popup_opened" id="myForm">
-          <form action="#" class="popup__container">
+        <section class="popup">
+          <form class="popup__container">  
+            <button class="popup__button popup__button_type_close"></button>          
             <h2 class="popup__title">Редактировать профиль</h2>
-
             <label>
-              <input
-                class="popup__imput"
-                type="text"
-                placeholder="Жак-Ив Кусто"
-                name="name"
-                required
-              />
+              <input class="popup__imput popup__imput_type_name" type="text" value="Жак-Ив Кусто"/>
             </label>
             <label>
-              <input
-                class="popup__imput"
-                type="text"
-                placeholder="Исследователь океана"
-                name="job"
-                required
-              />
+              <input class="popup__imput popup__imput_type_job" type="text" value="Исследователь океана"/>
             </label>
-            <button type="submit" class="popup__button popup__button_type_save">
+            <button class="popup__button popup__button_type_save">
               Сохранить
             </button>
-            <button
-              type="button"
-              class="popup__button popup__button_type_cancel"
-              onclick="closeForm()"
-            ></button>
           </form>
         </section>
 
         <!--elements-->
         <section class="elements main__elements" aria-label="Фото">
           <figure class="elements__item">
-            <img
-              class="elements__img"
-              src="./images/karachaevsk.jpg"
-              alt="Карачаевск"
-            />
+            <img class="elements__img" src="./images/karachaevsk.jpg" alt="Карачаевск" />
             <figcaption class="elements__caption">
               Карачаево-Ч...
               <button class="elements__like"></button>
             </figcaption>
           </figure>
           <figure class="elements__item">
-            <img
-              class="elements__img"
-              src="./images/elbrus.jpg"
-              alt="гора Эльбрус"
-            />
+            <img class="elements__img" src="./images/elbrus.jpg" alt="гора Эльбрус" />
             <figcaption class="elements__caption">
               Гора Эльбрус
               <button class="elements__like"></button>
@@ -117,11 +78,7 @@
             </figcaption>
           </figure>
           <figure class="elements__item">
-            <img
-              class="elements__img"
-              src="./images/elbrus.jpg"
-              alt="гора Эльбрус"
-            />
+            <img class="elements__img" src="./images/elbrus.jpg" alt="гора Эльбрус" />
             <figcaption class="elements__caption">
               Гора Эльбрус
               <button class="elements__like"></button>
@@ -135,11 +92,7 @@
             </figcaption>
           </figure>
           <figure class="elements__item">
-            <img
-              class="elements__img"
-              src="./images/karachaevo-cherkesk.jpg"
-              alt=" Карачаево-Черкесия"
-            />
+            <img class="elements__img" src="./images/karachaevo-cherkesk.jpg" alt=" Карачаево-Черкесия" />
             <figcaption class="elements__caption">
               Карачаево-Ч...
               <button class="elements__like"></button>
@@ -155,4 +108,5 @@
     </div>
     <script src="script.js"></script>
   </body>
-</html>
+
+  </html>
