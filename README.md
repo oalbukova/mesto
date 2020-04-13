@@ -12,7 +12,7 @@
 6. Реализовано одно диалоговое окно Popup посредством JavaScript.
 7. Popup задан полупрозрачный чёрный фон/
 8. Верстка сайта происходила согласно: [макет Фигма](https://www.figma.com/file/StZjf8HnoeLdiXS7dYrLAh/JavaScript.-Sprint-4) под Pixel Perfect.
-9. #### [Ссылка на готовый проект]()
+9. #### [https://oalbukova.github.io/mesto/]()
 
 :octocat: This project looks great! Isn't it? :+1:
 
