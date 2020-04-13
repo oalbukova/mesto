@@ -1,0 +1,17 @@
+.popup__imput {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 12px 12px 12px 0;
+  margin-top: 16px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
+}
+
+.popup__imput:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+.popup__imput:hover {
+  border: none;
+}

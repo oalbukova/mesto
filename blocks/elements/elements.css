@@ -1,0 +1,23 @@
+@import url(./__item/elements__item.css);
+@import url(./__img/elements__img.css);
+@import url(./__caption/elements__caption.css);
+@import url(./__like/elements__like.css);
+
+.elements {
+  font-family: 'Inter', Arial, sans-serif;
+  width: calc(100% - 30%);
+  display: -ms-grid;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 282px);
+  grid-column-gap: 18px;
+  grid-row-gap: 19px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media (max-width: 450px) {
+  .elements {
+    grid-row-gap: 18px;
+  }
+}

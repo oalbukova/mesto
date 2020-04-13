@@ -1,0 +1,20 @@
+.profile__title {
+  color: #ffffff;
+  font-size: 42px;
+  font-weight: 500;
+  line-height: 56px;
+  margin: 18px 0 0;
+  max-width: 485px;
+  display: inline-block;
+  
+}
+
+@media (max-width: 1000px) {
+  .profile__title {
+    font-size: 27px;
+    margin: 22px 0 0;
+    line-height: 42px;
+    max-width: 300px;
+    text-align: center;
+  }
+}
