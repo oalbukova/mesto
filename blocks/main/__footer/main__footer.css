@@ -1,9 +1,0 @@
-.main__footer {
-  margin: 66px auto 0;
-}
-
-@media (max-width: 700px) {
-  .main__footer {
-    margin: 49px auto 0;
-  }
-}

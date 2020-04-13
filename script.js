@@ -1,18 +1,13 @@
-const popup = document.querySelector('.popup');
-const openPopup = document.querySelector('.popup_opened');
-
-const editButton = document.querySelector('.profile__edit-button');
-const closePopup = document.querySelector('.popup__button_type_close');
-
-let profileTitle = document.querySelector('.profile__title');
-let profileSubtitle = document.querySelector('.profile__subtitle');
-
-
-let nameInput = document.querySelector('.popup__imput_type_name');
-let jobInput = document.querySelector('.popup__imput_type_job');
-
-const formElement = document.querySelector('.popup__container');
-const savePopup = document.querySelector('.popup__button_type_save');
+const popup = document.querySelector(".popup");
+const openPopup = document.querySelector(".popup_opened");
+const editButton = document.querySelector(".profile__edit-button");
+const closePopup = document.querySelector(".popup__button_type_close");
+let profileTitle = document.querySelector(".profile__title");
+let profileSubtitle = document.querySelector(".profile__subtitle");
+let nameInput = document.querySelector(".popup__imput_type_name");
+let jobInput = document.querySelector(".popup__imput_type_job");
+const formElement = document.querySelector(".popup__container");
+const savePopup = document.querySelector(".popup__button_type_save");
 
 function Add() {
   let profileTitleName = profileTitle.textContent;
@@ -22,17 +17,15 @@ function Add() {
 }
 
 function open() {
-  popup.classList.add('popup_opened');
-  Add()
+  popup.classList.add("popup_opened");
+  Add();
 }
-editButton.addEventListener('click', open);
-
+editButton.addEventListener("click", open);
 
 function close() {
-  popup.classList.remove('popup_opened');
+  popup.classList.remove("popup_opened");
 }
-closePopup.addEventListener('click', close);
-
+closePopup.addEventListener("click", close);
 
 function formSubmitHandler(evt) {
   evt.preventDefault();
@@ -43,7 +36,5 @@ function formSubmitHandler(evt) {
   profileTitle.textContent = `${nameInputAdd}`;
   profileSubtitle.textContent = `${jobInputAdd}`;
 }
-
-formElement.addEventListener('submit', formSubmitHandler);
-
-savePopup.addEventListener('click', close);
+formElement.addEventListener("submit", formSubmitHandler);
+savePopup.addEventListener("click", close);

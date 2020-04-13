@@ -1,5 +1,5 @@
 .popup__button_type_close {
-  background-image: url(.../../../../../../images/Close_Icon.svg);
+  background-image: url(../../../../images/close_icon.svg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -21,7 +21,7 @@
 
 @media (max-width: 500px) {
   .popup__button_type_close {
-    background-image: url(../../../../images/Close_Icon_black.png);
+    background-image: url(../../../../images/close_icon_black.png);
     right: 5px;
     top: 5px;
     -webkit-transform: scale(0.6);

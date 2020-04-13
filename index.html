@@ -1,133 +1,107 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta name="author" content="Ольга Альбукова" />
-    <meta
-      name="description"
-      content="портфолио Ольги Альбуковой на Яндекс Практикум"
-    />
-    <link rel="stylesheet" href="pages/index.css" />
-    <title lang="en">Mesto Russia</title>
-  </head>
 
-  <body class="body">
-    <div class="page">
-      <!-- header-->
-      <header class="header page__header">
-        <a class="logo" title="Вы на главной странице.">
-          <img
-            class="logo__img"
-            src="./images/logo.svg"
-            alt="Mesto Russia"
-            lang="en"
-          />
-        </a>
-      </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="author" content="Ольга Альбукова" />
+  <meta name="description" content="портфолио Ольги Альбуковой на Яндекс Практикум" />
+  <link rel="stylesheet" href="pages/index.css" />
+  <title lang="en">Mesto Russia</title>
+</head>
 
-      <!--main-->
-      <main class="main">
-        <!--profile-->
-        <section class="profile main__profile">
-          <div class="profile__container">
-            <img
-              class="profile__img"
-              src="./images/custo.jpg"
-              alt="Жак-Ив Кусто"
-            />
-            <div class="profile__info">
-              <h1 class="profile__title">Жак-Ив Кусто</h1>
-              <button class="profile__edit-button" type="button"></button>
-              <p class="profile__subtitle">Исследователь океана</p>
-            </div>
+<body class="body">
+  <div class="page">
+    <!-- header-->
+    <header class="header page__header">
+      <a class="logo" title="Вы на главной странице">
+        <img class="logo__img" src="./images/logo.svg" alt="Mesto Russia" lang="en" />
+      </a>
+    </header>
+
+    <!--main-->
+    <main class="main">
+      <!--profile-->
+      <section class="profile main__profile">
+        <div class="profile__container">
+          <img class="profile__img" src="./images/custo.jpg" alt="Жак-Ив Кусто" />
+          <div class="profile__info">
+            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <button class="profile__edit-button" type="button"></button>
+            <p class="profile__subtitle">Исследователь океана</p>
           </div>
-          <button class="profile__add-button" type="button"></button>
-        </section>
-
-        <!--elements-->
-        <div class="elements main__elements">
-          <figure class="elements__item">
-            <img
-              class="elements__img"
-              src="./images/karachaevsk.jpg"
-              alt="Карачаевск"
-            />
-            <figcaption class="elements__caption">
-              Карачаевск
-              <button class="elements__like" type="button"></button>
-            </figcaption>
-          </figure>
-          <figure class="elements__item">
-            <img
-              class="elements__img"
-              src="./images/elbrus.jpg"
-              alt="гора Эльбрус"
-            />
-            <figcaption class="elements__caption">
-              Гора Эльбрус
-              <button class="elements__like" type="button"></button>
-            </figcaption>
-          </figure>
-          <figure class="elements__item">
-            <img class="elements__img" src="./images/dombay.jpg" alt="Домбай" />
-            <figcaption class="elements__caption">
-              Домбай
-              <button class="elements__like" type="button"></button>
-            </figcaption>
-          </figure>
-          <figure class="elements__item">
-            <img
-              class="elements__img"
-              src="./images/elbrus.jpg"
-              alt="гора Эльбрус"
-            />
-            <figcaption class="elements__caption">
-              Гора Эльбрус
-              <button class="elements__like" type="button"></button>
-            </figcaption>
-          </figure>
-          <figure class="elements__item">
-            <img class="elements__img" src="./images/dombay.jpg" alt="Домбай" />
-            <figcaption class="elements__caption">
-              Домбай
-              <button class="elements__like" type="button"></button>
-            </figcaption>
-          </figure>
-          <figure class="elements__item">
-            <img
-              class="elements__img"
-              src="./images/budapest.jpg"
-              alt="Будапешт"
-            />
-            <figcaption class="elements__caption">
-              Будапешт
-              <button class="elements__like" type="button"></button>
-            </figcaption>
-          </figure>
         </div>
+        <button class="profile__add-button" type="button"></button>
+      </section>
 
-        <!--popup-->
-        <section class="popup">
-          <form class="popup__container">
-            <button class="popup__button popup__button_type_close" type="reset"></button>
-            <h2 class="popup__title">Редактировать профиль</h2>
-            <input class="popup__imput popup__imput_type_name" type="text" name="nameInput" />
-            <input class="popup__imput popup__imput_type_job" type="text" name="jobInput" />
-            <button class="popup__button popup__button_type_save" type="submit">
-              Сохранить
-            </button>
-          </form>
-        </section>
-      </main>
+      <!--elements-->
+      <div class="elements main__elements">
+        <figure class="elements__item">
+          <img class="elements__img" src="./images/karachaevsk.jpg" alt="Карачаевск" />
+          <figcaption class="elements__caption">
+            Карачаевск
+            <button class="elements__like" type="button"></button>
+          </figcaption>
+        </figure>
+        <figure class="elements__item">
+          <img class="elements__img" src="./images/elbrus.jpg" alt="гора Эльбрус" />
+          <figcaption class="elements__caption">
+            Гора Эльбрус
+            <button class="elements__like" type="button"></button>
+          </figcaption>
+        </figure>
+        <figure class="elements__item">
+          <img class="elements__img" src="./images/dombay.jpg" alt="Домбай" />
+          <figcaption class="elements__caption">
+            Домбай
+            <button class="elements__like" type="button"></button>
+          </figcaption>
+        </figure>
+        <figure class="elements__item">
+          <img class="elements__img" src="./images/elbrus.jpg" alt="гора Эльбрус" />
+          <figcaption class="elements__caption">
+            Гора Эльбрус
+            <button class="elements__like" type="button"></button>
+          </figcaption>
+        </figure>
+        <figure class="elements__item">
+          <img class="elements__img" src="./images/dombay.jpg" alt="Домбай" />
+          <figcaption class="elements__caption">
+            Домбай
+            <button class="elements__like" type="button"></button>
+          </figcaption>
+        </figure>
+        <figure class="elements__item">
+          <img class="elements__img" src="./images/budapest.jpg" alt="Будапешт" />
+          <figcaption class="elements__caption">
+            Будапешт
+            <button class="elements__like" type="button"></button>
+          </figcaption>
+        </figure>
+      </div>
 
-      <!--footer-->
-      <footer class="footer page__footer">
-        <p class="footer__content" lang="en">&#169; 2020 Mesto Russia</p>
-      </footer>
+      <!--popup-->
+      <section class="popup">
+        <form class="popup__container">
+          <button class="popup__button popup__button_type_close" type="reset"></button>
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <input class="popup__imput popup__imput_type_name" type="text" name="nameInput" />
+          <input class="popup__imput popup__imput_type_job" type="text" name="jobInput" />
+          <button class="popup__button popup__button_type_save" type="submit">
+            Сохранить
+          </button>
+        </form>
+      </section>
+    </main>
 
-    </div>
-    <script src="script.js"></script>
-  </body>
+    <!--footer-->
+    <footer class="footer page__footer">
+      <p class="footer__content" lang="en">&#169; 2020 Mesto Russia</p>
+    </footer>
+
+  </div>
+  <script src="script.js"></script>
+</body>
+
 </html>
