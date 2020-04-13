@@ -6,6 +6,7 @@
 @import url(./__button/_type/popup__button_type_close.css);
 @import url(./__imput/popup__imput.css);
 
+
 .popup {
   display: none;
   font-family: 'Inter', Arial, sans-serif;
