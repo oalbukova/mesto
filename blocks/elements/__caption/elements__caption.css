@@ -1,9 +1,6 @@
 .elements__caption {
   box-sizing: border-box;
   background-color: white;
-  color: #000000;
-  font-size: 24px;
-  font-weight: 900;
   border-radius: 0 0 10px 10px;
   margin-top: -3px;;
   min-height: 81px;
