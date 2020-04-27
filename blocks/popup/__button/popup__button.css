@@ -1,7 +1,0 @@
-.popup__button {
-  border: none;
-  cursor: pointer;
-  outline: none;
-  -webkit-transition: opacity linear 0.5s;
-  transition: opacity linear 0.5s;
-}

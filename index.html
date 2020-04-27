@@ -2,7 +2,7 @@
 <html lang="ru">
 
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8" />      
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <meta name="author" content="Ольга Альбукова" />
@@ -28,11 +28,11 @@
           <img class="profile__img" src="./images/custo.jpg" alt="Жак-Ив Кусто" />
           <div class="profile__info">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
-            <button class="profile__edit-button" type="button"></button>
+            <button class="profile__edit-button" type="button" aria-label="Редактировать"></button>
             <p class="profile__subtitle">Исследователь океана</p>
           </div>
         </div>
-        <button class="profile__add-button" type="button"></button>
+        <button class="profile__add-button" type="button" aria-label="Добавить"></button>
       </section>
 
       <!--elements-->
@@ -43,64 +43,64 @@
             <h2 class="elements__text">
               Карачаево-Черкесская Республика
             </h2>
-            <button class="elements__like" type="button"></button>
+            <button class="elements__like" type="button" aria-label="Нравится"></button>
           </figcaption>
         </figure>
         <figure class="elements__item">
           <img class="elements__img" src="./images/elbrus.jpg" alt="гора Эльбрус" />
           <figcaption class="elements__caption">
-            <h2 class="elements_text">
+            <h2 class="elements__text">
               Гора Эльбрус
             </h2>
-            <button class="elements__like" type="button"></button>
+            <button class="elements__like" type="button" aria-label="Нравится"></button>
           </figcaption>
         </figure>
         <figure class="elements__item">
           <img class="elements__img" src="./images/dombay.jpg" alt="Домбай" />
           <figcaption class="elements__caption">
-            <h2 class="elements_text">
+            <h2 class="elements__text">
               Домбай
             </h2>
-            <button class="elements__like" type="button"></button>
+            <button class="elements__like" type="button" aria-label="Нравится"></button>
           </figcaption>
         </figure>
         <figure class="elements__item">
           <img class="elements__img" src="./images/elbrus.jpg" alt="гора Эльбрус" />
           <figcaption class="elements__caption">
-            <h2 class="elements_text">
+            <h2 class="elements__text">
               Гора Эльбрус
             </h2>
-            <button class="elements__like" type="button"></button>
+            <button class="elements__like" type="button" aria-label="Нравится"></button>
           </figcaption>
         </figure>
         <figure class="elements__item">
           <img class="elements__img" src="./images/dombay.jpg" alt="Домбай" />
           <figcaption class="elements__caption">
-            <h2 class="elements_text">
+            <h2 class="elements__text">
               Домбай
             </h2>
-            <button class="elements__like" type="button"></button>
+            <button class="elements__like" type="button" aria-label="Нравится"></button>
           </figcaption>
         </figure>
         <figure class="elements__item">
           <img class="elements__img" src="./images/budapest.jpg" alt="Будапешт" />
           <figcaption class="elements__caption">
-            <h2 class="elements_text">
+            <h2 class="elements__text">
               Будапешт
             </h2>
-            <button class="elements__like" type="button"></button>
+            <button class="elements__like" type="button" aria-label="Нравится"></button>
           </figcaption>
         </figure>
       </div>
 
       <!--popup-->
       <section class="popup">
-        <form class="popup__container">
-          <button class="popup__button popup__button_type_close" type="reset"></button>
+        <form class="popup__container" name="formElement" method="get" action="#">
+          <button class="popup__button-close" type="reset" aria-label="Закрыть"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
-          <input class="popup__imput popup__imput_type_name" type="text" name="nameInput" />
-          <input class="popup__imput popup__imput_type_job" type="text" name="jobInput" />
-          <button class="popup__button popup__button_type_save" type="submit">
+          <input class="popup__imput popup__imput_type_name" type="text" required placeholder="Имя" name="nameInput" />
+          <input class="popup__imput popup__imput_type_job" type="text" required placeholder="Профессия" name="jobInput" />
+          <button class="popup__button-save" type="submit">
             Сохранить
           </button>
         </form>

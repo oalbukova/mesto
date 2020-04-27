@@ -1,0 +1,20 @@
+.popup__button-save {
+  background-color: black;
+  color: white;
+  padding: 4.1% 5%;
+  width: 100%;
+  margin-top: 13%;
+  margin-bottom: 7%;
+  font-size: 1.1em;
+  font-weight: 400;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  -webkit-transition: opacity linear 0.5s;
+  transition: opacity linear 0.5s;
+}
+
+.popup__button-save:hover {
+  background-color:rgba(0, 0, 0, 0.8);
+}

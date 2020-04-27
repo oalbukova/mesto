@@ -1,4 +1,4 @@
-.popup__button_type_close {
+.popup__button-close {
   background-image: url(../../../../images/close_icon.svg);
   background-size: cover;
   background-repeat: no-repeat;
@@ -11,16 +11,20 @@
   right: -34px;
   padding: 1px 6px;
   outline: none;
+  border: none;
+  cursor: pointer;
+  -webkit-transition: opacity linear 0.5s;
+  transition: opacity linear 0.5s;
 }
 
-.popup__button_type_close:hover {
+.popup__button-close:hover {
   opacity: .6;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
 }
 
 
 @media (max-width: 500px) {
-  .popup__button_type_close {
+  .popup__button-close {
     background-image: url(../../../../images/close_icon_black.png);
     right: 5px;
     top: 5px;
