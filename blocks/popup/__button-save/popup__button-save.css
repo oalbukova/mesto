@@ -1,4 +1,5 @@
 .popup__button-save {
+  font-family: 'Inter', Arial, sans-serif;
   background-color: black;
   color: white;
   padding: 4.1% 5%;
@@ -18,3 +19,13 @@
 .popup__button-save:hover {
   background-color:rgba(0, 0, 0, 0.8);
 }
+
+@media (max-width: 400px) { 
+  .popup__button-save {
+    margin-top: 18%; 
+    padding: 5% 25%;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+} 
+} 

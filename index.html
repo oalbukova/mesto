@@ -2,7 +2,7 @@
 <html lang="ru">
 
 <head>
-  <meta charset="UTF-8" />      
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <meta name="author" content="Ольга Альбукова" />
@@ -36,82 +36,72 @@
       </section>
 
       <!--elements-->
-      <div class="elements main__elements">
-        <figure class="elements__item">
-          <img class="elements__img" src="./images/karachaevsk.jpg" alt="Карачаевск" />
-          <figcaption class="elements__caption">
-            <h2 class="elements__text">
-              Карачаево-Черкесская Республика
-            </h2>
-            <button class="elements__like" type="button" aria-label="Нравится"></button>
-          </figcaption>
-        </figure>
-        <figure class="elements__item">
-          <img class="elements__img" src="./images/elbrus.jpg" alt="гора Эльбрус" />
-          <figcaption class="elements__caption">
-            <h2 class="elements__text">
-              Гора Эльбрус
-            </h2>
-            <button class="elements__like" type="button" aria-label="Нравится"></button>
-          </figcaption>
-        </figure>
-        <figure class="elements__item">
-          <img class="elements__img" src="./images/dombay.jpg" alt="Домбай" />
-          <figcaption class="elements__caption">
-            <h2 class="elements__text">
-              Домбай
-            </h2>
-            <button class="elements__like" type="button" aria-label="Нравится"></button>
-          </figcaption>
-        </figure>
-        <figure class="elements__item">
-          <img class="elements__img" src="./images/elbrus.jpg" alt="гора Эльбрус" />
-          <figcaption class="elements__caption">
-            <h2 class="elements__text">
-              Гора Эльбрус
-            </h2>
-            <button class="elements__like" type="button" aria-label="Нравится"></button>
-          </figcaption>
-        </figure>
-        <figure class="elements__item">
-          <img class="elements__img" src="./images/dombay.jpg" alt="Домбай" />
-          <figcaption class="elements__caption">
-            <h2 class="elements__text">
-              Домбай
-            </h2>
-            <button class="elements__like" type="button" aria-label="Нравится"></button>
-          </figcaption>
-        </figure>
-        <figure class="elements__item">
-          <img class="elements__img" src="./images/budapest.jpg" alt="Будапешт" />
-          <figcaption class="elements__caption">
-            <h2 class="elements__text">
-              Будапешт
-            </h2>
-            <button class="elements__like" type="button" aria-label="Нравится"></button>
-          </figcaption>
-        </figure>
-      </div>
+      <div class="elements main__elements"></div>
 
-      <!--popup-->
-      <section class="popup">
+      <!--popup profile-->
+      <section class="popup" id="popupProfile">
         <form class="popup__container" name="formElement" method="get" action="#">
-          <button class="popup__button-close" type="reset" aria-label="Закрыть"></button>
+          <button class="button-close" type="reset" aria-label="Закрыть"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
           <input class="popup__imput popup__imput_type_name" type="text" required placeholder="Имя" name="nameInput" />
-          <input class="popup__imput popup__imput_type_job" type="text" required placeholder="Профессия" name="jobInput" />
+          <input class="popup__imput popup__imput_type_job" type="text" required placeholder="Профессия"
+            name="jobInput" />
           <button class="popup__button-save" type="submit">
             Сохранить
           </button>
         </form>
       </section>
+
+      <!--popup-elements-->
+      <section class="popup" id="popupElements">
+        <form class="popup__container" name="formElement" method="get" action="#" id="form">
+          <button class="button-close" id="elements-close" type="reset" aria-label="Закрыть"></button>
+          <h2 class="popup__title">Новое место</h2>
+          <input class="popup__imput popup__imput_type_place" type="text" required placeholder="Название"
+            name="placeInput" />
+          <input class="popup__imput popup__imput_type_link" type="url" required placeholder="Ссылка на картинку"
+            name="linkInput" />
+          <button class="popup__button-save" type="submit">
+            Создать
+          </button>
+        </form>
+      </section>
+    </main>
+
+    <!--popup-view-->
+    <section class="popup">
+      <div class="popup-view">
+        <button class="button-close" id="view-close" type="reset" aria-label="Закрыть"></button>
+        <figure class="popup-view__item">
+          <img class="popup-view__img"
+            src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg" alt="" />
+          <figcaption class="popup-view__caption">Иваново</figcaption>
+        </figure>
+      </div>
+    </section>
     </main>
 
     <!--footer-->
     <footer class="footer page__footer">
-      <p class="footer__content" lang="en">&#169; 2020 Mesto Russia</p>
+      <p class="footer__content" lang="en">&#169; 2020 Olga Albukova</p>
     </footer>
   </div>
+
+
+  <!--template element-->
+  <template id="element-template">
+    <figure class="elements__item">
+      <img class="elements__img" src="" alt="" />
+      <button class="elements__delete" type="button" aria-label="Удалить"></button>
+      <figcaption class="elements__caption">
+        <h2 class="elements__text">
+        </h2>
+        <button class="elements__like" type="button" aria-label="Нравится"></button>
+      </figcaption>
+    </figure>
+  </template>
+
+  <script src="elements.js"></script>
   <script src="script.js"></script>
 </body>
 
