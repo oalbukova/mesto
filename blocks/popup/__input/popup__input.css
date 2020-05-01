@@ -1,4 +1,4 @@
-.popup__imput {
+.popup__input {
   font-family: 'Inter', Arial, sans-serif;
   box-sizing: border-box;
   width: 100%;
@@ -10,17 +10,17 @@
   line-height: 17px;
 }
 
-.popup__imput:focus {
+.popup__input:focus {
   background-color: #ddd;
   outline: none;
 }
 
-.popup__imput:hover {
+.popup__input:hover {
   box-shadow: 10px 10px 10px rgba(0,0,0,0.3);
 }
 
 @media (max-width: 400px) { 
-  .popup__imput { 
+  .popup__input { 
     font-size: 12px;
     line-height: 15px; 
     padding: 0px 12px 9px 0;
