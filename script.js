@@ -74,7 +74,7 @@ function addCard(link, name) {
 
 initialElements.forEach(function (item) {
   addCard(item.link, item.name);
-});//добавление картинок
+}); //добавление картинок
 
 editButton.addEventListener("click", () => editForm(popupProfile)); //слушатель кнопки открытия попап профиль
 closePopup.addEventListener("click", () => editForm(popupProfile)); //слушатель кнопки закрытия попап профиль

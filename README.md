@@ -12,10 +12,14 @@ Cамостоятельный проект одностраничного сай
 6. Реализовано два диалоговых окна Popup посредством JavaScript.
 7. Popup задан полупрозрачный чёрный фон.
 8. Реализовано плавное открытие и закрытие модального окна CSS-стилями.
-9. Верстка сайта происходила согласно: [макет Фигма1](https://www.figma.com/file/StZjf8HnoeLdiXS7dYrLAh/JavaScript.-Sprint-4) 
+9. Реализована возможность добавления карточек со своими изображениями. 
+10. Реализована возможность удаления карточек.
+11. Реализована возможность ставить карточкам лайки.
+12. Реализована возможность увеличения картинки на карточке при нажатии не нее.
+13. Верстка сайта происходила согласно: [макет Фигма1](https://www.figma.com/file/StZjf8HnoeLdiXS7dYrLAh/JavaScript.-Sprint-4) 
 [макет Фигма2](https://www.figma.com/file/nlYpT4VhFiwimn2YlncrcF/JavaScript.-Sprint-5) 
 под Pixel Perfect.
-9. #### [Ссылка на готовый проект](https://oalbukova.github.io/mesto/)
+14. #### [Ссылка на готовый проект](https://oalbukova.github.io/mesto/)
 
 :octocat: This project looks great! Isn't it? :+1:
 
