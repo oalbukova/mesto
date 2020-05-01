@@ -61,32 +61,29 @@
             name="placeInput" />
           <input class="popup__imput popup__imput_type_link" type="url" required placeholder="Ссылка на картинку"
             name="linkInput" />
-          <button class="popup__button-save" type="submit">
+          <button class="popup__button-save" id="elements-save" type="submit">
             Создать
           </button>
         </form>
       </section>
-    </main>
 
-    <!--popup-view-->
-    <section class="popup">
-      <div class="popup-view">
-        <button class="button-close" id="view-close" type="reset" aria-label="Закрыть"></button>
-        <figure class="popup-view__item">
-          <img class="popup-view__img"
-            src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg" alt="" />
-          <figcaption class="popup-view__caption">Иваново</figcaption>
-        </figure>
+      <!--popup-view-->
+      <div class="popup popup_opacity" id="popupBig">
+        <div class="popup-view">
+          <button class="button-close" id="view-close" type="reset" aria-label="Закрыть"></button>
+          <figure class="popup-view__item">
+            <img class="popup-view__img" src="" alt="" />
+            <figcaption class="popup-view__caption"></figcaption>
+          </figure>
+        </div>
       </div>
-    </section>
     </main>
 
     <!--footer-->
     <footer class="footer page__footer">
-      <p class="footer__content" lang="en">&#169; 2020 Olga Albukova</p>
+      <p class="footer__content">&copy; 2020 Olga Albukova</p>
     </footer>
   </div>
-
 
   <!--template element-->
   <template id="element-template">
@@ -94,8 +91,7 @@
       <img class="elements__img" src="" alt="" />
       <button class="elements__delete" type="button" aria-label="Удалить"></button>
       <figcaption class="elements__caption">
-        <h2 class="elements__text">
-        </h2>
+        <h2 class="elements__text"></h2>
         <button class="elements__like" type="button" aria-label="Нравится"></button>
       </figcaption>
     </figure>
