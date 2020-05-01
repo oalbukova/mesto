@@ -18,6 +18,7 @@ let viewLink = document.querySelector(".popup-view__img"); // картинка �
 let viewCaption = document.querySelector(".popup-view__caption"); //название увеличенной картинки
 let profileTitle = document.querySelector(".profile__title"); //имя на странице
 let profileSubtitle = document.querySelector(".profile__subtitle"); //профессия на странице
+let profileAlt = document.querySelector(".profile__img"); //alt в профиле
 let nameInput = document.querySelector(".popup__imput_type_name"); //имя в инпут
 let jobInput = document.querySelector(".popup__imput_type_job"); //профессия в инпут
 let placeInput = document.querySelector(".popup__imput_type_place"); //имя в инпут
@@ -37,6 +38,7 @@ function formSubmitHandler(evt) {
   let jobInputAdd = jobInput.value;
   profileTitle.textContent = `${nameInputAdd}`;
   profileSubtitle.textContent = `${jobInputAdd}`;
+  profileAlt.alt = `${nameInputAdd}`;
   editForm(popupProfile);
 }
 
