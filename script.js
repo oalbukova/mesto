@@ -57,16 +57,16 @@ function openImage(link, name) { //открытие увеличенной ка�
 
 function addCard(link, name) {
   const imgElement = elementTemplate.content.cloneNode(true); //клонируем шаблон
-  imgElement.querySelector(".elements__img").src = link; //добавляем картинку
-  imgElement.querySelector(".elements__text").textContent = name; //добавляем текст
-  imgElement.querySelector(".elements__img").alt = name; //добавляем alt
-  imgElement.querySelector(".elements__like").addEventListener("click", function (evt) {
-    evt.target.classList.toggle("elements__like_type_active"); //переключатель класса кнопки лайк
+  imgElement.querySelector(".element__img").src = link; //добавляем картинку
+  imgElement.querySelector(".element__text").textContent = name; //добавляем текст
+  imgElement.querySelector(".element__img").alt = name; //добавляем alt
+  imgElement.querySelector(".element__like").addEventListener("click", function (evt) {
+    evt.target.classList.toggle("element__like_type_active"); //переключатель класса кнопки лайк
   });
-  imgElement.querySelector(".elements__delete").addEventListener("click", function (evt) {
-    evt.target.closest('.elements__item').remove(); //удаление картинок
+  imgElement.querySelector(".element__delete").addEventListener("click", function (evt) {
+    evt.target.closest('.element').remove(); //удаление картинок
   });
-  imgElement.querySelector(".elements__img").addEventListener("click", function () {
+  imgElement.querySelector(".element__img").addEventListener("click", function () {
     openImage(link, name); //открытие большой картинки
   });
   elementsContainer.prepend(imgElement);

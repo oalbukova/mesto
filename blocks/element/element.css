@@ -1,0 +1,10 @@
+@import url(./__img/element__img.css);
+@import url(./__delete/element__delete.css);
+@import url(./__caption/element__caption.css);
+@import url(./__text/element__text.css);
+@import url(./__like/element__like.css);
+@import url(./__like/_type/element__like_type_active.css);
+
+.element {
+  position: relative;
+}
