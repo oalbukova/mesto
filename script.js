@@ -20,12 +20,9 @@ const jobInput = document.querySelector(".popup__input_type_job"); //профе�
 const placeInput = document.querySelector(".popup__input_type_place"); //имя в инпут
 const linkInput = document.querySelector(".popup__input_type_link"); //линк в инпут
 
-function editForm(elem) {
+
+function togglePopup(elem) {
   elem.classList.toggle('popup_opened')
-  const profileTitleName = profileTitle.textContent;
-  const profileTitleJob = profileSubtitle.textContent;
-  nameInput.value = `${profileTitleName}`;
-  jobInput.value = `${profileTitleJob}`;
 }
 
 function formSubmitHandler(evt) {
@@ -35,25 +32,31 @@ function formSubmitHandler(evt) {
   profileTitle.textContent = nameInputAdd;
   profileSubtitle.textContent = jobInputAdd;
   profileAlt.alt = nameInputAdd;
-  editForm(popupProfile);
+  togglePopup(popupProfile);
+}
+
+function editForm() {
+  togglePopup(popupProfile);
+  nameInput.value = profileTitle.textContent;
+  jobInput.value = profileSubtitle.textContent;
 }
 
 function placeSubmitHandler(evt) {
   evt.preventDefault();
-  addCard(linkInput.value, placeInput.value);
+  createCard(linkInput.value, placeInput.value);
   linkInput.value = "";
   placeInput.value = "";
-  editForm(popupElements);
+  togglePopup(popupElements);
 }
 
 function openImage(link, name) { //открытие увеличенной картинки
   viewCaption.textContent = name;
   viewLink.src = link;
   viewLink.alt = name;
-  editForm(popupBig);
+  togglePopup(popupBig);
 }
 
-function addCard(link, name) {
+function createCard(link, name) {
   const imgElement = elementTemplate.content.cloneNode(true); //клонируем шаблон
   imgElement.querySelector(".element__img").src = link; //добавляем картинку
   imgElement.querySelector(".element__text").textContent = name; //добавляем текст
@@ -71,13 +74,13 @@ function addCard(link, name) {
 }
 
 initialElements.forEach(function (item) {
-  addCard(item.link, item.name);
+  createCard(item.link, item.name);
 }); //добавление картинок
 
-editButton.addEventListener("click", () => editForm(popupProfile)); //слушатель кнопки открытия попап профиль
-closePopup.addEventListener("click", () => editForm(popupProfile)); //слушатель кнопки закрытия попап профиль
-addButton.addEventListener("click", () => editForm(popupElements)); //слушатель кнопки открытия попап картинки
-elemBtnClose.addEventListener("click", () => editForm(popupElements)); //слушатель кнопки закрытия попап картинки
-viewClose.addEventListener("click", () => editForm(popupBig)); //слушатель кнопки закрытия попап увеличенной картинки
+editButton.addEventListener("click", () => togglePopup(popupProfile)); //слушатель кнопки открытия попап профиль
+closePopup.addEventListener("click", () => togglePopup(popupProfile)); //слушатель кнопки закрытия попап профиль
+addButton.addEventListener("click", () => togglePopup(popupElements)); //слушатель кнопки открытия попап картинки
+elemBtnClose.addEventListener("click", () => togglePopup(popupElements)); //слушатель кнопки закрытия попап картинки
+viewClose.addEventListener("click", () => togglePopup(popupBig)); //слушатель кнопки закрытия попап увеличенной картинки
 formElement.addEventListener("submit", formSubmitHandler);
 form.addEventListener("submit", placeSubmitHandler);
