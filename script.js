@@ -20,10 +20,17 @@ const jobInput = document.querySelector(".popup__input_type_job"); //профе�
 const placeInput = document.querySelector(".popup__input_type_place"); //имя в инпут
 const linkInput = document.querySelector(".popup__input_type_link"); //линк в инпут
 
-
 function togglePopup(elem) {
   elem.classList.toggle('popup_opened')
 }
+
+function editForm() { 
+  nameInput.value = profileTitle.textContent;
+  jobInput.value = profileSubtitle.textContent;
+  togglePopup(popupProfile);
+}
+
+
 
 function formSubmitHandler(evt) {
   evt.preventDefault();
@@ -35,15 +42,10 @@ function formSubmitHandler(evt) {
   togglePopup(popupProfile);
 }
 
-function editForm() {
-  togglePopup(popupProfile);
-  nameInput.value = profileTitle.textContent;
-  jobInput.value = profileSubtitle.textContent;
-}
 
-function placeSubmitHandler(evt) {
+function placeSubmitHandler(evt) { //добавление своей карточки
   evt.preventDefault();
-  createCard(linkInput.value, placeInput.value);
+  elementsContainer.prepend(createCard(linkInput.value, placeInput.value));
   linkInput.value = "";
   placeInput.value = "";
   togglePopup(popupElements);
@@ -56,7 +58,7 @@ function openImage(link, name) { //открытие увеличенной ка�
   togglePopup(popupBig);
 }
 
-function createCard(link, name) {
+function createCard(link, name) { //карточка
   const imgElement = elementTemplate.content.cloneNode(true); //клонируем шаблон
   imgElement.querySelector(".element__img").src = link; //добавляем картинку
   imgElement.querySelector(".element__text").textContent = name; //добавляем текст
@@ -70,12 +72,12 @@ function createCard(link, name) {
   imgElement.querySelector(".element__img").addEventListener("click", function () {
     openImage(link, name); //открытие большой картинки
   });
-  elementsContainer.prepend(imgElement);
+  return imgElement;
 }
 
 initialElements.forEach(function (item) {
-  createCard(item.link, item.name);
-}); //добавление картинок
+  elementsContainer.prepend(createCard(item.link, item.name));
+}) //добавление картинок
 
 editButton.addEventListener("click", () => togglePopup(popupProfile)); //слушатель кнопки открытия попап профиль
 closePopup.addEventListener("click", () => togglePopup(popupProfile)); //слушатель кнопки закрытия попап профиль
