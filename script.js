@@ -24,13 +24,11 @@ function togglePopup(elem) {
   elem.classList.toggle('popup_opened')
 }
 
-function editForm() { 
+function editForm() {
+  togglePopup(popupProfile);
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
-  togglePopup(popupProfile);
 }
-
-
 
 function formSubmitHandler(evt) {
   evt.preventDefault();
@@ -41,7 +39,6 @@ function formSubmitHandler(evt) {
   profileAlt.alt = nameInputAdd;
   togglePopup(popupProfile);
 }
-
 
 function placeSubmitHandler(evt) { //добавление своей карточки
   evt.preventDefault();
@@ -57,6 +54,7 @@ function openImage(link, name) { //открытие увеличенной ка�
   viewLink.alt = name;
   togglePopup(popupBig);
 }
+
 
 function createCard(link, name) { //карточка
   const imgElement = elementTemplate.content.cloneNode(true); //клонируем шаблон
@@ -79,8 +77,8 @@ initialElements.forEach(function (item) {
   elementsContainer.prepend(createCard(item.link, item.name));
 }) //добавление картинок
 
-editButton.addEventListener("click", () => togglePopup(popupProfile)); //слушатель кнопки открытия попап профиль
-closePopup.addEventListener("click", () => togglePopup(popupProfile)); //слушатель кнопки закрытия попап профиль
+editButton.addEventListener("click", () => editForm()); //слушатель кнопки открытия попап профиль
+closePopup.addEventListener("click", () => editForm()); //слушатель кнопки закрытия попап профиль
 addButton.addEventListener("click", () => togglePopup(popupElements)); //слушатель кнопки открытия попап картинки
 elemBtnClose.addEventListener("click", () => togglePopup(popupElements)); //слушатель кнопки закрытия попап картинки
 viewClose.addEventListener("click", () => togglePopup(popupBig)); //слушатель кнопки закрытия попап увеличенной картинки
