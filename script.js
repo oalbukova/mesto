@@ -32,13 +32,30 @@ function editForm() {
 
 function formSubmitHandler(evt) {
   evt.preventDefault();
-  const nameInputAdd = nameInput.value;
-  const jobInputAdd = jobInput.value;
-  profileTitle.textContent = nameInputAdd;
-  profileSubtitle.textContent = jobInputAdd;
-  profileAlt.alt = nameInputAdd;
+  profileTitle.textContent = nameInput.value;
+  profileSubtitle.textContent = jobInput.value;
+  profileAlt.alt = nameInput.value;
   togglePopup(popupProfile);
 }
+
+function createCard(link, name) { //карточка
+  const imgElement = elementTemplate.content.firstElementChild.cloneNode(true); //клонируем шаблон
+  imgElement.querySelector(".element__img").src = link; //добавляем картинку
+  imgElement.querySelector(".element__text").textContent = name; //добавляем текст
+  imgElement.querySelector(".element__img").alt = name; //добавляем alt
+  imgElement.querySelector(".element__like").addEventListener("click", function (evt) {
+    evt.target.classList.toggle("element__like_type_active"); //переключатель класса кнопки лайк
+  });
+  imgElement.querySelector(".element__delete").addEventListener('click', () => imgElement.remove()); //удаление картинок
+  imgElement.querySelector(".element__img").addEventListener("click", function () {
+    openImage(link, name); //открытие большой картинки
+  });
+  return imgElement;
+}
+
+initialElements.forEach(function (item) {
+  elementsContainer.prepend(createCard(item.link, item.name));
+}) //добавление картинок
 
 function placeSubmitHandler(evt) { //добавление своей карточки
   evt.preventDefault();
@@ -54,28 +71,6 @@ function openImage(link, name) { //открытие увеличенной ка�
   viewLink.alt = name;
   togglePopup(popupBig);
 }
-
-
-function createCard(link, name) { //карточка
-  const imgElement = elementTemplate.content.cloneNode(true); //клонируем шаблон
-  imgElement.querySelector(".element__img").src = link; //добавляем картинку
-  imgElement.querySelector(".element__text").textContent = name; //добавляем текст
-  imgElement.querySelector(".element__img").alt = name; //добавляем alt
-  imgElement.querySelector(".element__like").addEventListener("click", function (evt) {
-    evt.target.classList.toggle("element__like_type_active"); //переключатель класса кнопки лайк
-  });
-  imgElement.querySelector(".element__delete").addEventListener("click", function (evt) {
-    evt.target.closest('.element').remove(); //удаление картинок
-  });
-  imgElement.querySelector(".element__img").addEventListener("click", function () {
-    openImage(link, name); //открытие большой картинки
-  });
-  return imgElement;
-}
-
-initialElements.forEach(function (item) {
-  elementsContainer.prepend(createCard(item.link, item.name));
-}) //добавление картинок
 
 editButton.addEventListener("click", () => editForm()); //слушатель кнопки открытия попап профиль
 closePopup.addEventListener("click", () => editForm()); //слушатель кнопки закрытия попап профиль
