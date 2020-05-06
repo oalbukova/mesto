@@ -20,17 +20,17 @@ const jobInput = document.querySelector(".popup__input_type_job"); //профе�
 const placeInput = document.querySelector(".popup__input_type_place"); //имя в инпут
 const linkInput = document.querySelector(".popup__input_type_link"); //линк в инпут
 
-function togglePopup(elem) {
+function togglePopup(elem) {//открытие/закрытие всех попап
   elem.classList.toggle('popup_opened')
 }
 
-function editForm() {
+function editForm() {//при открвтии формы профиль там стоят значения из профиля
   togglePopup(popupProfile);
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
 }
 
-function formSubmitHandler(evt) {
+function formSubmitHandler(evt) {//сохранияем значения введеные в инпут профиля на странице
   evt.preventDefault();
   profileTitle.textContent = nameInput.value;
   profileSubtitle.textContent = jobInput.value;
@@ -38,7 +38,7 @@ function formSubmitHandler(evt) {
   togglePopup(popupProfile);
 }
 
-function createCard(link, name) { //карточка
+function createCard(link, name) { //создаем шаблон карточки
   const imgElement = elementTemplate.content.firstElementChild.cloneNode(true); //клонируем шаблон
   imgElement.querySelector(".element__img").src = link; //добавляем картинку
   imgElement.querySelector(".element__text").textContent = name; //добавляем текст
@@ -55,7 +55,7 @@ function createCard(link, name) { //карточка
 
 initialElements.forEach(function (item) {
   elementsContainer.prepend(createCard(item.link, item.name));
-}) //добавление картинок
+}) //добавление картинок из массива
 
 function placeSubmitHandler(evt) { //добавление своей карточки
   evt.preventDefault();

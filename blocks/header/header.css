@@ -2,6 +2,8 @@
   width: calc(100% - 31.2%);
   border: none;
   border-bottom: 1px solid rgba(84, 84, 84, .7);
+  grid-area: header;
+  width: -webkit-fill-available;
 }
 
 @media (max-width: 1000px) {

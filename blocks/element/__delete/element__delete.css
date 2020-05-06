@@ -19,4 +19,6 @@
 .element__delete:hover {
   opacity: .6;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
 }

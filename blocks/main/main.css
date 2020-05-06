@@ -1,2 +1,6 @@
 @import url(../main/__profile/main__profile.css);
 @import url(../main/__elements/main__elements.css);
+
+.main {
+  grid-area: main;
+  }

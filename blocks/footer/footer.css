@@ -1,13 +1,14 @@
-  
-@import url(./__content/footer__content.css);
+  @import url(./__content/footer__content.css);
 
-.footer {
-  font-family: 'Inter', Arial, sans-serif;
-  width: calc(100% - 31%);
-}
-
-@media (max-width: 1000px) {
   .footer {
-    width: calc(100% - 13%);
+    font-family: 'Inter', Arial, sans-serif;
+    width: calc(100% - 31%);
+    grid-area: footer;
+    width: -webkit-fill-available;
   }
-}
+
+  @media (max-width: 1000px) {
+    .footer {
+      width: calc(100% - 13%);
+    }
+  }
