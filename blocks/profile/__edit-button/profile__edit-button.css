@@ -5,11 +5,11 @@
   background-repeat: no-repeat;
   width: 24px;
   height: 24px;
-  padding: 0;
+  margin-left: 19px;
+  margin-top: 39px;
+  border: 1px solid #ffffff;
   background-color: transparent;
   cursor: pointer;
-  margin-left: 14px;
-  border: 1px solid #ffffff;
   -webkit-transition: opacity linear 0.5s;
   transition: opacity linear 0.5s;
 }
@@ -19,15 +19,12 @@
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 740px) {
   .profile__edit-button {
     width: 18px;
     height: 18px;
+    margin-left: 0;
+    margin-top: 20px;
   }
 }
 
-@media (max-width: 375px) {
-  .profile__edit-button {
-    margin-left: 3px;
-  }
-}

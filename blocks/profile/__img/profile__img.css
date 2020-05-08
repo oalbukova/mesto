@@ -5,5 +5,14 @@
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: center;
-     object-position: center;
+     object-position: center;     
+    margin-right: 30px;
+}
+
+
+@media (max-width: 740px) {
+  .profile__img {
+      margin-right: 0;
+      margin-bottom: 14px;
+  }
 }

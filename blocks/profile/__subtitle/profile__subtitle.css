@@ -1,18 +1,24 @@
+
 .profile__subtitle {
-  color: #ffffff;
+  max-width: 318px;
+  min-height: 18px;
+  font-style: normal;
+  font-weight: normal;
   font-size: 18px;
-  font-weight: 400;
-  margin: 7px 0 0; 
-  max-width: 485px;
+  line-height: 22px;
+  color: #FFF;
+  margin: 0;
 }
 
-
-@media (max-width: 700px) {
+@media (max-width: 740px) {
   .profile__subtitle {
-    font-size: 14px;
-    line-height: 17px;
-    text-align: center;
-    margin: 2px 0 0;
-    max-width: 300px;
+      max-width: 100%;
+      min-height: -webkit-max-content;
+      min-height: -moz-max-content;
+      min-height: max-content;
+      font-size: 14px;
+      line-height: 17px;
+      text-align: center;
+      margin: 0 auto;
   }
 }

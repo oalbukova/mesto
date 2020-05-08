@@ -1,20 +1,21 @@
-.profile__title {
-  color: #ffffff;
-  font-size: 42px;
-  font-weight: 500;
-  line-height: 56px;
-  margin: 18px 0 0;
-  max-width: 485px;
-  display: inline-block;
   
+.profile__title {
+  max-width: 295px;
+  min-height: 43px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 42px;
+  margin: 24px 0 0;
+  color: #FFF;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 740px) {
   .profile__title {
-    font-size: 27px;
-    margin: 22px 0 0;
-    line-height: 42px;
-    max-width: 300px;
-    text-align: center;
+      min-width: 201px;
+      min-height: 38px;
+      text-align: center;
+      margin-left: 29px;
+      font-size: 27px;
+      margin-top: 14px;
   }
 }

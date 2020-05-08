@@ -20,9 +20,10 @@
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
 }
 
-@media (max-width: 700px) {
+@media (max-width: 740px) {
   .profile__add-button {
     background-image: url(../../../images/add2.svg);
     width: 282px;
+    margin-top: 0;
   }
 }
