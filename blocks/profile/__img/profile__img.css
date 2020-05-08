@@ -10,9 +10,8 @@
 }
 
 
-@media (max-width: 740px) {
+@media (max-width: 831px) {
   .profile__img {
       margin-right: 0;
-      margin-bottom: 14px;
   }
 }
