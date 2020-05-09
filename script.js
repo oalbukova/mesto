@@ -1,14 +1,14 @@
 const formElement = document.querySelector(".popup__container"); //форма попап профиль
 const form = document.querySelector("#form"); //форма попап картинки
 const popupProfile = document.querySelector("#popupProfile"); //id попап профиль
-const popupElements = document.querySelector("#popupElements"); //id попап картинки
+const popupCards = document.querySelector("#popupCards"); //id попап картинки
 const popupBig = document.querySelector("#popupBig"); //id попап большой картинки
 const editButton = document.querySelector(".profile__edit-button"); //кнопка открытия формы профиль
 const closePopup = document.querySelector(".button-close"); //кнопка закрытия формы профиль
 const addButton = document.querySelector(".profile__add-button"); //кнопка открытия формы картинок
-const elemBtnClose = document.getElementById("elements-close"); //кнопка закрытия формы картинок
-const elementsContainer = document.querySelector(".elements");
-const elementTemplate = document.getElementById("element-template");
+const formCardsClose = document.getElementById("formCards-close"); //кнопка закрытия формы картинок
+const cardList = document.querySelector(".card-list");
+const cardTemplate = document.getElementById("card-template");
 const viewClose = document.querySelector("#view-close"); //кнопка закрытия попап увеличенной картинки
 const viewLink = document.querySelector(".popup-view__img"); // картинка в попап
 const viewCaption = document.querySelector(".popup-view__caption"); //название увеличенной картинки
@@ -37,44 +37,44 @@ function openImage(evt) { //открытие увеличенной картин
   togglePopup(popupBig);
 }
 
-function elementLike(evt) { //функция лайков
-  evt.target.classList.toggle("element__like_type_active");
+function cardLike(evt) { //функция лайков
+  evt.target.classList.toggle("card__like_type_active");
 }
 
-function elementDelete(evt) { //функция удаления
-  const removeElement = evt.target.closest('.element'); //карточка
-  const btnLike = removeElement.querySelector(".element__like");
-  const btnDelete = removeElement.querySelector('.element__delete');
-  const imageView = removeElement.querySelector('.element__img');
+function cardDelete(evt) { //функция удаления
+  const removeCard = evt.target.closest('.card'); //карточка
+  const btnLike = removeCard.querySelector(".card__like");
+  const btnDelete = removeCard.querySelector('.card__delete');
+  const imageView = removeCard.querySelector('.card__img');
 
-  btnLike.removeEventListener("click", elementLike); //удаление слушателя кнопки лайк
-  btnDelete.removeEventListener('click', elementDelete); //удаление слушателя кнопки удалить
+  btnLike.removeEventListener("click", cardLike); //удаление слушателя кнопки лайк
+  btnDelete.removeEventListener('click', cardDelete); //удаление слушателя кнопки удалить
   imageView.removeEventListener('click', openImage); //удаление слушателя увеличения картинки 
 
-  removeElement.remove(); //удаление карточки
+  removeCard.remove(); //удаление карточки
 }
 
 function createCard(link, name) { //создаем шаблон карточки
-  const imgElement = elementTemplate.content.cloneNode(true); //клонируем шаблон
-  const elementImage = imgElement.querySelector(".element__img"); //картинка
-  const btnLike = imgElement.querySelector(".element__like"); //кнопка лайк
-  const btnDelete = imgElement.querySelector('.element__delete'); //кнопка удалить
-  const imageView = elementImage; //увеличенная картинка
+  const imgElement = cardTemplate.content.cloneNode(true); //клонируем шаблон
+  const cardImage = imgElement.querySelector(".card__img"); //картинка
+  const btnLike = imgElement.querySelector(".card__like"); //кнопка лайк
+  const btnDelete = imgElement.querySelector('.card__delete'); //кнопка удалить
+  const imageView = cardImage; //увеличенная картинка
 
-  elementImage.src = link; //добавляем картинку
-  elementImage.alt = name; //добавляем alt
-  imgElement.querySelector(".element__text").textContent = name; //добавляем текст
+  cardImage.src = link; //добавляем картинку
+  cardImage.alt = name; //добавляем alt
+  imgElement.querySelector(".card__text").textContent = name; //добавляем текст
 
-  btnLike.addEventListener("click", elementLike); //слушатель кнопки лайк
-  btnDelete.addEventListener("click", elementDelete); //слушатель кнопки удалить
+  btnLike.addEventListener("click", cardLike); //слушатель кнопки лайк
+  btnDelete.addEventListener("click", cardDelete); //слушатель кнопки удалить
   imageView.addEventListener("click", openImage); //слушатель увеличения картинки 
 
   return imgElement;
 }
 
-function addCards(initialElements) { //добавление картинок из массива
-  initialElements.forEach(function (item) {
-    elementsContainer.append(createCard(item.link, item.name));
+function addCards(initialCards) { //добавление картинок из массива
+  initialCards.forEach(function (item) {
+    cardList.append(createCard(item.link, item.name));
   });
 }
 
@@ -88,18 +88,18 @@ function formSubmitHandler(evt) { //сохранияем значения вве
 
 function placeSubmitHandler(evt) { //добавление своей карточки
   evt.preventDefault();
-  elementsContainer.prepend(createCard(linkInput.value, placeInput.value));
+  cardList.prepend(createCard(linkInput.value, placeInput.value));
   linkInput.value = "";
   placeInput.value = "";
-  togglePopup(popupElements);
+  togglePopup(popupCards);
 }
 
 editButton.addEventListener("click", () => editForm()); //слушатель кнопки открытия попап профиль
 closePopup.addEventListener("click", () => editForm()); //слушатель кнопки закрытия попап профиль
-addButton.addEventListener("click", () => togglePopup(popupElements)); //слушатель кнопки открытия попап картинки
-elemBtnClose.addEventListener("click", () => togglePopup(popupElements)); //слушатель кнопки закрытия попап картинки
+addButton.addEventListener("click", () => togglePopup(popupCards)); //слушатель кнопки открытия попап картинки
+formCardsClose.addEventListener("click", () => togglePopup(popupCards)); //слушатель кнопки закрытия попап картинки
 viewClose.addEventListener("click", () => togglePopup(popupBig)); //слушатель кнопки закрытия попап увеличенной картинки
 formElement.addEventListener("submit", formSubmitHandler);
 form.addEventListener("submit", placeSubmitHandler);
 
-addCards(initialElements);
+addCards(initialCards);

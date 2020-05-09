@@ -1,5 +1,5 @@
 @import url(../main/__profile/main__profile.css);
-@import url(../main/__elements/main__elements.css);
+@import url(../main/__card-list/main__card-list.css);
 
 .main {
   grid-area: main;

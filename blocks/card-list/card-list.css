@@ -1,6 +1,6 @@
-@import url(./__element/elements__element.css);
+@import url(./__card/card-list__card.css);
 
-.elements {
+.card-list {
   font-family: 'Inter', Arial, sans-serif;
   width: calc(100% - 30%);
   display: -ms-grid;
@@ -14,7 +14,7 @@
 }
 
 @media (max-width: 450px) {
-  .elements {
+  .card-list {
     grid-row-gap: 19px;
   }
 }

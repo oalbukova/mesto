@@ -1,4 +1,4 @@
-.element__delete {
+.card__delete {
   background-image: url(../../../images/delete.svg);
   background-size: cover;
   width: 18px;
@@ -16,7 +16,7 @@
   transition: opacity linear 0.5s;
 }
 
-.element__delete:hover {
+.card__delete:hover {
   opacity: .6;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
   -webkit-transform: scale(1.2);

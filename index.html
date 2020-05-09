@@ -26,7 +26,7 @@
       <section class="profile main__profile">
         <img class="profile__img" src="./images/custo.jpg" alt="Жак-Ив Кусто" />
         <div class="profile__container">
-          <div class="profile__info">
+         <div class="profile__info">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
             <p class="profile__subtitle">Исследователь океана</p>
           </div>
@@ -35,12 +35,12 @@
         <button class="profile__add-button" type="button" aria-label="Добавить"></button>
       </section>
 
-      <!--elements-->
-      <div class="elements main__elements"></div>
+      <!--card-list-->
+      <div class="card-list main__card-list"></div>
 
       <!--popup profile-->
       <section class="popup" id="popupProfile">
-        <form class="popup__container" name="formElement" method="get" action="#">
+        <form class="popup__container" name="formcard" method="get" action="#">
           <button class="button-close" type="reset" aria-label="Закрыть"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
           <input class="popup__input popup__input_type_name" type="text" required placeholder="Имя" name="nameInput" />
@@ -52,16 +52,16 @@
         </form>
       </section>
 
-      <!--popup-elements-->
-      <section class="popup" id="popupElements">
-        <form class="popup__container" name="formElement" method="get" action="#" id="form">
-          <button class="button-close" id="elements-close" type="reset" aria-label="Закрыть"></button>
+      <!--popup-cards-->
+      <section class="popup" id="popupCards">
+        <form class="popup__container" name="formcard" method="get" action="#" id="form">
+          <button class="button-close" id="formCards-close" type="reset" aria-label="Закрыть"></button>
           <h2 class="popup__title">Новое место</h2>
           <input class="popup__input popup__input_type_place" type="text" required placeholder="Название"
             name="placeInput" />
           <input class="popup__input popup__input_type_link" type="url" required placeholder="Ссылка на картинку"
             name="linkInput" />
-          <button class="popup__button-save" id="elements-save" type="submit">
+          <button class="popup__button-save" id="cards-save" type="submit">
             Создать
           </button>
         </form>
@@ -85,19 +85,19 @@
     </footer>
   </div>
 
-  <!--template element-->
-  <template id="element-template">
-    <figure class="element elements__element">
-      <img class="element__img" src="#" alt="" />
-      <button class="element__delete" type="button" aria-label="Удалить"></button>
-      <figcaption class="element__caption">
-        <h2 class="element__text"></h2>
-        <button class="element__like" type="button" aria-label="Нравится"></button>
-      </figcaption>
-    </figure>
+  <!--template card-->
+  <template id="card-template">
+    <li class="card card-list__card">
+      <img class="card__img" src="#" alt="" />
+      <button class="card__delete" type="button" aria-label="Удалить"></button>
+      <div class="card__caption">
+        <h2 class="card__text"></h2>
+        <button class="card__like" type="button" aria-label="Нравится"></button>
+      </div>
+    </li>
   </template>
 
-  <script src="elements.js"></script>
+  <script src="cards.js"></script>
   <script src="script.js"></script>
 </body>
 
