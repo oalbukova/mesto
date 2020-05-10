@@ -11,6 +11,8 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+list-style-type: none;
+padding: 0;
 }
 
 @media (max-width: 450px) {
