@@ -1,5 +1,5 @@
-const formElement = document.querySelector(".popup__container"); //форма попап профиль
-const form = document.querySelector("#form"); //форма попап картинки
+const formProfile = document.querySelector("#formProfile"); //id форма профиль
+const formCard = document.querySelector("#formCard"); //id форма картинки
 const popupProfile = document.querySelector("#popupProfile"); //id попап профиль
 const popupCards = document.querySelector("#popupCards"); //id попап картинки
 const popupBig = document.querySelector("#popupBig"); //id попап большой картинки
@@ -90,7 +90,7 @@ function placeSubmitHandler(evt) { //добавление своей карто�
   evt.preventDefault();
   cardList.prepend(createCard(linkInput.value, placeInput.value));
   linkInput.value = "";
-  placeInput.value = "";
+  placeInput.value = ""; 
   togglePopup(popupCards);
 }
 
@@ -99,7 +99,7 @@ closePopup.addEventListener("click", () => editForm()); //слушатель к�
 addButton.addEventListener("click", () => togglePopup(popupCards)); //слушатель кнопки открытия попап картинки
 formCardsClose.addEventListener("click", () => togglePopup(popupCards)); //слушатель кнопки закрытия попап картинки
 viewClose.addEventListener("click", () => togglePopup(popupBig)); //слушатель кнопки закрытия попап увеличенной картинки
-formElement.addEventListener("submit", formSubmitHandler);
-form.addEventListener("submit", placeSubmitHandler);
+formProfile.addEventListener("submit", formSubmitHandler);
+formCard.addEventListener("submit", placeSubmitHandler);
 
 addCards(initialCards);

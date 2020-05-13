@@ -18,6 +18,7 @@ Cамостоятельный проект одностраничного сай
 12. Реализована возможность увеличения картинки на карточке при нажатии не нее.
 13. Верстка сайта происходила согласно: [макет Фигма1](https://www.figma.com/file/StZjf8HnoeLdiXS7dYrLAh/JavaScript.-Sprint-4) 
 [макет Фигма2](https://www.figma.com/file/nlYpT4VhFiwimn2YlncrcF/JavaScript.-Sprint-5) 
+[макет Фигма3](https://www.figma.com/file/XNaGNEZD5NEjeyJzAT4gMb/JavaScript.-Sprint-6) 
 под Pixel Perfect.
 14. #### [Ссылка на готовый проект](https://oalbukova.github.io/mesto/)
 
