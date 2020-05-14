@@ -40,16 +40,16 @@
 
       <!--popup profile-->
       <section class="popup" id="popupProfile">
-        <form class="popup__container" name="formcard" method="get" action="#" id="formProfile" novalidate>
+        <form class="popup__container" name="formcard" method="get" action="#" id="formProfile">
           <button class="button-close" type="reset" aria-label="Закрыть"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
           <input class="popup__input popup__input_type_name" id='name-input' type="text" required placeholder="Имя" name="nameInput"
-            pattern="[A-Za-zА-Яа-яЁё -]{2,40}" />
+            pattern="[A-Za-zА-Яа-яЁё -]{2,40}" minlength="2" maxlength="40"/>
           <span class='popup__span-error' id='name-input-error'></span>
           <input class="popup__input popup__input_type_job" id='job-input'  type="text" required placeholder="О себе" name="jobInput"
             minlength="2" maxlength="200" />
           <span class='popup__span-error' id='job-input-error'></span>
-          <button class="popup__button-save" type="submit">
+          <button class="popup__button-save" id="profil-save" type="submit">
             Сохранить
           </button>
         </form>
@@ -57,16 +57,16 @@
 
       <!--popup-cards-->
       <section class="popup" id="popupCards">
-        <form class="popup__container" name="formcard" method="get" action="#" id="formCard" novalidate>
+        <form class="popup__container" name="formcard" method="get" action="#" id="formCard">
           <button class="button-close" id="formCards-close" type="reset" aria-label="Закрыть"></button>
           <h2 class="popup__title">Новое место</h2>
           <input class="popup__input popup__input_type_place" id='place-input'  type="text" required placeholder="Название"
             name="placeInput" minlength="1" maxlength="30" />
-            <span class='popup__span-error' id='place-input-error'>Вы пропустили это поле.</span>
+            <span class='popup__span-error' id='place-input-error'></span>
           <input class="popup__input popup__input_type_link" id='link-input' type="url" required placeholder="Ссылка на картинку"
             name="linkInput" />
-            <span class='popup__span-error' id='link-input-error'>Введите адрес сайта.</span>
-          <button class="popup__button-save popup__button-save_type_disabled" id="cards-save" type="submit">
+            <span class='popup__span-error' id='link-input-error'></span>
+          <button class="popup__button-save popup__button-save_type_disabled" id="cards-save" type="submit" disabled>
             Создать
           </button>
         </form>
@@ -102,9 +102,9 @@
     </li>
   </template>
 
-  <script src="validate.js"></script>
-  <script src="cards.js"></script>
-  <script src="script.js"></script>
+  <script src="./js/validate.js"></script>
+  <script src="./js/cards.js"></script>
+  <script src="./js/script.js"></script>
 </body>
 
 </html>

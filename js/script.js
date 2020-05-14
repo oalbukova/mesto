@@ -19,9 +19,22 @@ const nameInput = document.querySelector(".popup__input_type_name"); //имя в
 const jobInput = document.querySelector(".popup__input_type_job"); //профессия в инпут
 const placeInput = document.querySelector(".popup__input_type_place"); //имя в инпут
 const linkInput = document.querySelector(".popup__input_type_link"); //линк в инпут
+const formInput = Array.from(document.querySelectorAll('.popup__input')); //массив инпутов 
+const spanError = Array.from(document.querySelectorAll('.popup__span-error')); //массив спан с ошибкой
+
+function cleanError(elem) { // функция обнуления ошибок
+  spanError.forEach((span) => {
+    span.classList.remove('popup__span-error_type_active'); //удаляем со спан модификатор с ошибкой
+    span.textContent = '';
+  })
+  formInput.forEach((input) => {
+    input.classList.remove('popup__input_type_error'); //удаляем с инпут модификатор с ошибкой
+  });
+};
 
 function togglePopup(elem) { //открытие/закрытие всех попап
-  elem.classList.toggle('popup_opened')
+  elem.classList.toggle('popup_opened');
+  cleanError(elem);
 }
 
 function editForm() { //при открытии формы профиль там стоят значения из профиля
@@ -90,12 +103,19 @@ function placeSubmitHandler(evt) { //добавление своей карто�
   evt.preventDefault();
   cardList.prepend(createCard(linkInput.value, placeInput.value));
   linkInput.value = "";
-  placeInput.value = ""; 
+  placeInput.value = "";
   togglePopup(popupCards);
+}
+
+function ESCclose(evt) {
+  if (evt.keyCode == 27) {
+    togglePopup(popupProfile);
+  }
 }
 
 editButton.addEventListener("click", () => editForm()); //слушатель кнопки открытия попап профиль
 closePopup.addEventListener("click", () => editForm()); //слушатель кнопки закрытия попап профиль
+
 addButton.addEventListener("click", () => togglePopup(popupCards)); //слушатель кнопки открытия попап картинки
 formCardsClose.addEventListener("click", () => togglePopup(popupCards)); //слушатель кнопки закрытия попап картинки
 viewClose.addEventListener("click", () => togglePopup(popupBig)); //слушатель кнопки закрытия попап увеличенной картинки
