@@ -99,19 +99,30 @@ function formSubmitHandler(evt) { //сохранияем значения вве
   togglePopup(popupProfile);
 }
 
+function clearInputCard() { //очищаем инпуты в форме карточек
+  linkInput.value = "";
+  placeInput.value = "";
+};
+
 function placeSubmitHandler(evt) { //добавление своей карточки
   evt.preventDefault();
   cardList.prepend(createCard(linkInput.value, placeInput.value));
-  linkInput.value = "";
-  placeInput.value = "";
+  clearInputCard();
   togglePopup(popupCards);
-}
+};
 
-function ESCclose(evt) {
-  if (evt.keyCode == 27) {
-    togglePopup(popupProfile);
+document.addEventListener('keydown', (evt) => {
+  if (evt.keyCode === 27) { //слушатель закрытие попап по нажатию Esc
+    document.querySelector('.popup_opened').classList.remove('popup_opened');
+    clearInputCard();
+  };
+});
+document.addEventListener('click', (evt) => { //слушатель закрытия по клику по оверлею
+  if (evt.target.classList.contains('popup')) {
+    document.querySelector('.popup_opened').classList.remove('popup_opened');
+    clearInputCard();
   }
-}
+});
 
 editButton.addEventListener("click", () => editForm()); //слушатель кнопки открытия попап профиль
 closePopup.addEventListener("click", () => editForm()); //слушатель кнопки закрытия попап профиль

@@ -5,6 +5,9 @@
   line-height: 15px;
   font-weight: 400;
   height: 14px;
+  margin-left: 36px;
+  margin-right: 36px;
+  margin-top: 6px;
   opacity: 0;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
 }
@@ -12,5 +15,8 @@
 @media (max-width: 375px) {
   .popup__span-error {
     font-size: 10px;
-  }
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 0;
+}
 }

@@ -1,17 +1,24 @@
 .popup__container {
-  max-width: 430px;
+  width: 430px;
+  max-width: 80%;
+  height: 330px;
   background-color: white;
-  box-sizing: border-box;
-  padding: 1% 2.7%;
-  font-size: .9em;
   border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
   margin: auto;
   position: relative;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 375px) {
   .popup__container {
-    max-width: 75vw;
-    padding: 4.7% 7%;
+    width: 240px;
+    height: 258px;
   }
 }
+
