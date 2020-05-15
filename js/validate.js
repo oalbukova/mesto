@@ -41,23 +41,6 @@ const checkInputValidity = (formElement, inputElement, form) => {
   }
 };
 
-const setEventListeners = (formElement, form) => {
-  // Находим все поля внутри формы
-  const inputList = Array.from(
-    formElement.querySelectorAll(form.inputSelector)
-  ); //сделаем из них массив методом Array.from
-  const buttonElement = formElement.querySelector(form.submitButtonSelector); // Находим в текущей форме кнопку отправки
-
-  inputList.forEach((inputElement) => {
-    // Обойдем все элементы полученной коллекции
-    inputElement.addEventListener("input", function () {
-      // каждому полю добавим обработчик события input
-      toggleButtonState(inputList, buttonElement, form); // вызов проверит состояние кнопки при каждом изменении символа в любом из полей.
-      checkInputValidity(formElement, inputElement, form); //Внутри колбэка вызовем checkInputValidity, передав ей форму и проверяемый элемент
-    });
-  });
-};
-
 const hasInvalidInput = (inputList) => {
   //обходит массив полей и отвечает на вопрос: «Есть ли здесь хотя бы одно поле, которое не прошло валидацию?».
   return inputList.some((inputElement) => {
@@ -77,6 +60,23 @@ const toggleButtonState = (inputList, buttonElement, form) => {
     buttonElement.classList.remove(form.inactiveButtonClass); // иначе делает кнопку активной
     buttonElement.removeAttribute("disabled"); //Если с формой всё в порядке, условие разблокирует
   }
+};
+
+const setEventListeners = (formElement, form) => {
+  // Находим все поля внутри формы
+  const inputList = Array.from(
+    formElement.querySelectorAll(form.inputSelector)
+  ); //сделаем из них массив методом Array.from
+  const buttonElement = formElement.querySelector(form.submitButtonSelector); // Находим в текущей форме кнопку отправки
+
+  inputList.forEach((inputElement) => {
+    // Обойдем все элементы полученной коллекции
+    inputElement.addEventListener("input", function () {
+      // каждому полю добавим обработчик события input
+      toggleButtonState(inputList, buttonElement, form); // вызов проверит состояние кнопки при каждом изменении символа в любом из полей.
+      checkInputValidity(formElement, inputElement, form); //Внутри колбэка вызовем checkInputValidity, передав ей форму и проверяемый элемент
+    });
+  });
 };
 
 const enableValidation = (form) => {
