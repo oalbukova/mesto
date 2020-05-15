@@ -35,7 +35,15 @@ function cleanError(elem) { // функция обнуления ошибок
 function togglePopup(elem) { //открытие/закрытие всех попап
   elem.classList.toggle('popup_opened');
   cleanError(elem);
-}
+  if (!elem.classList.contains('popup_opened')) {
+    document.removeEventListener('keydown', (evt) => {//снятие слушателя закрытие попап по нажатию Esc
+      if (evt.keyCode === 27) { 
+        elem.classList.remove('popup_opened');
+        clearInputCard();
+      };
+    });
+  };
+};
 
 function editForm() { //при открытии формы профиль там стоят значения из профиля
   togglePopup(popupProfile);
@@ -117,6 +125,7 @@ document.addEventListener('keydown', (evt) => {
     clearInputCard();
   };
 });
+
 document.addEventListener('click', (evt) => { //слушатель закрытия по клику по оверлею
   if (evt.target.classList.contains('popup')) {
     document.querySelector('.popup_opened').classList.remove('popup_opened');
