@@ -30,6 +30,8 @@ function cleanError(form) { // функция обнуления ошибок
   form.querySelectorAll('.popup__input').forEach((input) => {
     input.classList.remove('popup__input_type_error'); //удаляем с инпут модификатор с ошибкой
   });
+  linkInput.value = "";
+  placeInput.value = "";
 };
 
 function handleEscapeKeydown(evt) { //функция закрытия попап по нажатию Esc
@@ -49,6 +51,10 @@ function handleOverlayClick(evt) { //закрытие попап по клику
 function togglePopup(elem) { //открытие/закрытие всех попап
   const isOpen = elem.classList.contains('popup_opened');
   if (!isOpen) {
+    const form = elem.querySelector('form');
+    if (form) { //если в попапе есть форма
+      elem.querySelector('form').checkForm(); //вызываем метод checkForm
+    };
     document.addEventListener('keydown', handleEscapeKeydown); //слушатель закрытие попап по нажатию Esc
     document.addEventListener('click', handleOverlayClick); //слушатель закрытие попап по клику на оверлей
   } else {
@@ -56,21 +62,12 @@ function togglePopup(elem) { //открытие/закрытие всех поп
     document.removeEventListener('click', handleOverlayClick);
   }
   elem.classList.toggle('popup_opened');
-  //  cleanError(elem);
+  cleanError(elem);
 }
 
-function checkForm(elem) { //контроль активности кнопки Сохранить
-  const form = elem.querySelector('form');
-  if (form) { //если в попапе есть форма
-    elem.querySelector('form').checkForm(); //вызываем метод checkForm
-  };
-};
-
 function editForm() { //при открытии формы профиль там стоят значения из профиля
-  cleanError(formProfile);
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
-  checkForm(formProfile);
   togglePopup(popupProfile);
 };
 
@@ -136,12 +133,7 @@ function placeSubmitHandler(evt) {
   togglePopup(popupCards);
 };
 
-addButton.addEventListener("click", () => { //слушатель кнопки открытия попап картинки
-  cleanError(formCard);
-  checkForm(popupCards);
-  togglePopup(popupCards);
-});
-
+addButton.addEventListener("click", () => togglePopup(popupCards)); //слушатель кнопки открытия попап картинки
 editButton.addEventListener("click", () => editForm()); //слушатель кнопки открытия попап профиль
 closePopup.addEventListener("click", () => editForm()); //слушатель кнопки закрытия попап профиль
 //addButton.addEventListener("click", () => {togglePopup(popupCards)); //слушатель кнопки открытия попап картинки
