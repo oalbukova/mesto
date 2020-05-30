@@ -1,6 +1,5 @@
 export default class FormValidator {
   constructor(data, element) {
-    this._formSelector = data.formSelector;
     this._inputSelector = data.inputSelector; //инпуты
     this._submitButtonSelector = data.submitButtonSelector; //кнопка сохранить/создать
     this._inactiveButtonClass = data.inactiveButtonClass; //неактивная кнопка
@@ -65,6 +64,7 @@ export default class FormValidator {
       formElement.querySelectorAll(this._inputSelector)
     ); //сделаем из них массив методом Array.from
     const buttonElement = formElement.querySelector(this._submitButtonSelector); // Находим в текущей форме кнопку отправки
+    
     formElement.checkForm = () => {
       this._toggleButtonState(inputList, buttonElement);
     };

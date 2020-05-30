@@ -21,29 +21,29 @@ const placeInput = document.querySelector(".popup__input_type_place"); //имя 
 const linkInput = document.querySelector(".popup__input_type_link"); //линк в инпут
 
 const initialCards = [{
-  name: 'Кавказ',
-  link: './images/kavkaz.jpg',
-},
-{
-  name: 'Крым',
-  link: './images/crimea.jpg',
-},
-{
-  name: 'Хребет Нургуш',
-  link: './images/nuegush.jpg',
-},
-{
-  name: 'Токсово',
-  link: './images/toksovo.jpg',
-},
-{
-  name: 'Камчатка',
-  link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
-},
-{
-  name: 'Байкал',
-  link: './images/baykal.jpg',
-}
+    name: 'Кавказ',
+    link: './images/kavkaz.jpg',
+  },
+  {
+    name: 'Крым',
+    link: './images/crimea.jpg',
+  },
+  {
+    name: 'Хребет Нургуш',
+    link: './images/nuegush.jpg',
+  },
+  {
+    name: 'Токсово',
+    link: './images/toksovo.jpg',
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
+  },
+  {
+    name: 'Байкал',
+    link: './images/baykal.jpg',
+  }
 ];
 
 function cleanError(form) {
