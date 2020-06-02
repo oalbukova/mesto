@@ -70,6 +70,6 @@ export default class FormValidator {
   }
 
   enableValidation() { // функция запускающая процесс валидации
-    this._setEventListeners(this._formElement); // вызываем метод на форму
+    this._setEventListeners(); // вызываем метод на форму
   }
 }
