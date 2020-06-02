@@ -1,38 +1,57 @@
-import { togglePopup, popupBig } from "./index.js";
-
 export default class Card {
-  constructor(data, cardSelector) {
-    // добавили второй параметр
+  constructor(data, cardSelector) { // добавили второй параметр
     this._link = data.link; //this хранит ссылку на объект, на котором она вызвана
     this._name = data.name;
     this._cardSelector = cardSelector; // записали селектор в приватное поле
-  };
+  }
 
-  _getTemplate() {
-    // забираем размеку из HTML и клонируем элемент
+  _getTemplate() { //забираем размеку из HTML и клонируем элемент
     const cardElement = document
       .querySelector(this._cardSelector) // используем this._cardSelector
       .content.querySelector(".card")
       .cloneNode(true);
 
     return cardElement; // вернём DOM-элемент карточки
-  };
+  }
 
-  _cardLike(evt) {
-    //функция лайков
+  _cardLike(evt) { //функция лайков
     evt.target.classList.toggle("card__like_type_active");
-  };
+  }
 
-  _openImage(evt) {
-    //открытие увеличенной картинки
-    document.querySelector(".popup-view__caption").textContent = evt.target.alt;
-    document.querySelector(".popup-view__img").src = evt.target.src;
-    document.querySelector(".popup-view__img").alt = evt.target.alt;
-    togglePopup(popupBig);
-  };
+  _imgEscapeKeydown(evt) { //функция закрытия картинки по нажатию Esc 
+    const popupBig = document.querySelector("#popupBig"); //id попап большой картинки 
+    const isEsc = evt.key === "Escape";
+    if (isEsc) {
+      popupBig.classList.remove("popup_opened");
+    }
+  }
+  
+  _imgOverlayClick(evt) { //закрытие  картинки по клику на оверлей
+    const popupBig = document.querySelector("#popupBig"); //id попап большой картинки
+    if (evt.target.classList.contains("popup")) {
+      popupBig.classList.remove("popup_opened");
+    }
+  }
+  
+  _openCloseImage() { //открытие увеличенной картинки 
+    const popupBig = document.querySelector("#popupBig"); //id попап большой картинки
+    const isOpen = popupBig.classList.contains("popup_opened");
+    if (!isOpen) {
+      const popupViewImg = document.querySelector(".popup-view__img");
+      const popupViewCaption = document.querySelector(".popup-view__caption");
+      popupViewCaption.textContent = this._name;
+      popupViewImg.src = this._link;
+      popupViewImg.alt = this._name;
+      document.addEventListener("keydown", this._imgEscapeKeydown); //слушатель закрытие картинки по нажатию Esc
+      document.addEventListener("click", this._imgOverlayClick); //слушатель закрытие картинки по клику на оверлей
+    } else {
+      document.removeEventListener("keydown", this._imgEscapeKeydown); //снятие слушателя закрытие картинки по нажатию Esc
+      document.removeEventListener("click", this._imgOverlayClick); //снятие слушателя закрытие картинки по клику на оверлей
+    }
+    popupBig.classList.toggle("popup_opened");
+  }
 
-  _cardDelete(evt) {
-    //функция удаления
+  _cardDelete(evt) { //функция удаления
     const removeCard = evt.target.closest(".card"); //карточка
     const btnLike = removeCard.querySelector(".card__like");
     const btnDelete = removeCard.querySelector(".card__delete");
@@ -40,10 +59,10 @@ export default class Card {
 
     btnLike.removeEventListener("click", this._cardLike); //удаление слушателя кнопки лайк
     btnDelete.removeEventListener("click", this._cardDelete); //удаление слушателя кнопки удалить
-    imageView.removeEventListener("click", this._openImage); //удаление слушателя увеличения картинки
+    imageView.removeEventListener("click", this._openCloseImage); //удаление слушателя увеличения картинки
 
     removeCard.remove(); //удаление карточки
-  };
+  }
 
   _setEventListeners() {
     this._element
@@ -61,7 +80,7 @@ export default class Card {
     this._element
       .querySelector(".card__img")
       .addEventListener("click", (evt) => {
-        this._openImage(evt);
+        this._openCloseImage(evt);
       });
   }
 
@@ -69,10 +88,11 @@ export default class Card {
     this._element = this._getTemplate();
     this._setEventListeners();
 
-    this._element.querySelector(".card__img").src = this._link; //
-    this._element.querySelector(".card__img").alt = this._name;
+    const cardImg = this._element.querySelector(".card__img");
+    cardImg.src = this._link;
+    cardImg.alt = this._name;
     this._element.querySelector(".card__text").textContent = this._name; //добавляем текст
 
     return this._element;
-  };
-};
+  }
+}
