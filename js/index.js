@@ -19,6 +19,7 @@ const nameInput = document.querySelector(".popup__input_type_name"); //имя в
 const jobInput = document.querySelector(".popup__input_type_job"); //профессия в инпут
 const placeInput = document.querySelector(".popup__input_type_place"); //имя в инпут
 const linkInput = document.querySelector(".popup__input_type_link"); //линк в инпут
+const ESCAPE_KEY = 'Escape';
 
 const initialCards = [{
     name: 'Кавказ',
@@ -74,8 +75,7 @@ function togglePopup(elem) { //открытие/закрытие попап
 
 function handleEscapeKeydown(event) { //функция закрытия попап по нажатию Esc
   const formOpen = document.querySelector(".popup_opened");
-  const isEsc = event.key === "Escape";
-  if (isEsc) {
+  if (event.key === ESCAPE_KEY) {
     togglePopup(formOpen);
   }
 }

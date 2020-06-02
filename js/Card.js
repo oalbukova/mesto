@@ -1,3 +1,6 @@
+const ESCAPE_KEY = 'Escape';
+const popupBig = document.querySelector("#popupBig"); //id попап большой картинки 
+
 export default class Card {
   constructor(data, cardSelector) { // добавили второй параметр
     this._link = data.link; //this хранит ссылку на объект, на котором она вызвана
@@ -19,22 +22,18 @@ export default class Card {
   }
 
   _imgEscapeKeydown(evt) { //функция закрытия картинки по нажатию Esc 
-    const popupBig = document.querySelector("#popupBig"); //id попап большой картинки 
-    const isEsc = evt.key === "Escape";
-    if (isEsc) {
+    if (evt.key === ESCAPE_KEY) {
       popupBig.classList.remove("popup_opened");
     }
   }
-  
+
   _imgOverlayClick(evt) { //закрытие  картинки по клику на оверлей
-    const popupBig = document.querySelector("#popupBig"); //id попап большой картинки
     if (evt.target.classList.contains("popup")) {
       popupBig.classList.remove("popup_opened");
     }
   }
-  
+
   _openCloseImage() { //открытие увеличенной картинки 
-    const popupBig = document.querySelector("#popupBig"); //id попап большой картинки
     const isOpen = popupBig.classList.contains("popup_opened");
     if (!isOpen) {
       const popupViewImg = document.querySelector(".popup-view__img");
