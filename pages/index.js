@@ -1,13 +1,13 @@
-//index
-import Card from '../components/Card.js';
-import FormValidator from '../components/FormValidator.js';
-import Section from '../components/Section.js';
-import UserInfo from '../components/UserInfo.js';
-import PopupWithForm from '../components/PopupWithForm.js';
+import Card from '../js/components/Card.js';
+import FormValidator from '../js/components/FormValidator.js';
+import Section from '../js/components/Section.js';
+import UserInfo from '../js/components/UserInfo.js';
+import PopupWithForm from '../js/components/PopupWithForm.js';
+import PopupWithImage from '../js/components/PopupWithImage.js';
 
-const formProfile = document.querySelector("#formProfile");//id форма профиль
-const formCard = document.querySelector("#formCard");//id форма картинки
-const popupProfile = document.querySelector("#popupProfile");//id попап профиль
+const formProfile = document.querySelector("#formProfile"); //id форма профиль
+const formCard = document.querySelector("#formCard"); //id форма картинки
+const popupProfile = document.querySelector("#popupProfile"); //id попап профиль
 const popupCards = document.querySelector("#popupCards"); //id попап картинки
 //const popupBig = document.querySelector("#popupBig"); //id попап большой картинки
 const editButton = document.querySelector(".profile__edit-button"); //кнопка открытия формы профиль
@@ -23,12 +23,16 @@ export const nameInput = document.querySelector(".popup__input_type_name"); //и
 export const jobInput = document.querySelector(".popup__input_type_job"); //профессия в инпут
 const placeInput = document.querySelector(".popup__input_type_place"); //имя в инпут
 const linkInput = document.querySelector(".popup__input_type_link"); //линк в инпут
+export const popupViewImg = document.querySelector(".popup-view__img");
+const popupBig = document.querySelector("#popupBig"); //id попап большой картинки 
+export const popupViewCaption = document.querySelector(".popup-view__caption");
 export const ESCAPE_KEY = 'Escape';
+const cardTemplate = document.querySelector("card__template");
 
-const initialCards = [{// массив картинок
-  name: 'Кавказ',
-  link: './images/kavkaz.jpg',
-},
+const initialCards = [{ // массив картинок
+    name: 'Кавказ',
+    link: './images/kavkaz.jpg',
+  },
   {
     name: 'Крым',
     link: './images/crimea.jpg',
@@ -51,16 +55,16 @@ const initialCards = [{// массив картинок
   }
 ];
 
-// function cleanError(form) {
-//   form.querySelectorAll(".popup__span-error").forEach((span) => {//функция обнуления ошибок
-//     span.classList.remove("popup__span-error_type_active"); //удаляем со спан модификатор с ошибкой
-//     span.textContent = "";
-//   });
-//   form.querySelectorAll(".popup__input").forEach((input) => {
-//     input.classList.remove("popup__input_type_error"); //удаляем с инпут модификатор с ошибкой
-//   });
-//  
-// }
+function cleanError(form) {
+  form.querySelectorAll(".popup__span-error").forEach((span) => { //функция обнуления ошибок
+    span.classList.remove("popup__span-error_type_active"); //удаляем со спан модификатор с ошибкой
+    span.textContent = "";
+  });
+  form.querySelectorAll(".popup__input").forEach((input) => {
+    input.classList.remove("popup__input_type_error"); //удаляем с инпут модификатор с ошибкой
+  });
+
+}
 
 // function togglePopup(elem) { //открытие/закрытие попап
 //   const isOpen = elem.classList.contains("popup_opened");
@@ -110,55 +114,103 @@ const initialCards = [{// массив картинок
 //   });
 // }
 
-const addCards = new Section({//функция добавления картинок из массива
-  items: initialCards,//массив картинок
-  renderer: (item) => {
-    const card = new Card(item, ".card-template_type_default");//передаём селектор темплейта при создании
-    const cardElement = card.generateCard();
-    addCards.addItem(cardElement);
-  }
-}, cardList);
+// const addCards = new Section({//функция добавления картинок из массива
+//   items: initialCards,//массив картинок
+//   renderer: (item) => {
+//     const card = new Card(item, ".card-template_type_default");//передаём селектор темплейта при создании
+//     const cardElement = card.generateCard();
+//     addCards.addItem(cardElement);
+//   }
+// }, cardList);
 
 
-function formSubmitHandler(evt) { //сохранияем значения введеные в инпут профиля на странице
-  evt.preventDefault();
-  profileTitle.textContent = nameInput.value;
-  profileSubtitle.textContent = jobInput.value;
-  profileAlt.alt = nameInput.value;
-  togglePopup(popupProfile);
-}
+const addCards = new Section({ //функция добавления картинок из массива
+    items: initialCards, //массив картинок
+    renderer: (item) => {
+      const card = new Card(".card-template", {
+        data: item,
+        handleCardClick: () => {
+          const popupWithImage = new popupWithImage(item, popupBig);
+          popupViewImg.open();
+        }
+      }, cardTemplate); //передаём селектор темплейта при создании                  
+      const cardElement = card.generateCard();
+      addCards.addItem(cardElement);
+    }
+  },
+  cardList);
+
+
+//function formSubmitHandler(evt) { //сохранияем значения введеные в инпут профиля на странице
+//evt.preventDefault();
+//profileTitle.textContent = nameInput.value;
+//profileSubtitle.textContent = jobInput.value;
+//profileAlt.alt = nameInput.value;
+// togglePopup(popupProfile);
+//}
 
 //класс формы профиль
-const openFormProfil = function() {
+const openFormProfil = () => { //форма профиль
   const profil = {
     name: document.querySelector('.profile__title'),
     about: document.querySelector('.profile__subtitle')
   };
-  const userInfo = new UserInfo (profil);
-  // const popupWithForm = new PopupWithForm ({
-  //   submitForm: (evt) => {
-  //     evt.preventDefault();
-  //     userInfo.setUserInfo();
-  //     OpenForm.close();
-  //   }
-  // }, formAuthorEdit);
+  const userInfo = new UserInfo(profil);
+  const popupWithProfile = new PopupWithForm({
+    submitForm: (evt) => {
+      evt.preventDefault();
+      userInfo.setUserInfo();
+      popupWithProfile.close();
+    }
+  }, popupProfile);
   userInfo.getUserInfo();
- // popupWithForm.open();
-}
+  popupWithProfile.open();
+  cleanError(popupProfile);
+};
+
+editButton.addEventListener("click",() => openFormProfil()); //слушатель кнопки открытия попап профиль
+//const profil = new PopupWithForm ({
+// submitForm: (evt) => {
+//  evt.preventDefault();
+// }
 
 
 
+// function placeSubmitHandler(evt) {
+//   evt.preventDefault();
+//   const cardValue = {};
+//   cardValue.link = linkInput.value;
+//   cardValue.name = placeInput.value;
+//   const card = new Card(cardValue, ".card-template_type_default")
+//   cardList.prepend(card.generateCard());
+//   togglePopup(popupCards);
+// }
+
+const OpenFormCard = () => { //форма карточки
+  const popupWithCard = new PopupWithForm({
+    submitForm: (evt) => {
+      evt.preventDefault();
+      const item = popupWithCard.getInputValues();
+      const card = new Card(".card-template", {
+        data: item,
+        handleCardClick: () => {
+          const popupImage = new PopupWithImage (item, popupBig);
+          popupImage.open();
+        }
+      });
+      const cardElement = card.generateCard();
+      addCards.setItem(cardElement);
+      popupWithCard.close();
+    }
+  }, formCard);
+  popupWithCard.open();
+  cleanError(formCard);
+};
+
+addButton.addEventListener("click",() => OpenFormCard()); //слушатель кнопки открытия попап картинки
 
 
-function placeSubmitHandler(evt) {
-  evt.preventDefault();
-  const cardValue = {};
-  cardValue.link = linkInput.value;
-  cardValue.name = placeInput.value;
-  const card = new Card(cardValue, ".card-template_type_default")
-  cardList.prepend(card.generateCard());
-  togglePopup(popupCards);
-}
+
 
 function formValidation() { // Найдём все формы с указанным классом в DOM
   const formList = Array.from(document.querySelectorAll(".popup__container")); // сделаем из них массив методом Array.from
@@ -174,9 +226,12 @@ function formValidation() { // Найдём все формы с указанн�
   });
 }
 
-editButton.addEventListener("click", () => editForm()); //слушатель кнопки открытия попап профиль
+
+
+//addEventListener(editButton, openFormProfil, 'click');
+
 //closePopup.addEventListener("click", () => editForm()); //слушатель кнопки закрытия попап профиль
-addButton.addEventListener("click", () => togglePopup(popupCards)); //слушатель кнопки открытия попап картинки
+
 //formCardsClose.addEventListener("click", () => togglePopup(popupCards)); //слушатель кнопки закрытия попап картинки
 //viewClose.addEventListener("click", () => togglePopup(popupBig)); //слушатель кнопки закрытия попап увеличенной картинки
 //formProfile.addEventListener("submit", formSubmitHandler);

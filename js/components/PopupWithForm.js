@@ -6,7 +6,7 @@ export default class PopupWithForm extends Popup { //наследует от Pop
     this._submitForm = submitForm;
   }
 
-  _getInputValues() { //собирает данные всех полей формы.
+  getInputValues() { //собирает данные всех полей формы.
     const item = {
       place: this._popupSelector.querySelector('.popup__input_type_place').value,
       link: this._popupSelector.querySelector('.popup__input_type_link').value
@@ -19,15 +19,15 @@ export default class PopupWithForm extends Popup { //наследует от Pop
     this._popupSelector.querySelector('.popup__container').addEventListener("submit", this._submitForm);//добавляет обработчик сабмита формы
   }
 
-  _cleanError(form) {
-    form.querySelectorAll(".popup__span-error").forEach((span) => {//функция обнуления ошибок
-      span.classList.remove("popup__span-error_type_active"); //удаляем со спан модификатор с ошибкой
-      span.textContent = "";
-    });
-    form.querySelectorAll(".popup__input").forEach((input) => {
-      input.classList.remove("popup__input_type_error"); //удаляем с инпут модификатор с ошибкой
-    });
-  }
+  // _cleanError(form) {
+  //   form.querySelectorAll(".popup__span-error").forEach((span) => {//функция обнуления ошибок
+  //     span.classList.remove("popup__span-error_type_active"); //удаляем со спан модификатор с ошибкой
+  //     span.textContent = "";
+  //   });
+  //   form.querySelectorAll(".popup__input").forEach((input) => {
+  //     input.classList.remove("popup__input_type_error"); //удаляем с инпут модификатор с ошибкой
+  //   });
+  // }
   
   close() {
     if (this._popupSelector.id === 'formCard') {//если мы закрываем попап карточки, данные в форме сбрасываются.
@@ -36,8 +36,9 @@ export default class PopupWithForm extends Popup { //наследует от Pop
     }
     this._popupSelector.querySelector('.popup__container').removeEventListener("submit", this._submitForm);
     super.close();
-    this._cleanError();
+    //this._cleanError();
   }
+
 
 }
 // Создайте класс PopupWithForm, который наследует от Popup. Этот класс:
