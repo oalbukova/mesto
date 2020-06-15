@@ -130,7 +130,6 @@ const addCards = new Section({ //функция добавления карти�
       const card = new Card({
         data: item,
         handleCardClick: () => {
-          const popupWithImage = new popupWithImage(item, popupBig);
           popupViewImg.open();
         }
       }, cardTemplate); //передаём селектор темплейта при создании                  
@@ -140,6 +139,13 @@ const addCards = new Section({ //функция добавления карти�
   },
   cardList);
 
+
+  const openFormAddPhoto = function() {
+    popupWithImage.open();
+  }
+  const closeFormAddPhoto = function() {
+    popupWithImage.close();
+  }
 
 //function formSubmitHandler(evt) { //сохранияем значения введеные в инпут профиля на странице
 //evt.preventDefault();
@@ -199,26 +205,29 @@ editButton.addEventListener("click", () => {
 //   togglePopup(popupCards);
 // }
 
-const OpenFormCard = () => { //форма карточки
-  const popupWithCard = new PopupWithForm({
-    submitForm: (evt) => {
-      evt.preventDefault();
-      const item = popupWithCard.getInputValues();
-      const card = new Card(".card-template", {
-        data: item,
-        handleCardClick: () => {
-          const popupImage = new PopupWithImage(item, popupBig);
-          popupImage.open();
-        }
-      });
-      const cardElement = card.generateCard();
-      addCards.setItem(cardElement);
-      popupWithCard.close();
-    }
-  }, formCard);
-  popupWithCard.open();
-  // cleanError(formCard);
-};
+const popupWithImage = new PopupWithImage(popupBig);
+const popupWithCard = new PopupWithForm({
+  submitForm: (evt) => {
+    evt.preventDefault();
+    const item = {
+      link: linkInput.value,
+      name: placeInput.value
+    };
+    const card = new Card(".card-template", {
+      data: item,
+      handleCardClick: () => {
+        const popupImage = new PopupWithImage(item, popupBig);
+        popupImage.open(item);
+      }
+    });
+    const cardElement = card.generateCard();
+    addCards.addItem(cardElement);
+    popupWithCard.close();
+  }
+}, formCard);
+//popupWithCard.open();
+// cleanError(formCard);
+
 
 addButton.addEventListener("click", () => OpenFormCard()); //слушатель кнопки открытия попап картинки
 
