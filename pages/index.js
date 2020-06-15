@@ -27,7 +27,7 @@ export const popupViewImg = document.querySelector(".popup-view__img");
 const popupBig = document.querySelector("#popupBig"); //id попап большой картинки 
 export const popupViewCaption = document.querySelector(".popup-view__caption");
 export const ESCAPE_KEY = 'Escape';
-const cardTemplate = document.querySelector("card__template");
+const cardTemplate = '#template';
 
 const initialCards = [{ // массив картинок
     name: 'Кавказ',
@@ -54,7 +54,7 @@ const initialCards = [{ // массив картинок
     link: './images/baykal.jpg',
   }
 ];
-
+/*
 function cleanError(form) {
   form.querySelectorAll(".popup__span-error").forEach((span) => { //функция обнуления ошибок
     span.classList.remove("popup__span-error_type_active"); //удаляем со спан модификатор с ошибкой
@@ -65,7 +65,7 @@ function cleanError(form) {
   });
 
 }
-
+*/
 // function togglePopup(elem) { //открытие/закрытие попап
 //   const isOpen = elem.classList.contains("popup_opened");
 //   if (!isOpen) {
@@ -127,7 +127,7 @@ function cleanError(form) {
 const addCards = new Section({ //функция добавления картинок из массива
     items: initialCards, //массив картинок
     renderer: (item) => {
-      const card = new Card(".card-template", {
+      const card = new Card({
         data: item,
         handleCardClick: () => {
           const popupWithImage = new popupWithImage(item, popupBig);
@@ -150,25 +150,38 @@ const addCards = new Section({ //функция добавления карти�
 //}
 
 //класс формы профиль
-const openFormProfil = () => { //форма профиль
-  const profil = {
-    name: document.querySelector('.profile__title'),
-    about: document.querySelector('.profile__subtitle')
-  };
-  const userInfo = new UserInfo(profil);
-  const popupWithProfile = new PopupWithForm({
-    submitForm: (evt) => {
-      evt.preventDefault();
-      userInfo.setUserInfo();
-      popupWithProfile.close();
-    }
-  }, popupProfile);
-  userInfo.getUserInfo();
-  popupWithProfile.open();
-  cleanError(popupProfile);
-};
+//const openFormProfil = () => { //форма профиль
 
-editButton.addEventListener("click",() => openFormProfil()); //слушатель кнопки открытия попап профиль
+const userInfo = new UserInfo({
+  name: document.querySelector('.profile__title'),
+  about: document.querySelector('.profile__subtitle')
+});
+
+const popupWithProfile = new PopupWithForm('#formProfile', {
+  submitForm: (evt) => {
+    evt.preventDefault();
+    infoUser.setUserInfo();
+    popupWithProfile.close();
+  }
+});
+// userInfo.getUserInfo();
+// popupWithProfile.open();
+// cleanError(formProfile);
+//};
+
+const openFormProfil = function () {
+  const infoUser = userInfo.getUserInfo();
+  nameInput.value = infoUser.name
+  jobInput.value = infoUser.info
+  changeAuthorForm.open();
+}
+
+
+
+
+editButton.addEventListener("click", () => {
+  popupWithProfile.open()
+}); //слушатель кнопки открытия попап профиль
 //const profil = new PopupWithForm ({
 // submitForm: (evt) => {
 //  evt.preventDefault();
@@ -194,7 +207,7 @@ const OpenFormCard = () => { //форма карточки
       const card = new Card(".card-template", {
         data: item,
         handleCardClick: () => {
-          const popupImage = new PopupWithImage (item, popupBig);
+          const popupImage = new PopupWithImage(item, popupBig);
           popupImage.open();
         }
       });
@@ -204,10 +217,10 @@ const OpenFormCard = () => { //форма карточки
     }
   }, formCard);
   popupWithCard.open();
-  cleanError(formCard);
+  // cleanError(formCard);
 };
 
-addButton.addEventListener("click",() => OpenFormCard()); //слушатель кнопки открытия попап картинки
+addButton.addEventListener("click", () => OpenFormCard()); //слушатель кнопки открытия попап картинки
 
 
 

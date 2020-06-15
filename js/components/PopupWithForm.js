@@ -1,9 +1,10 @@
 import Popup from './Popup.js';
 
 export default class PopupWithForm extends Popup { //наследует от Popup
-  constructor({ submitForm }, popupSelector) {//Кроме селектора попапа принимает в конструктор колбэк сабмита формы.
+  constructor(popupSelector, { submitForm }) {//Кроме селектора попапа принимает в конструктор колбэк сабмита формы.  
     super(popupSelector);
     this._submitForm = submitForm;
+    
   }
 
   getInputValues() { //собирает данные всех полей формы.
@@ -31,8 +32,9 @@ export default class PopupWithForm extends Popup { //наследует от Pop
   
   close() {
     if (this._popupSelector.id === 'formCard') {//если мы закрываем попап карточки, данные в форме сбрасываются.
-      this._popupSelector.querySelector('.popup__input_type_link').value = '';
       this._popupSelector.querySelector('.popup__input_type_place').value = '';
+      this._popupSelector.querySelector('.popup__input_type_link').value = '';
+      
     }
     this._popupSelector.querySelector('.popup__container').removeEventListener("submit", this._submitForm);
     super.close();

@@ -1,9 +1,9 @@
 export default class Card {
-  constructor(cardSelector, {data, handleCardClick}) {// добавили второй параметр
+  constructor({data, handleCardClick}, cardSelector) {// добавили второй параметр
     this._name = data.name;//this хранит ссылку на объект, на котором она вызвана
     this._link = data.link;
-    this._cardSelector = cardSelector; // записали селектор в приватное поле
     this._handleCardClick = handleCardClick;
+    this._cardSelector = cardSelector; // записали селектор в приватное поле
   }
 
   _getTemplate() { //забираем размеку из HTML и клонируем элемент
@@ -15,9 +15,8 @@ export default class Card {
 
     return this._cardElement; // вернём DOM-элемент карточки
   }
-
-  _cardLike() { //функция лайков
-    this._cardElement.querySelector('.card__like').toggle("card__like_type_active");
+  _cardLike(evt) { //функция лайков
+    evt.target.classList.toggle("card__like_type_active");
   }
 
   //_imgEscapeKeydown(evt) { //функция закрытия картинки по нажатию Esc 
