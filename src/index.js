@@ -1,5 +1,5 @@
-import Card from './Card.js';
-import FormValidator from './FormValidator.js';
+import Card from '../js/components/Card.js';
+import FormValidator from '../js/components/FormValidator.js';
 
 const formProfile = document.querySelector("#formProfile"); //id форма профиль
 const formCard = document.querySelector("#formCard"); //id форма картинки
@@ -23,19 +23,19 @@ const ESCAPE_KEY = 'Escape';
 
 const initialCards = [{
     name: 'Кавказ',
-    link: './images/kavkaz.jpg',
+    link: './../images/kavkaz.jpg',
   },
   {
     name: 'Крым',
-    link: './images/crimea.jpg',
+    link: './../images/crimea.jpg',
   },
   {
     name: 'Хребет Нургуш',
-    link: './images/nuegush.jpg',
+    link: './../images/nuegush.jpg',
   },
   {
     name: 'Токсово',
-    link: './images/toksovo.jpg',
+    link: './../images/toksovo.jpg',
   },
   {
     name: 'Камчатка',
@@ -43,7 +43,7 @@ const initialCards = [{
   },
   {
     name: 'Байкал',
-    link: './images/baykal.jpg',
+    link: './../images/baykal.jpg',
   }
 ];
 
