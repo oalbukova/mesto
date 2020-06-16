@@ -1,11 +1,11 @@
-import Card from './../js/components/Card.js';
-import FormValidator from './../js/components/FormValidator.js';
-import kavkazImage from '../images/kavkaz.jpg';
-import crimeaImage from '../images/crimea.jpg';
-import nuegushImage from '../images/nuegush.jpg';
-import toksovoImage from '../images/toksovo.jpg';
-import baykalImage from '../images/baykal.jpg';
-import '../pages/index.css';
+import Card from './Card.js';
+import FormValidator from './FormValidator.js';
+
+//import kavkazImage from '../images/kavkaz.jpg';
+//import crimeaImage from '../images/crimea.jpg';
+//import nuegushImage from '../images/nuegush.jpg';
+//import toksovoImage from '../images/toksovo.jpg';
+//import baykalImage from '../images/baykal.jpg';
 
 const formProfile = document.querySelector("#formProfile"); //id форма профиль
 const formCard = document.querySelector("#formCard"); //id форма картинки
@@ -27,6 +27,34 @@ const placeInput = document.querySelector(".popup__input_type_place"); //имя 
 const linkInput = document.querySelector(".popup__input_type_link"); //линк в инпут
 const ESCAPE_KEY = 'Escape';
 
+const initialCards = [{
+    name: 'Кавказ',
+    link: './images/kavkaz.jpg',
+  },
+  {
+    name: 'Крым',
+    link: './images/crimea.jpg',
+  },
+  {
+    name: 'Хребет Нургуш',
+    link: './images/nuegush.jpg',
+  },
+  {
+    name: 'Токсово',
+    link: './images/toksovo.jpg',
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
+  },
+  {
+    name: 'Байкал',
+    link: './images/baykal.jpg',
+  }
+];
+
+
+/*
 const initialCards = [{
     name: 'Кавказ',
     link: kavkazImage,
@@ -52,7 +80,7 @@ const initialCards = [{
     link: baykalImage,
   }
 ];
-
+*/
 function cleanError(form) { // функция обнуления ошибок
   form.querySelectorAll(".popup__span-error").forEach((span) => {
     span.classList.remove("popup__span-error_type_active"); //удаляем со спан модификатор с ошибкой
