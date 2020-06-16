@@ -1,11 +1,11 @@
 import Card from './../js/components/Card.js';
 import FormValidator from './../js/components/FormValidator.js';
-import kavkazImage from '../images/kavkaz.jpg';
-import crimeaImage from '../images/crimea.jpg';
-import nuegushImage from '../images/nuegush.jpg';
-import toksovoImage from '../images/toksovo.jpg';
-import baykalImage from '../images/baykal.jpg';
-import './../pages/index.css';
+import kavkazImage from './../images/kavkaz.jpg';
+import crimeaImage from './../images/crimea.jpg';
+import nuegushImage from './../images/nuegush.jpg';
+import toksovoImage from './../images/toksovo.jpg';
+import baykalImage from './../images/baykal.jpg';
+import './index.css';
 
 const formProfile = document.querySelector("#formProfile"); //id форма профиль
 const formCard = document.querySelector("#formCard"); //id форма картинки
