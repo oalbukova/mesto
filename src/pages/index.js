@@ -1,11 +1,15 @@
 import Card from './../js/components/Card.js';
 import FormValidator from './../js/components/FormValidator.js';
-import kavkazImage from './../images/kavkaz.jpg';
-import crimeaImage from './../images/crimea.jpg';
-import nuegushImage from './../images/nuegush.jpg';
-import toksovoImage from './../images/toksovo.jpg';
-import baykalImage from './../images/baykal.jpg';
-import './index.css';
+import Section from './../js/components/Section.js';
+import Popup from './../js/components/Popup.js';
+
+
+import kavkazImage from '../images/kavkaz.jpg';
+import crimeaImage from '../images/crimea.jpg';
+import nuegushImage from '../images/nuegush.jpg';
+import toksovoImage from '../images/toksovo.jpg';
+import baykalImage from '../images/baykal.jpg';
+import './../pages/index.css';
 
 const formProfile = document.querySelector("#formProfile"); //id форма профиль
 const formCard = document.querySelector("#formCard"); //id форма картинки
@@ -64,7 +68,7 @@ function cleanError(form) { // функция обнуления ошибок
   linkInput.value = "";
   placeInput.value = "";
 }
-
+/*
 function togglePopup(elem) { //открытие/закрытие попап
   const isOpen = elem.classList.contains("popup_opened");
   if (!isOpen) {
@@ -98,15 +102,22 @@ function editForm() { //при открытии формы профиль там
   jobInput.value = profileSubtitle.textContent;
   togglePopup(popupProfile);
 }
+*/
 
-function addCards(initialCards) { //добавление картинок из массива
-  initialCards.forEach((item) => {
-    const card = new Card(item, ".card-template_type_default"); // передаём селектор темплейта при создании
+
+
+const defaultCardList = new Section({//добавление картинок из массива
+  items: initialCards,
+  renderer: (item) => {
+    const card = new Card(item, ".card-template_type_default");// передаём селектор темплейта при создании
     const cardElement = card.generateCard();
-    document.querySelector(".card-list").append(cardElement);
-  });
-}
+    defaultCardList.addItem(cardElement);
+  }
+}, cardList);
 
+
+
+/*
 function formSubmitHandler(evt) { //сохранияем значения введеные в инпут профиля на странице
   evt.preventDefault();
   profileTitle.textContent = nameInput.value;
@@ -124,7 +135,7 @@ function placeSubmitHandler(evt) {
   cardList.prepend(card.generateCard());
   togglePopup(popupCards);
 }
-
+*/
 function formValidation() { // Найдём все формы с указанным классом в DOM
   const formList = Array.from(document.querySelectorAll(".popup__container")); // сделаем из них массив методом Array.from
   formList.forEach((form) => { //  Переберём полученную коллекцию
@@ -140,12 +151,12 @@ function formValidation() { // Найдём все формы с указанн�
 }
 
 editButton.addEventListener("click", () => editForm()); //слушатель кнопки открытия попап профиль
-closePopup.addEventListener("click", () => editForm()); //слушатель кнопки закрытия попап профиль
+//closePopup.addEventListener("click", () => editForm()); //слушатель кнопки закрытия попап профиль
 addButton.addEventListener("click", () => togglePopup(popupCards)); //слушатель кнопки открытия попап картинки
-formCardsClose.addEventListener("click", () => togglePopup(popupCards)); //слушатель кнопки закрытия попап картинки
-viewClose.addEventListener("click", () => togglePopup(popupBig)); //слушатель кнопки закрытия попап увеличенной картинки
+//formCardsClose.addEventListener("click", () => togglePopup(popupCards)); //слушатель кнопки закрытия попап картинки
+//viewClose.addEventListener("click", () => togglePopup(popupBig)); //слушатель кнопки закрытия попап увеличенной картинки
 formProfile.addEventListener("submit", formSubmitHandler);
 formCard.addEventListener("submit", placeSubmitHandler);
 
-addCards(initialCards);
+defaultCardList.renderItems(initialCards);
 formValidation();

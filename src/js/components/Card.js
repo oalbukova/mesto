@@ -1,4 +1,4 @@
-const ESCAPE_KEY = 'Escape';
+
 const popupBig = document.querySelector("#popupBig"); //id попап большой картинки 
 
 export default class Card {
