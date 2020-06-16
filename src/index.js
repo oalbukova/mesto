@@ -1,5 +1,12 @@
+import './../pages/index.css';
 import Card from './../js/components/Card.js';
 import FormValidator from './../js/components/FormValidator.js';
+import kavkazImage from '/images/kavkaz.jpg';
+import crimeaImage from '/images/crimea.jpg';
+import nuegushImage from '/images/nuegush.jpg';
+import toksovoImage from '/images/toksovo.jpg';
+import baykalImage from '/images/baykal.jpg';
+
 
 const formProfile = document.querySelector("#formProfile"); //id форма профиль
 const formCard = document.querySelector("#formCard"); //id форма картинки
@@ -23,19 +30,19 @@ const ESCAPE_KEY = 'Escape';
 
 const initialCards = [{
     name: 'Кавказ',
-    link: '/images/kavkaz.jpg',
+    link: kavkazImage,
   },
   {
     name: 'Крым',
-    link: '/images/crimea.jpg',
+    link: crimeaImage,
   },
   {
     name: 'Хребет Нургуш',
-    link: '/images/nuegush.jpg',
+    link: nuegushImage,
   },
   {
     name: 'Токсово',
-    link: '/images/toksovo.jpg',
+    link: toksovoImage,
   },
   {
     name: 'Камчатка',
@@ -43,7 +50,7 @@ const initialCards = [{
   },
   {
     name: 'Байкал',
-    link: '/images/baykal.jpg',
+    link: baykalImage,
   }
 ];
 
