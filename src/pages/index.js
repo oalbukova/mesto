@@ -1,8 +1,13 @@
 import Card from './../js/components/Card.js';
 import FormValidator from './../js/components/FormValidator.js';
 import Section from './../js/components/Section.js';
-import Popup from './../js/components/Popup.js';
-
+//import PopupWithImage from './../js/components/PopupWithImage.js';
+//import PopupWithForm from './../js/components/PopupWithForm.js';
+import UserInfo from './../js/components/UserInfo.js';
+import {
+  editButton,
+  addButton
+} from './../js/utils/constants.js';
 
 import kavkazImage from '../images/kavkaz.jpg';
 import crimeaImage from '../images/crimea.jpg';
@@ -16,17 +21,16 @@ const formCard = document.querySelector("#formCard"); //id форма карти
 const popupProfile = document.querySelector("#popupProfile"); //id попап профиль
 const popupCards = document.querySelector("#popupCards"); //id попап картинки
 const popupBig = document.querySelector("#popupBig"); //id попап большой картинки
-const editButton = document.querySelector(".profile__edit-button"); //кнопка открытия формы профиль
+
 const closePopup = document.querySelector(".button-close"); //кнопка закрытия формы профиль
-const addButton = document.querySelector(".profile__add-button"); //кнопка открытия формы картинок
+
 const formCardsClose = document.getElementById("formCards-close"); //кнопка закрытия формы картинок
 const cardList = document.querySelector(".card-list");
 const viewClose = document.querySelector("#view-close"); //кнопка закрытия попап увеличенной картинки
 const profileTitle = document.querySelector(".profile__title"); //имя на странице
 const profileSubtitle = document.querySelector(".profile__subtitle"); //профессия на странице
 const profileAlt = document.querySelector(".profile__img"); //alt в профиле
-const nameInput = document.querySelector(".popup__input_type_name"); //имя в инпут
-const jobInput = document.querySelector(".popup__input_type_job"); //профессия в инпут
+
 const placeInput = document.querySelector(".popup__input_type_place"); //имя в инпут
 const linkInput = document.querySelector(".popup__input_type_link"); //линк в инпут
 const ESCAPE_KEY = 'Escape';
@@ -65,8 +69,8 @@ function cleanError(form) { // функция обнуления ошибок
   form.querySelectorAll(".popup__input").forEach((input) => {
     input.classList.remove("popup__input_type_error"); //удаляем с инпут модификатор с ошибкой
   });
-  linkInput.value = "";
-  placeInput.value = "";
+ // linkInput.value = "";
+ // placeInput.value = "";
 }
 /*
 function togglePopup(elem) { //открытие/закрытие попап
@@ -103,13 +107,14 @@ function editForm() { //при открытии формы профиль там
   togglePopup(popupProfile);
 }
 */
-
-
+const userInfo = new UserInfo;
+const popupWithImage = new PopupWithImage () 
 
 const defaultCardList = new Section({//добавление картинок из массива
   items: initialCards,
   renderer: (item) => {
-    const card = new Card(item, ".card-template_type_default");// передаём селектор темплейта при создании
+    const card = new Card({data: item, handleCardClick: () => {
+      popupWithImage.open(item);}}, ".card-template_type_default");// передаём селектор темплейта при создании
     const cardElement = card.generateCard();
     defaultCardList.addItem(cardElement);
   }
@@ -117,7 +122,6 @@ const defaultCardList = new Section({//добавление картинок и�
 
 
 
-/*
 function formSubmitHandler(evt) { //сохранияем значения введеные в инпут профиля на странице
   evt.preventDefault();
   profileTitle.textContent = nameInput.value;
@@ -132,10 +136,10 @@ function placeSubmitHandler(evt) {
   cardValue.link = linkInput.value;
   cardValue.name = placeInput.value;
   const card = new Card(cardValue, ".card-template_type_default")
-  cardList.prepend(card.generateCard());
+// cardList.prepend(card.generateCard());
   togglePopup(popupCards);
 }
-*/
+
 function formValidation() { // Найдём все формы с указанным классом в DOM
   const formList = Array.from(document.querySelectorAll(".popup__container")); // сделаем из них массив методом Array.from
   formList.forEach((form) => { //  Переберём полученную коллекцию
@@ -155,8 +159,9 @@ editButton.addEventListener("click", () => editForm()); //слушатель к�
 addButton.addEventListener("click", () => togglePopup(popupCards)); //слушатель кнопки открытия попап картинки
 //formCardsClose.addEventListener("click", () => togglePopup(popupCards)); //слушатель кнопки закрытия попап картинки
 //viewClose.addEventListener("click", () => togglePopup(popupBig)); //слушатель кнопки закрытия попап увеличенной картинки
-formProfile.addEventListener("submit", formSubmitHandler);
-formCard.addEventListener("submit", placeSubmitHandler);
+//formProfile.addEventListener("submit", formSubmitHandler);
+
+//formCard.addEventListener("submit", placeSubmitHandler);
 
 defaultCardList.renderItems(initialCards);
 formValidation();

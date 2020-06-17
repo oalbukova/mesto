@@ -10,14 +10,17 @@ import {
 export default class Popup { //отвечает за открытие и закрытие попапа
   constructor(popupSelector) {
     this._popupSelector = popupSelector;
-    this.setEventListeners();
   }
+
   open() { //открытие попапа
     this._popupSelector.classList.add("popup_opened");
+    this.setEventListeners();
   }
 
   close() { //закрытие попапа
     this._popupSelector.classList.remove("popup_opened");
+    document.removeEventListener("keydown", this._handleEscClose); //снятие слушателя закрытие картинки по нажатию Esc
+    document.removeEventListener("click", this._handleOverlayClick); //снятие слушателя закрытие картинки по клику на оверлей
   }
 
   _handleEscClose(evt) { //закрытие попапа клавишей Esc
@@ -31,10 +34,10 @@ export default class Popup { //отвечает за открытие и зак�
       this._close();
     }
   }
-    setEventListeners() { 
-      this._popupSelector.querySelector(".button-close").addEventListener('click', () => this.close());//добавляет слушатель клика иконке закрытия попапа
-      document.addEventListener("keydown", this._handleEscClose(evt)); //слушатель закрытие попап по нажатию Esc
-      document.addEventListener("click", this._handleOverlayClick(evt)); //слушатель закрытие попап по клику на оверлей
-    }
+
+  setEventListeners() {
+    this._popupSelector.querySelector(".button-close").addEventListener('click', () => this.close()); //добавляет слушатель клика иконке закрытия попапа
+    document.addEventListener("keydown", this._handleEscClose(evt)); //слушатель закрытие попап по нажатию Esc
+    document.addEventListener("click", this._handleOverlayClick(evt)); //слушатель закрытие попап по клику на оверлей
   }
-  
+}
