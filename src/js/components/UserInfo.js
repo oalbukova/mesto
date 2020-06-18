@@ -1,17 +1,20 @@
 import {
   nameInput,
   jobInput
-} from './../utils/constants.js'
+} from '../utils/constants.js'
 
 export default class UserInfo {
-  constructor(name, job) {
-    this._name = name;
-    this._job = job;
+  constructor(user) {
+    this._name = user.name;
+    this._job = user.job;
   }
 
   getUserInfo() { //возвращает объект с данными пользователя. Этот метод пригодится когда данные пользователя нужно будет подставить в форму при открытии.
-    nameInput.value = this._name.textContent,
-      jobInput.value = this._job.textContent
+    const userObject = {
+    name: this._name.textContent,
+    job: this._job.textContent
+  }
+  return userObject
   }
 
   setUserInfo() { //принимает новые данные пользователя и добавляет их на страницу.

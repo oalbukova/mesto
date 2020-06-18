@@ -1,4 +1,4 @@
-import Popup from './../js/components/Popup.js';
+import Popup from './Popup.js';
 
 export default class PopupWithImage extends Popup { //наследует от Popup 
   constructor(data, popupSelector) {
@@ -8,12 +8,12 @@ export default class PopupWithImage extends Popup { //наследует от Po
   }
 
   openImageView() { //перезаписывает родительский метод open. Вставляет в попап картинку, атрибут src изображения и подпись к картинке.
-    const popupViewImg = document.querySelector(".popup-view__img");
-    const popupViewCaption = document.querySelector(".popup-view__caption");
+    const popupViewImg = this._popupSelector.querySelector(".popup-view__img");
+    const popupViewCaption = this._popupSelector.querySelector(".popup-view__caption");
     popupViewImg.src = this._link;
     popupViewImg.alt = this._name;
     popupViewCaption.textContent = this._name;
-    super.open()
+    super.open();
   }
 }
 

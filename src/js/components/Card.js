@@ -1,5 +1,3 @@
-//const popupBig = document.querySelector("#popupBig"); //id попап большой картинки 
-
 export default class Card {
   constructor({
     data,
