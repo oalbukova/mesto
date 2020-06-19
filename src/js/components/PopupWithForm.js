@@ -7,28 +7,33 @@ export default class PopupWithForm extends Popup { //отвечает за от�
     super(popupSelector);
     this._formSubmit = formSubmit;
   }
-  
+
   close() {
+    super.close(); //Перезаписывает родительский метод close
     if (this._popupSelector.id === 'popupCards') { //при закрытии попапа форма должна сбрасываться.
+      this._popupSelector.querySelector(".popup__input_type_place").value = ""; //имя в инпут
       this._popupSelector.querySelector(".popup__input_type_link").value = ""; //линк в инпут
-      this._popupSelector.querySelector(".popup__input_type_link").value = ""; //имя в инпут
     }
-    super.close() //Перезаписывает родительский метод close
   }
 
-  _getInputValues() { //собирает данные всех полей формы
-    const item = {
-      link: this.popupSelector.querySelector(".popup__input_type_link").value = "",
-      name: this.popupSelector.querySelector(".popup__input_type_link").value = ""
-    };
-    return item;
+  _getInputValues() {
+
+    this._inputList = this._popupSelector.querySelectorAll('.popup__input');
+    this._inputValues = {};
+    this._inputList.forEach((input) => {
+      this._inputValues[input.name] = input.value;
+    });
+    return this._inputValues;
   }
 
-  _setEventListeners() {  
-    this._popupSelector.querySelector('.popup__container').addEventListener("submit", 
-     this._formSubmit); // не только добавляет обработчик клика иконке закрытия, но и добавляет обработчик сабмита формы. 
-
-    super._setEventListeners() //Перезаписывает родительский метод setEventListeners
+  _setEventListeners() {
+    super._setEventListeners(); //Перезаписывает родительский метод setEventListeners
+    this._popupSelector.querySelector('.popup__container').addEventListener("submit",
+      (evt) => { // не только добавляет обработчик клика иконке закрытия, но и добавляет обработчик сабмита формы. 
+        evt.preventDefault();
+        this._formSubmit(this._getInputValues());
+        this.close();
+      }, {once: true});
   }
 }
 //  Создайте класс PopupWithForm, который наследует от Popup. Этот класс:

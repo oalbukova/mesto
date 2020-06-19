@@ -55,11 +55,11 @@ export default class Card {
     const removeCard = evt.target.closest(".card"); //карточка
     const btnLike = removeCard.querySelector(".card__like");
     const btnDelete = removeCard.querySelector(".card__delete");
-    // const imageView = removeCard.querySelector(".card__img");
+    const imageView = removeCard.querySelector(".card__img");
 
     btnLike.removeEventListener("click", this._cardLike); //удаление слушателя кнопки лайк
     btnDelete.removeEventListener("click", this._cardDelete); //удаление слушателя кнопки удалить
-    // imageView.removeEventListener("click", this._openCloseImage); //удаление слушателя увеличения картинки
+    imageView.removeEventListener("click", this._openCloseImage); //удаление слушателя увеличения картинки
 
     removeCard.remove(); //удаление карточки
   }

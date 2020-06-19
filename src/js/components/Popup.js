@@ -9,18 +9,18 @@ import {
 
 export default class Popup { //отвечает за открытие и закрытие попапа
   constructor(popupSelector) {
-   this._popupSelector = popupSelector;
+    this._popupSelector = popupSelector;
   }
 
-  open() { //открытие попапа
+  open() { //открытие попапа    
+    this._popupSelector.classList.add('popup_opened');
     this._setEventListeners();
-    this._popupSelector.classList.add('popup_opened');   
   }
 
   close() { //закрытие попапа
     this._popupSelector.classList.remove("popup_opened");
-    document.removeEventListener("keydown", this._handleEscClose); //снятие слушателя закрытие картинки по нажатию Esc
-   document.removeEventListener("click", this._handleOverlayClick); //снятие слушателя закрытие картинки по клику на оверлей
+ //   document.removeEventListener("keydown", this._handleEscClose); //снятие слушателя закрытие картинки по нажатию Esc
+  //  document.removeEventListener("click", this._handleOverlayClick); //снятие слушателя закрытие картинки по клику на оверлей
   }
 
   _handleEscClose(evt) { //закрытие попапа клавишей Esc
