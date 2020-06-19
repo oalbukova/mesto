@@ -2,9 +2,9 @@ export default class Card {
   constructor({
     data,
     handleCardClick
-  }, cardSelector) { // добавили второй параметр
-    this._link = data.link; //this хранит ссылку на объект, на котором она вызвана
-    this._name = data.name;
+  }, cardSelector) { 
+    this._name = data.name;//this хранит ссылку на объект, на котором она вызвана
+    this._link = data.link; 
     this._handleCardClick = handleCardClick;
     this._cardSelector = cardSelector; // записали селектор в приватное поле
   }
@@ -87,12 +87,10 @@ export default class Card {
   generateCard() {
     this._element = this._getTemplate();
     this._setEventListeners();
-
-    const cardImg = this._element.querySelector(".card__img");
+    const cardImg = this._element.querySelector(".card__img"); 
+    this._element.querySelector(".card__text").textContent = this._name; //добавляем текст
     cardImg.src = this._link;
     cardImg.alt = this._name;
-    this._element.querySelector(".card__text").textContent = this._name; //добавляем текст
-
     return this._element;
   }
 }

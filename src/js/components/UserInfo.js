@@ -1,20 +1,21 @@
+
 export default class UserInfo {
   constructor(user) {
-    this._name = user.name;
-    this._job = user.job;
+    this._profileTitle = user.profileTitle;
+    this._profileSubtitle = user.profileSubtitle;
   }
 
   getUserInfo() { //возвращает объект с данными пользователя. Этот метод пригодится когда данные пользователя нужно будет подставить в форму при открытии.
     const userInfo = {
-      person: this._name.textContent,
-      about: this._job.textContent
+      person: this._profileTitle.textContent,
+      about: this._profileSubtitle.textContent
     }
     return userInfo
   }
 
   setUserInfo(data) {
-    this._name.textContent = data.person;
-    this._job.textContent = data.about;
+    this._profileTitle.textContent = data.person;
+    this._profileSubtitle.textContent = data.about;
   }
 }
 
@@ -24,3 +25,29 @@ export default class UserInfo {
 Содержит публичный метод getUserInfo, который возвращает объект с данными пользователя. Этот метод пригодится когда данные пользователя нужно будет подставить в форму при открытии.
 Содержит публичный метод setUserInfo, который принимает новые данные пользователя и добавляет их на страницу.
 */
+/*
+import {
+  nameInput,
+  jobInput
+} from '../utils/constants.js'
+
+export default class UserInfo {
+  constructor(user) {
+    this._name = user.name;
+    this._job = user.job;
+  }
+
+  getUserInfo() { //возвращает объект с данными пользователя. Этот метод пригодится когда данные пользователя нужно будет подставить в форму при открытии.
+    const userObject = {
+    name: this._name.textContent,
+    job: this._job.textContent
+  }
+  return userObject
+  }
+
+  setUserInfo() { //принимает новые данные пользователя и добавляет их на страницу.
+    this._name.textContent = nameInput.value;
+    this._job.textContent = jobInput.value;
+   // this._name.alt = nameInput.value;
+  }
+}*/

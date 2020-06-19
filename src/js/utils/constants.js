@@ -42,7 +42,7 @@ export const nameInput = document.querySelector(".popup__input_type_name"); //и
 export const jobInput = document.querySelector(".popup__input_type_job"); //профессия в инпут
 export const profileInfo = {
   profileTitle: profile.querySelector('.profile__title'),
-  profileSubtitle: profile.querySelector('.profile__subtitle'),
+  profileSubtitle: profile.querySelector('.profile__subtitle')
 };
 
 

@@ -10,10 +10,11 @@ import {
   addButton,
   popupBig,
   cardList,
-  //formCard,
-  //formProfile,
-  //profileTitle,
-  //profileSubtitle,
+  formCard,
+  formProfile,
+  profileTitle,
+  profileSubtitle,
+  profileAlt,
   nameInput,
   jobInput,
   cardTemplate,
@@ -26,7 +27,7 @@ import {
 //const closePopup = document.querySelector(".button-close"); //кнопка закрытия формы профиль
 //const formCardsClose = document.getElementById("formCards-close"); //кнопка закрытия формы картинок
 //const viewClose = document.querySelector("#view-close"); //кнопка закрытия попап увеличенной картинки
-//const profileAlt = document.querySelector(".profile__img"); //alt в профиле
+
 
 function cleanError(form) { // функция обнуления ошибок
   form.querySelectorAll(".popup__span-error").forEach((span) => {
@@ -36,8 +37,7 @@ function cleanError(form) { // функция обнуления ошибок
   form.querySelectorAll(".popup__input").forEach((input) => {
     input.classList.remove("popup__input_type_error"); //удаляем с инпут модификатор с ошибкой
   });
-  // linkInput.value = "";
-  // placeInput.value = "";
+
 }
 
 const userInfo = new UserInfo(profileInfo); //изменение информации о пользователе 
@@ -58,6 +58,22 @@ const openProfileForm = () => {
 
 const popupWithImage = new PopupWithImage(popupBig); //передаем селектор по id попапа с большой картинкой
 
+/*
+const defaultCardList = new Section({ //добавление картинок из массива
+  items: initialCards,
+  renderer: (item) => {
+    const card = new Card({
+      data: item,
+      handleCardClick: () => {
+        popupWithImage.open(item);
+      }
+    }, cardTemplate); // передаём селектор темплейта при создании
+    const cardElement = card.generateCard();
+    defaultCardList.addItem(cardElement);
+  }
+}, cardList);
+defaultCardList.renderItems(initialCards);
+*/
 
 const defaultCardList = new Section({ //добавление картинок из массива
   items: initialCards,
@@ -72,6 +88,10 @@ const defaultCardList = new Section({ //добавление картинок и
     defaultCardList.addItem(cardElement);
   }
 }, cardList);
+
+defaultCardList.renderItems(initialCards);
+
+
 
 
 
@@ -109,7 +129,7 @@ function formValidation() { // Найдём все формы с указанн�
 
 addButton.addEventListener("click", openCardForm); //слушатель кнопки открытия попап картинки
 editButton.addEventListener("click", openProfileForm); //слушатель кнопки открытия попап профиль
-defaultCardList.renderItems(initialCards);
+
 formValidation();
 /*
 function togglePopup(elem) { //открытие/закрытие попап
