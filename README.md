@@ -18,7 +18,10 @@ Cамостоятельный проект одностраничного сай
 12. Реализована возможность удаления карточек.
 13. Реализована возможность ставить карточкам лайки.
 14. Реализована возможность увеличения картинки на карточке при нажатии не нее.
-15. Верстка сайта происходила согласно: [макет Фигма1](https://www.figma.com/file/StZjf8HnoeLdiXS7dYrLAh/JavaScript.-Sprint-4) 
+15. Java Script разбит на модули.
+16. ООП.
+17. Настроена сборка проекта Webpack.
+18. Верстка сайта происходила согласно: [макет Фигма1](https://www.figma.com/file/StZjf8HnoeLdiXS7dYrLAh/JavaScript.-Sprint-4) 
 [макет Фигма2](https://www.figma.com/file/nlYpT4VhFiwimn2YlncrcF/JavaScript.-Sprint-5) 
 [макет Фигма3](https://www.figma.com/file/XNaGNEZD5NEjeyJzAT4gMb/JavaScript.-Sprint-6) 
 под Pixel Perfect.

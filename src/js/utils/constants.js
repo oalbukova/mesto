@@ -4,7 +4,7 @@ import nuegushImage from './../../images/nuegush.jpg';
 import toksovoImage from './../../images/toksovo.jpg';
 import baykalImage from './../../images/baykal.jpg';
 
-export const initialCards = [{
+export const initialCards = [{//массив карточек
   name: 'Кавказ',
   link: kavkazImage,
 },
@@ -40,19 +40,12 @@ export const editButton = document.querySelector(".profile__edit-button"); //к�
 export const popupProfile = document.querySelector("#popupProfile"); //id попап профиль
 export const nameInput = document.querySelector(".popup__input_type_name"); //имя в инпут
 export const jobInput = document.querySelector(".popup__input_type_job"); //профессия в инпут
-export const profileInfo = {
-  profileTitle: profile.querySelector('.profile__title'),
-  profileSubtitle: profile.querySelector('.profile__subtitle')
-};
-
-
-
+export const profileTitle = document.querySelector('.profile__title');//имя в профиль
+export const profileSubtitle = document.querySelector('.profile__subtitle');//профессия в профиль
+export const profileAlt = document.querySelector('.profile__img');//имя в alt
 export const formProfile = document.querySelector("#formProfile"); //id форма профиль
 export const formCard = document.querySelector("#formCard"); //id форма картинки
 
-//export const profileTitle = document.querySelector(".profile__title"); //имя на странице
-//export const profileSubtitle = document.querySelector(".profile__subtitle"); //профессия на странице
 
-//export const cardList = document.querySelector(".card-list");
 
 

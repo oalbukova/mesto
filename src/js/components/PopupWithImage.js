@@ -13,9 +13,4 @@ export default class PopupWithImage extends Popup { //наследует от Po
     popupViewCaption.textContent = data.name;
     super.open();
   }
-
 }
-
-/*
-  Создайте класс PopupWithImage, который наследует от Popup. Этот класс должен перезаписывать родительский метод open. В методе open класса PopupWithImage нужно вставлять в попап картинку и атрибут src изображения и подпись к картинке.
-  */

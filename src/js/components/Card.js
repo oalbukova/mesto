@@ -2,9 +2,9 @@ export default class Card {
   constructor({
     data,
     handleCardClick
-  }, cardSelector) { 
-    this._name = data.name;//this хранит ссылку на объект, на котором она вызвана
-    this._link = data.link; 
+  }, cardSelector) {
+    this._name = data.name; //this хранит ссылку на объект, на котором она вызвана
+    this._link = data.link;
     this._handleCardClick = handleCardClick;
     this._cardSelector = cardSelector; // записали селектор в приватное поле
   }
@@ -22,44 +22,25 @@ export default class Card {
     evt.target.classList.toggle("card__like_type_active");
   }
 
-  //_imgEscapeKeydown(evt) { //функция закрытия картинки по нажатию Esc 
-  // if (evt.key === ESCAPE_KEY) {
-  //   popupBig.classList.remove("popup_opened");
-  // }
-  //}
-
-  //_imgOverlayClick(evt) { //закрытие  картинки по клику на оверлей
-  //  if (evt.target.classList.contains("popup")) {
-  //    popupBig.classList.remove("popup_opened");
-  /*
-    //  }
-    }
-    _openCloseImage() { //открытие увеличенной картинки 
-      const isOpen = popupBig.classList.contains("popup_opened");
-      if (!isOpen) {
-        const popupViewImg = document.querySelector(".popup-view__img");
-        const popupViewCaption = document.querySelector(".popup-view__caption");
-        popupViewCaption.textContent = this._name;
-        popupViewImg.src = this._link;
-        popupViewImg.alt = this._name;
-        document.addEventListener("keydown", this._imgEscapeKeydown); //слушатель закрытие картинки по нажатию Esc
-        document.addEventListener("click", this._imgOverlayClick); //слушатель закрытие картинки по клику на оверлей
-      } else {
-        document.removeEventListener("keydown", this._imgEscapeKeydown); //снятие слушателя закрытие картинки по нажатию Esc
-        document.removeEventListener("click", this._imgOverlayClick); //снятие слушателя закрытие картинки по клику на оверлей
-      }
-      popupBig.classList.toggle("popup_opened");
-    }
-  */
   _cardDelete(evt) { //функция удаления
     const removeCard = evt.target.closest(".card"); //карточка
-    const btnLike = removeCard.querySelector(".card__like");
-    const btnDelete = removeCard.querySelector(".card__delete");
-    const imageView = removeCard.querySelector(".card__img");
+    this._element
+      .querySelector(".card__like")
+      .removeEventListener("click", (evt) => {
+        this._cardLike(evt);
+      });
 
-    btnLike.removeEventListener("click", this._cardLike); //удаление слушателя кнопки лайк
-    btnDelete.removeEventListener("click", this._cardDelete); //удаление слушателя кнопки удалить
-    imageView.removeEventListener("click", this._openCloseImage); //удаление слушателя увеличения картинки
+    this._element
+      .querySelector(".card__delete")
+      .removeEventListener("click", (evt) => {
+        this._cardDelete(evt);
+      });
+
+    this._element
+      .querySelector(".card__img")
+      .removeEventListener("click", () => {
+        this._handleCardClick();
+      });
 
     removeCard.remove(); //удаление карточки
   }
@@ -87,7 +68,7 @@ export default class Card {
   generateCard() {
     this._element = this._getTemplate();
     this._setEventListeners();
-    const cardImg = this._element.querySelector(".card__img"); 
+    const cardImg = this._element.querySelector(".card__img");
     this._element.querySelector(".card__text").textContent = this._name; //добавляем текст
     cardImg.src = this._link;
     cardImg.alt = this._name;
