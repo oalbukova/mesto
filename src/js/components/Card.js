@@ -22,27 +22,9 @@ export default class Card {
     evt.target.classList.toggle("card__like_type_active");
   }
 
-  _cardDelete(evt) { //функция удаления
-    const removeCard = evt.target.closest(".card"); //карточка
-    this._element
-      .querySelector(".card__like")
-      .removeEventListener("click", (evt) => {
-        this._cardLike(evt);
-      });
-
-    this._element
-      .querySelector(".card__delete")
-      .removeEventListener("click", (evt) => {
-        this._cardDelete(evt);
-      });
-
-    this._element
-      .querySelector(".card__img")
-      .removeEventListener("click", () => {
-        this._handleCardClick();
-      });
-
-    removeCard.remove(); //удаление карточки
+  _cardDelete() { //функция удаления карточки
+    this._element.remove();
+    this._element = null;
   }
 
   _setEventListeners() {

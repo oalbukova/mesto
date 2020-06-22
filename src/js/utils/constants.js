@@ -34,7 +34,6 @@ export const cardList = ".card-list";
 export const cardTemplate = '#template';
 export const popupCards = document.querySelector("#popupCards"); //id попап картинки
 export const popupBig = document.querySelector("#popupBig"); //id попап большой картинки 
-export const profile = document.querySelector('.profile'); //секция профиль
 export const addButton = document.querySelector(".profile__add-button"); //кнопка открытия формы картинок
 export const editButton = document.querySelector(".profile__edit-button"); //кнопка открытия формы профиль
 export const popupProfile = document.querySelector("#popupProfile"); //id попап профиль
@@ -43,8 +42,8 @@ export const jobInput = document.querySelector(".popup__input_type_job"); //пр
 export const profileTitle = document.querySelector('.profile__title');//имя в профиль
 export const profileSubtitle = document.querySelector('.profile__subtitle');//профессия в профиль
 export const profileAlt = document.querySelector('.profile__img');//имя в alt
-export const formProfile = document.querySelector("#formProfile"); //id форма профиль
-export const formCard = document.querySelector("#formCard"); //id форма картинки
+
+
 
 
 

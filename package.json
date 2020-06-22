@@ -3,11 +3,11 @@
   "version": "0.0.1",
   "description": "Cамостоятельный проект одностраничного сайта в рамках обучения на курсе веб-разработки от Яндекс Практикум.",
   "main": "index.js",
-  "dependencies": {
-    "babel-loader": "^8.1.0",
+  "dependencies": {   
     "corejs": "^1.0.0"
   },
   "devDependencies": {
+    "babel-loader": "^8.1.0",
     "@babel/core": "^7.10.2",
     "@babel/preset-env": "^7.10.2",
     "autoprefixer": "^9.8.0",
