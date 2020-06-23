@@ -15,11 +15,13 @@ export default class Popup { //отвечает за открытие и зак�
             this.close();
         }
     }
+    this._setEventListeners();
 }
 
   open() { //открытие попапа    
     this._popupSelector.classList.add('popup_opened');
-    this._setEventListeners();
+    document.addEventListener("keydown", this._handleEscClose); //слушатель закрытие попап по нажатию Esc
+    document.addEventListener("click", this._handleOverlayClick); //слушатель закрытие попап по клику на оверлей
   }
 
   close() { //закрытие попапа
@@ -30,7 +32,6 @@ export default class Popup { //отвечает за открытие и зак�
 
   _setEventListeners() { //добавляет слушатель клика иконке закрытия попапа
     this._popupSelector.querySelector(".button-close").addEventListener('click', () => this.close()); //добавляет слушатель клика иконке закрытия попапа
-    document.addEventListener("keydown", this._handleEscClose); //слушатель закрытие попап по нажатию Esc
-    document.addEventListener("click", this._handleOverlayClick); //слушатель закрытие попап по клику на оверлей
   }
+  
 }

@@ -6,17 +6,11 @@ export default class PopupWithForm extends Popup { //наследует от Pop
   }, popupSelector) {
     super(popupSelector); //селектор попапа
     this._formSubmit = formSubmit; //// колбэк сабмита формы (Submit отправляет форму)
-    this._submit = (evt) => { // добавляет обработчик сабмита формы. 
-      evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы. Так мы можем определить свою логику отправки.
-      this._formSubmit(this._getInputValues());
-      this.close();
-    };
   }
 
   close() {
     super.close(); //Перезаписывает родительский метод close
     this._popupSelector.querySelector('.popup__container').reset(); //при закрытии попапа форма должна сбрасываться.
-    this._popupSelector.querySelector('.popup__container').removeEventListener('submit', this._submit); //снятие слушателя сабмита формы  
   }
 
   _getInputValues() { //собирает данные всех полей формы
@@ -30,7 +24,11 @@ export default class PopupWithForm extends Popup { //наследует от Pop
 
   _setEventListeners() {
     super._setEventListeners(); //Перезаписывает родительский метод setEventListeners
-    this._popupSelector.querySelector('.popup__container').addEventListener("submit", this._submit);
+    this._popupSelector.querySelector('.popup__container').addEventListener("submit", (evt) => { // добавляет обработчик сабмита формы. 
+      evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы. Так мы можем определить свою логику отправки.
+      this._formSubmit(this._getInputValues());
+      this.close();
+    });
   }
 
   cleanError() { // функция обнуления ошибок
