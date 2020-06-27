@@ -41,9 +41,7 @@ export const nameInput = document.querySelector(".popup__input_type_name"); //и
 export const jobInput = document.querySelector(".popup__input_type_job"); //профессия в инпут
 export const profileTitle = document.querySelector('.profile__title');//имя в профиль
 export const profileSubtitle = document.querySelector('.profile__subtitle');//профессия в профиль
-export const profileAlt = document.querySelector('.profile__img');//имя в alt
-
-
+export const profileImg = document.querySelector('.profile__img');//имя в alt
 
 
 
