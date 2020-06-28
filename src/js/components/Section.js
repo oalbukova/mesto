@@ -11,7 +11,7 @@ export default class Section { //отвечает за отрисовку эле
   }
 
   addItem(element) { //принимает DOM-элемент и добавляет его в контейнер.
-    this._container.prepend(element); //принимает параметр element и вставляет его в контейнер методом append
+    this._container.append(element); //принимает параметр element и вставляет его в контейнер методом append
   }
 
   clear() {

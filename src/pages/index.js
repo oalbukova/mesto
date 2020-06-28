@@ -15,15 +15,19 @@ import {
   cardList,
   nameInput,
   jobInput,
+  placeInput,
+  linkInput,
   cardTemplate,
- // initialCards,
+  // initialCards,
   popupProfile,
   popupCards,
   profileTitle,
   profileSubtitle,
   profileImg
 } from '../js/utils/constants.js';
-import { data } from 'autoprefixer';
+import {
+  data
+} from 'autoprefixer';
 
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-12',
@@ -33,59 +37,49 @@ const api = new Api({
   }
 });
 
-api.getInfoUser()
-.then(data => userInfo.setUserInfo(data))
-.catch((err) => {
-  console.log(err); // выведем ошибку в консоль
-});
-
-const userInfo = new UserInfo({//изменение информации о пользователе 
+const userInfo = new UserInfo({ //изменение информации о пользователе 
   userName: profileTitle,
   userInfo: profileSubtitle,
   userImg: profileImg
 });
 
+api.getInfoUser()
+  .then(data => userInfo.setUserInfo(data))
+  .catch((err) => {
+    console.log(err); // выведем ошибку в консоль
+  });
+
 api.getInitialCards().then((data) => {
-const defaultCardList = new Section({ //добавление картинок из массива
-  items: data,
-  renderer: (item) => {
-    const card = new Card({
-      data: item,
-      handleCardClick: () => {
-        popupWithImage.open(item);
-      }
-    }, cardTemplate); // передаём селектор темплейта при создании
-    const cardElement = card.generateCard();
-    defaultCardList.addItem(cardElement);
-  }
-}, cardList);
-defaultCardList.renderItems();
+  const defaultCardList = new Section({ //добавление картинок с сервера
+    items: data,
+    renderer: (item) => {
+      const card = new Card({
+        data: item,
+        handleCardClick: () => {
+          popupWithImage.open(item);
+        }
+      }, cardTemplate); // передаём селектор темплейта при создании
+      const cardElement = card.generateCard();
+      defaultCardList.addItem(cardElement);
+    }
+  }, cardList);
+  defaultCardList.renderItems();
 })
 
-
-
-/*
-const profileForm = new PopupWithForm ({
+const profileForm = new PopupWithForm({ //отправляем информацию, введенную пользоавателем на сервер
   formSubmit: () => {
     api.updateInfo(nameInput.value, jobInput.value)
-    .then((result) => {
-    userInfo.setUserInfo();
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-}
-}, popupProfile);*/
-
-
-const profileForm = new PopupWithForm({
-  formSubmit: (item) => {
-    userInfo.setUserInfo(item);
+      .then((result) => {
+        userInfo.setInfoUser(result)
+        profileForm.close();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 }, popupProfile);
 
-
-const openProfileForm = () => {//прни открытии формы там стоят данные из 
+const openProfileForm = () => { //при открытии формы там стоят данные из профиля
   const infoAuthor = userInfo.getUserInfo();
   nameInput.value = infoAuthor.name;
   jobInput.value = infoAuthor.about;
@@ -95,40 +89,28 @@ const openProfileForm = () => {//прни открытии формы там с�
 
 
 
-
-
-
-/*
-const defaultCardList = new Section({ //добавление картинок из массива
-  items: initialCards,
-  renderer: (item) => {
-    const card = new Card({
-      data: item,
-      handleCardClick: () => {
-        popupWithImage.open(item);
-      }
-    }, cardTemplate); // передаём селектор темплейта при создании
-    const cardElement = card.generateCard();
-    defaultCardList.addItem(cardElement);
-  }
-}, cardList);
-defaultCardList.renderItems(initialCards);
-*/
-  
-const popupWithImage = new PopupWithImage(popupBig); //передаем селектор по id попапа с большой картинкой
-
-const cardForm = new PopupWithForm({
-  formSubmit: (item) => {
-    const card = new Card({
-      data: item,
-      handleCardClick: () => {
-        popupWithImage.open(item);
-      }
-    }, cardTemplate); // передаём селектор темплейта при создании
-    const cardElement = card.generateCard();
-    defaultCardList.addItem(cardElement);
+const cardForm = new PopupWithForm({ //отправляем информацию, введенную пользоавателем на сервер
+  formSubmit: () => {
+    api.addNewCard(placeInput.value, linkInput.value)
+      .then((result) => {
+        const card = new Card({
+          data: item,
+          handleCardClick: () => {
+            popupWithImage.open(item);
+          }
+        }, cardTemplate);
+        const cardElement = card.generateCard(result);
+        defaultCardList.addItem(cardElement);
+        cardForm.close();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 }, popupCards);
+
+
+const popupWithImage = new PopupWithImage(popupBig); //передаем селектор по id попапа с большой картинкой
 
 const openCardForm = () => {
   cardForm.cleanError();

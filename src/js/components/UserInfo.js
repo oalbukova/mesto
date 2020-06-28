@@ -13,14 +13,19 @@ export default class UserInfo { //отвечает за управление о�
     return {
       name: this._name.textContent,
       about: this._about.textContent,
-   //   alt: this._img.src
     }
   }
 
-    setUserInfo(data) { //принимает новые данные пользователя и добавляет их на страницу.
+    setUserInfo(data) { //принимает новые данные пользователя с сервера и добавляет их на страницу.
       this._name.textContent = data.name;
       this._about.textContent = data.about;
       this._img.alt = data.name;
       this._img.src = data.avatar;
+    }
+
+    setInfoUser(data) { //принимает новые данные пользователя из формы и добавляет их на страницу.
+      this._name.textContent = data.name;
+      this._about.textContent = data.about;
+      this._img.alt = data.name;
     }
 }

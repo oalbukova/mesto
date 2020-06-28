@@ -14,14 +14,7 @@ export default class Api {
         } else {
           return Promise.reject(`Ошибка: ${res.status}`);
         }
-      })
-      .then((user) => {
-        return user;
-      })
-      .catch((err) => {
-        console.log(err);
-        return err;
-      })
+      });
   }
 
   getInitialCards() {
@@ -34,43 +27,42 @@ export default class Api {
           return res.json();
         }
         return Promise.reject(`Ошибка: ${res.status}`); // если ошибка, отклоняем промис
-      })
-      .then((cards) => {
-        return cards;
-      })
-      .catch((err) => {
-        return err;
       });
   }
 
   updateInfo(name, about) {
     return fetch(`${this._url}/users/me`, {
         method: 'PATCH',
-        headers: this.headers,
+        headers: this._headers,
         body: JSON.stringify({
           name: name,
           about: about
-        }),
+        })
       })
       .then(res => {
         if (res.ok) {
           return res.json();
-        } else {
-          return Promise.reject(`Ошибка: ${res.status}`);
         }
-      })
-      .then((result) => {
-        return result
-      })
-      .catch((err) => {
-        return err
+        return Promise.reject(`Ошибка: ${res.status}`);
       });
   }
 
-
-
-
-
+  addNewCard(cardName, cardLink) {
+    return fetch(`${this._url}/cards`, {
+        method: 'POST',
+        headers: this._headers,
+        body: JSON.stringify({
+          name: cardName,
+          link: cardLink
+        })
+      })
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Ошибка: ${res.status}`);
+      });
+  }
 
 
 }
