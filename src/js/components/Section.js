@@ -11,16 +11,16 @@ export default class Section { //отвечает за отрисовку эле
   }
 
   addItem(element) { //принимает DOM-элемент и добавляет его в контейнер.
-    this._container.append(element); //принимает параметр element и вставляет его в контейнер методом append
+    this._container.prepend(element); //принимает параметр element и вставляет его в контейнер методом prepend
   }
 
   clear() {
     this._container.innerHTML = '';
   }
 
-  renderItems() { //отвечает за отрисовку всех элементов. Отрисовка каждого отдельного элемента должна осуществляться функцией renderer.
+  renderItems(items) { //отвечает за отрисовку всех элементов. Отрисовка каждого отдельного элемента должна осуществляться функцией renderer.
     this.clear();
-    this._renderedItems.forEach(item => { //принимает DOM-элемент и добавляет его в контейнер.
+    items.forEach(item => { //принимает DOM-элемент и добавляет его в контейнер.
       this._renderer(item);
     });
   }

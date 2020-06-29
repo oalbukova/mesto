@@ -37,6 +37,32 @@ const api = new Api({
   }
 });
 
+const cardForm = new PopupWithForm({
+  formSubmit: (item) => {
+    api.addNewCard(item.name, item.link)
+      .catch((err) => {
+        console.log(err);
+      });
+    const card = new Card({
+      data: item,
+      handleCardClick: () => {
+        popupWithImage.open(item);
+      }
+    }, cardTemplate);
+    const cardElement = card.generateCard();
+    defaultCardList.addItem(cardElement);
+    cardForm.close();
+  }
+}, popupCards);
+
+
+const popupWithImage = new PopupWithImage(popupBig); //передаем селектор по id попапа с большой картинкой
+
+const openCardForm = () => {
+  cardForm.cleanError();
+  cardForm.open();
+};
+
 const userInfo = new UserInfo({ //изменение информации о пользователе 
   userName: profileTitle,
   userInfo: profileSubtitle,
@@ -49,22 +75,26 @@ api.getInfoUser()
     console.log(err); // выведем ошибку в консоль
   });
 
-api.getInitialCards().then((data) => {
-  const defaultCardList = new Section({ //добавление картинок с сервера
-    items: data,
-    renderer: (item) => {
-      const card = new Card({
-        data: item,
-        handleCardClick: () => {
-          popupWithImage.open(item);
-        }
-      }, cardTemplate); // передаём селектор темплейта при создании
-      const cardElement = card.generateCard();
-      defaultCardList.addItem(cardElement);
-    }
-  }, cardList);
-  defaultCardList.renderItems();
-})
+api.getInitialCards()
+  .then((items) => {
+    defaultCardList.renderItems(items);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+const defaultCardList = new Section({ //добавление картинок с сервера
+  renderer: (item) => {
+    const card = new Card({
+      data: item,
+      handleCardClick: () => {
+        popupWithImage.open(item);
+      }
+    }, cardTemplate); // передаём селектор темплейта при создании
+    const cardElement = card.generateCard();
+    defaultCardList.addItem(cardElement);
+  }
+}, cardList);
 
 const profileForm = new PopupWithForm({ //отправляем информацию, введенную пользоавателем на сервер
   formSubmit: () => {
@@ -85,36 +115,6 @@ const openProfileForm = () => { //при открытии формы там ст
   jobInput.value = infoAuthor.about;
   profileForm.cleanError();
   profileForm.open();
-};
-
-
-
-const cardForm = new PopupWithForm({ //отправляем информацию, введенную пользоавателем на сервер
-  formSubmit: () => {
-    api.addNewCard(placeInput.value, linkInput.value)
-      .then((result) => {
-        const card = new Card({
-          data: item,
-          handleCardClick: () => {
-            popupWithImage.open(item);
-          }
-        }, cardTemplate);
-        const cardElement = card.generateCard(result);
-        defaultCardList.addItem(cardElement);
-        cardForm.close();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-}, popupCards);
-
-
-const popupWithImage = new PopupWithImage(popupBig); //передаем селектор по id попапа с большой картинкой
-
-const openCardForm = () => {
-  cardForm.cleanError();
-  cardForm.open();
 };
 
 function formValidation() { // Найдём все формы с указанным классом в DOM
