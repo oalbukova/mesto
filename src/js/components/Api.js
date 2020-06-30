@@ -64,5 +64,32 @@ export default class Api {
       });
   }
 
+  deleteCard(id) {
+    return fetch(`${this._url}/cards/${id}`,{
+        method: 'DELETE',
+        baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-12',
+        headers: this._headers,
+    })
+        .then((res) => {
+            if (res.ok) {
+                return res.json();
+            }
+            return Promise.reject(`error${res.status}`);
+        });
+};
+
+  addLike(id) {
+    return fetch(`${this._url}/cards/likes/${id}`, {
+      method: 'PUT',
+      headers: this._headers,
+    })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Ошибка: ${res.status}`);
+    })
+  }
+
 
 }

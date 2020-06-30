@@ -1,4 +1,4 @@
-.card__like {
+.like__button {
   background-image: url(../../../images/like.svg);
   background-size: cover;
   width: 21px;
@@ -9,12 +9,11 @@
   outline: none;
   cursor: pointer;
   border: none;
-  margin-right: 8%;
   -webkit-transition: opacity linear 0.5s;
   transition: opacity linear 0.5s;
 }
 
-.card__like:hover {
+.like__button:hover {
   opacity: .6;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
   -webkit-transform: scale(1.2);

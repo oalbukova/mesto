@@ -12,5 +12,6 @@
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding-left: 8%;
+  padding-left: 8%;  
+  padding-right: 6.25%;
 }
