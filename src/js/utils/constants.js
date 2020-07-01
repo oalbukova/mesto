@@ -32,10 +32,9 @@ export const initialCards = [{//массив карточек
 export const ESCAPE_KEY = 'Escape';
 export const cardList = ".card-list";
 export const cardTemplate = '#template';
-//export const prepend = 'prepend';
 export const popupCards = document.querySelector("#popupCards"); //id попап картинки
 export const popupBig = document.querySelector("#popupBig"); //id попап большой картинки 
-//export const formСonfirm = document.querySelector("#formСonfirm"); //id попап подтверждения 
+export const popupСonfirm = document.querySelector("#popupСonfirm"); //id попап подтверждения 
 export const addButton = document.querySelector(".profile__add-button"); //кнопка открытия формы картинок
 export const editButton = document.querySelector(".profile__edit-button"); //кнопка открытия формы профиль
 export const popupProfile = document.querySelector("#popupProfile"); //id попап профиль
@@ -46,6 +45,7 @@ export const linkInput = document.querySelector('.popup__input_type_link');
 export const profileTitle = document.querySelector('.profile__title');//имя в профиль
 export const profileSubtitle = document.querySelector('.profile__subtitle');//профессия в профиль
 export const profileImg = document.querySelector('.profile__img');//картинка в профиль
+export const deleteButton = document.querySelector('.card__delete');
 
 
 

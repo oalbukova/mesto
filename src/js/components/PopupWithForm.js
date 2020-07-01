@@ -13,6 +13,10 @@ export default class PopupWithForm extends Popup { //наследует от Pop
     this._popupSelector.querySelector('.popup__container').reset(); //при закрытии попапа форма должна сбрасываться.
   }
 
+  open() {
+    super.open();
+  }
+
   _getInputValues() { //собирает данные всех полей формы
     this._inputList = this._popupSelector.querySelectorAll('.popup__input');
     this._inputValues = {};
