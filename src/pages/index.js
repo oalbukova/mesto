@@ -6,7 +6,7 @@ import FormValidator from '../js/components/FormValidator.js';
 import Section from '../js/components/Section.js';
 import PopupWithImage from '../js/components/PopupWithImage.js';
 import PopupWithForm from '../js/components/PopupWithForm.js';
-//import PopupWithConfirm from '../js/components/PopupWithConfirm.js';
+import Popup from '../js/components/Popup.js';
 import UserInfo from '../js/components/UserInfo.js';
 import Api from '../js/components/Api.js';
 import {
@@ -16,16 +16,13 @@ import {
   cardList,
   nameInput,
   jobInput,
-  //placeInput,
-  //linkInput,
   cardTemplate,
-  // initialCards,
   popupProfile,
   popupCards,
   popupСonfirm,
   profileTitle,
   profileSubtitle,
-  profileImg,
+  profileImg
  // deleteButton
 } from '../js/utils/constants.js';
 import {
@@ -50,25 +47,18 @@ const cardForm = new PopupWithForm({
             handleCardClick: () => {
               popupWithImage.open(item);
             },
-          },
-          //openPopupConfirm()
-          //       () => {
-          //        openPopupConfirm(item, card)
-          //},
-          cardTemplate);
+          }, cardTemplate);
         const cardElement = card.generateCard();
         defaultCardList.addItemPrepend(cardElement);
         cardForm.close();
       })
       .catch((err) => {
         console.log(err);
-      });
-
+      })
   }
 }, popupCards);
 
-const popupWithImage = new PopupWithImage(popupBig); //передаем селектор по id попапа с большой картинкой
-//const popupWithConfirm = new PopupWithConfirm(popupСonfirm); 
+const popupWithImage = new PopupWithImage(popupBig); 
 
 const openCardForm = () => {
   cardForm.cleanError();
@@ -117,18 +107,42 @@ const defaultCardList = new Section({ //добавление картинок с
       data: item,
       handleCardClick: () => {
         popupWithImage.open(item);
-      },
-   //   handleCardDelete: () => {
-    //    popupWithConfirm.open()
-    //  }
-    }, cardTemplate); // передаём селектор темплейта при создании
+      }
+    }, cardTemplate, () => popupWithConfirm.submit(item._id)); // передаём селектор темплейта при создании
     const cardElement = card.generateCard();
     defaultCardList.addItemAppend(cardElement);
   }
 }, cardList);
 
+const popupWithConfirm = new Popup(popupСonfirm);
+popupWithConfirm.submit = function (_id) {
+  popupWithConfirm.open();
+  popupСonfirm.addEventListener('submit', evt => {
+    evt.preventDefault();
+    document.getElementById(_id).remove();
+    api.deleteCard(_id);
+    this.close();
+  })
+}
 
+function formValidation() { // Найдём все формы с указанным классом в DOM
+  const formList = Array.from(document.querySelectorAll(".popup__container")); // сделаем из них массив методом Array.from
+  formList.forEach((form) => { //  Переберём полученную коллекцию
+    const validator = new FormValidator({ // создаем экземпляр клааса с валидацией
+      inputSelector: ".popup__input", //инпуты
+      submitButtonSelector: ".popup__button-save", //кнопка сохранить/создать
+      inactiveButtonClass: "popup__button-save_type_disabled", //неактивная кнопка
+      inputErrorClass: "popup__input_type_error", //ошибка в инпуте
+      errorClass: "popup__span-error_type_active",
+    }, form);
+    validator.enableValidation();
+  });
+}
 
+addButton.addEventListener("click", openCardForm); //слушатель кнопки открытия попап картинки
+editButton.addEventListener("click", openProfileForm); //слушатель кнопки открытия попап профиль
+
+formValidation();
 
 /*
 function deleteCardHandler(cardToDelete) {
@@ -145,7 +159,7 @@ function deleteCardHandler(cardToDelete) {
       });
   });
 }
-/*
+
 const openPopupConfirm = function (card, cardClass) {
   deleteCardConfirm.setCard(card, cardClass);
   deleteCardConfirm.open();
@@ -163,29 +177,7 @@ const cardDelete = function(item, cardClass) {
     cardClass.handleCardDelete();
   })
 }
-*/
 
-
-function formValidation() { // Найдём все формы с указанным классом в DOM
-  const formList = Array.from(document.querySelectorAll(".popup__container")); // сделаем из них массив методом Array.from
-  formList.forEach((form) => { //  Переберём полученную коллекцию
-    const validator = new FormValidator({ // создаем экземпляр клааса с валидацией
-      inputSelector: ".popup__input", //инпуты
-      submitButtonSelector: ".popup__button-save", //кнопка сохранить/создать
-      inactiveButtonClass: "popup__button-save_type_disabled", //неактивная кнопка
-      inputErrorClass: "popup__input_type_error", //ошибка в инпуте
-      errorClass: "popup__span-error_type_active",
-    }, form);
-    validator.enableValidation();
-  });
-}
-
-
-addButton.addEventListener("click", openCardForm); //слушатель кнопки открытия попап картинки
-editButton.addEventListener("click", openProfileForm); //слушатель кнопки открытия попап профиль
-
-formValidation();
-/*
 const cardForm = new PopupWithForm({
   formSubmit: (item) => {
     api.addNewCard(item.name, item.link)

@@ -1,14 +1,14 @@
 export default class Card {
   constructor({
     data,
-    handleCardClick, handleCardDelete
-  }, cardSelector) {
+    handleCardClick
+  }, cardSelector, deleteCard) {
     this._name = data.name; //this хранит ссылку на объект, на котором она вызвана
     this._link = data.link;
     this._id = data._id;
     this._owner = data.owner._id;
     this._handleCardClick = handleCardClick;
-    this._handleCardDelete = handleCardDelete;
+    this._deleteCard = deleteCard;
     this._cardSelector = cardSelector; // записали селектор в приватное поле
   }
 
@@ -18,7 +18,9 @@ export default class Card {
       .content.querySelector(".card")
       .cloneNode(true);
 
-    return cardElement; // вернём DOM-элемент карточки
+    this._element = cardElement;
+    this._element.id = this._id;
+    return this._element;
   }
 
   _checkCardOwner(_owner) {
@@ -32,31 +34,28 @@ export default class Card {
   _cardLike(evt) { //функция лайков
     evt.target.classList.toggle("like__button_type_active");
   }
-/*
-  handleCardDelete() { //функция удаления карточки
-    this._element.remove();
+
+  _cardDelete() {
+    // this._element.remove();
+    this._deleteCard();
     this._element = null;
   }
-*/
-  _cardDelete() {
-   // this._element.remove();
-    this._handleCardDelete();
-    this._element = null; 
-  }
+
+  _cardClickHandler(evt) {
+    if (evt.target.classList.contains('card__delete')) { // удаление
+      this._cardDelete();
+    }
+  };
 
   _setEventListeners() {
+    this._cardHandler = this._cardClickHandler.bind(this);
+    this._element.addEventListener('click', this._cardHandler);
+
     this._element
       .querySelector(".like__button")
       .addEventListener("click", (evt) => {
         this._cardLike(evt);
-      });
-
-    this._element
-      .querySelector(".card__delete")
-      .addEventListener("click", () => {
-      this._cardDelete();
-      });
-
+      })
     this._element
       .querySelector(".card__img")
       .addEventListener("click", () => {
