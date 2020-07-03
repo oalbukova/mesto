@@ -28,6 +28,7 @@ export default class Popup { //отвечает за открытие и зак�
     this._popupSelector.classList.remove("popup_opened");
     document.removeEventListener("keydown", this._handleEscClose); //снятие слушателя закрытие картинки по нажатию Esc
     document.removeEventListener("click", this._handleOverlayClick); //снятие слушателя закрытие картинки по клику на оверлей
+    
   }
 
   _setEventListeners() { //добавляет слушатель клика иконке закрытия попапа

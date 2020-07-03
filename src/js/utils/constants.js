@@ -46,7 +46,7 @@ export const linkInput = document.querySelector('.popup__input_type_link');
 export const profileTitle = document.querySelector('.profile__title');//имя в профиль
 export const profileSubtitle = document.querySelector('.profile__subtitle');//профессия в профиль
 export const profileImg = document.querySelector('.profile__img');//картинка в профиль
-//export const deleteButton = document.querySelector('.card__delete');
+export const prepend = 'prepend';
 
 
 

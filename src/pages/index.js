@@ -6,7 +6,6 @@ import FormValidator from '../js/components/FormValidator.js';
 import Section from '../js/components/Section.js';
 import PopupWithImage from '../js/components/PopupWithImage.js';
 import PopupWithForm from '../js/components/PopupWithForm.js';
-import Popup from '../js/components/Popup.js';
 import UserInfo from '../js/components/UserInfo.js';
 import Api from '../js/components/Api.js';
 import {
@@ -22,8 +21,10 @@ import {
   popupСonfirm,
   profileTitle,
   profileSubtitle,
-  profileImg
- // deleteButton
+  profileImg,
+  prepend
+
+  // deleteButton
 } from '../js/utils/constants.js';
 import {
   data
@@ -38,6 +39,159 @@ const api = new Api({
   }
 });
 
+
+const userInfo = new UserInfo({ //изменение информации о пользователе 
+  userName: profileTitle,
+  userInfo: profileSubtitle,
+  userImg: profileImg
+});
+
+const profileForm = new PopupWithForm({ //отправляем информацию, введенную пользоавателем на сервер
+  formSubmit: () => {
+    api.updateInfo(nameInput.value, jobInput.value)
+      .then((result) => {
+        userInfo.setInfoUser(result)
+        profileForm.close();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+}, popupProfile);
+
+const openProfileForm = () => { //при открытии формы там стоят данные из профиля
+  const infoAuthor = userInfo.getUserInfo();
+  nameInput.value = infoAuthor.name;
+  jobInput.value = infoAuthor.about;
+  profileForm.cleanError();
+  profileForm.open();
+};
+
+
+let valueCard;
+const deleteCardConfirm = new PopupWithForm({
+  formSubmit: () => {
+    api.deleteCard(valueCard.object._id)
+      .then((result) => {
+        valueCard.class.cardDelete();
+        deleteCardConfirm.close();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+}, popupСonfirm);
+
+const popupWithImage = new PopupWithImage(popupBig);
+
+const addCardsToDom = (card, position) => {
+  /*добавление карточки в DOM*/
+  if (position === 'prepend') {
+    defaultCardList.addItemPrepend(card);
+  } else {
+    defaultCardList.addItemAppend(card);
+  }
+};
+
+const writeValueCard = (object, className) => {
+  /*запись значений в текущую карточку*/
+  valueCard = {
+    object: object,
+    class: className
+  };
+};
+
+const createCard = (item, userId, position) => {
+const card = new Card({
+  data: item,
+  handleCardClick: () => {
+    popupWithImage.open(item);
+  },
+  handleCardDelete: () => {
+    deleteCardConfirm.open();
+    writeValueCard(item, card);
+  }
+}, cardTemplate, userId);
+const cardElement = card.generateCard();
+addCardsToDom(cardElement, position);
+//defaultCardList.addItemPrepend(cardElement);
+//cardForm.close();
+};
+
+const cardForm = new PopupWithForm({
+  formSubmit: (item) => {
+    api.addNewCard(item.name, item.link)
+          .then((result) => {
+              createCard(result, result.owner._id, prepend);
+              cardForm.close();
+          })
+          .catch((err) => {
+              console.log(err);
+          })
+    
+  }
+}, popupCards);
+
+const openCardForm = () => {
+  cardForm.cleanError();
+  cardForm.open();
+};
+
+const defaultCardList = new Section({  /*класс для добавления начальных карточек*/
+  renderer: (item, userId) => {
+      createCard(item, userId);  /*третий параметр не указан, значит по умолчанию position="append"*/
+  }
+}, cardList);
+
+Promise.all([api.getInfoUser(), api.getInitialCards()]) //загрузка данных профиля и карточек 
+  .then(([user, cards]) => {
+    userInfo.setUserInfo(user);
+    defaultCardList.renderItems(cards, user._id);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+/*
+const defaultCardList = new Section({ //добавление картинок с сервера
+  renderer: (item) => {
+    const card = new Card({
+      data: item,
+      handleCardClick: () => {
+        popupWithImage.open(item);
+      }
+    }, cardTemplate , () => popupWithConfirm.submit(item._id) , userId); // передаём селектор темплейта при создании
+    const cardElement = card.generateCard();
+    defaultCardList.addItemAppend(cardElement);
+  }
+}, cardList);*/
+
+
+
+
+
+
+function formValidation() { // Найдём все формы с указанным классом в DOM
+  const formList = Array.from(document.querySelectorAll(".popup__container")); // сделаем из них массив методом Array.from
+  formList.forEach((form) => { //  Переберём полученную коллекцию
+    const validator = new FormValidator({ // создаем экземпляр клааса с валидацией
+      inputSelector: ".popup__input", //инпуты
+      submitButtonSelector: ".popup__button-save", //кнопка сохранить/создать
+      inactiveButtonClass: "popup__button-save_type_disabled", //неактивная кнопка
+      inputErrorClass: "popup__input_type_error", //ошибка в инпуте
+      errorClass: "popup__span-error_type_active",
+    }, form);
+    validator.enableValidation();
+  });
+}
+
+addButton.addEventListener("click", openCardForm); //слушатель кнопки открытия попап картинки
+editButton.addEventListener("click", openProfileForm); //слушатель кнопки открытия попап профиль
+
+formValidation();
+
+
+
+/*
 const cardForm = new PopupWithForm({
   formSubmit: (item) => {
     api.addNewCard(item.name, item.link)
@@ -47,7 +201,7 @@ const cardForm = new PopupWithForm({
             handleCardClick: () => {
               popupWithImage.open(item);
             },
-          }, cardTemplate);
+          }, cardTemplate, () => popupWithConfirm.submit(item._id));          
         const cardElement = card.generateCard();
         defaultCardList.addItemPrepend(cardElement);
         cardForm.close();
@@ -113,8 +267,9 @@ const defaultCardList = new Section({ //добавление картинок с
     defaultCardList.addItemAppend(cardElement);
   }
 }, cardList);
-
+/*
 const popupWithConfirm = new Popup(popupСonfirm);
+
 popupWithConfirm.submit = function (_id) {
   popupWithConfirm.open();
   popupСonfirm.addEventListener('submit', evt => {
@@ -124,7 +279,12 @@ popupWithConfirm.submit = function (_id) {
     this.close();
   })
 }
+*/
 
+
+
+
+/*
 function formValidation() { // Найдём все формы с указанным классом в DOM
   const formList = Array.from(document.querySelectorAll(".popup__container")); // сделаем из них массив методом Array.from
   formList.forEach((form) => { //  Переберём полученную коллекцию
@@ -143,7 +303,7 @@ addButton.addEventListener("click", openCardForm); //слушатель кноп
 editButton.addEventListener("click", openProfileForm); //слушатель кнопки открытия попап профиль
 
 formValidation();
-
+*/
 /*
 function deleteCardHandler(cardToDelete) {
   popupWithConfirm.open(()=>{

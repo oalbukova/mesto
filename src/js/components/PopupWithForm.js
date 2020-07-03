@@ -30,7 +30,6 @@ export default class PopupWithForm extends Popup { //наследует от Pop
     super._setEventListeners(); //Перезаписывает родительский метод setEventListeners
     this._popupSelector.querySelector('.popup__container').addEventListener("submit", (evt) => { // добавляет обработчик сабмита формы. 
       evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы. Так мы можем определить свою логику отправки.
-      location.reload();
       this._formSubmit(this._getInputValues());
       this.close();
     });
