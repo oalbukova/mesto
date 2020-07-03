@@ -82,9 +82,32 @@ const deleteCardConfirm = new PopupWithForm({
   }
 }, popupСonfirm);
 
+
+const addLike = (object) => {
+  /*добавление лайка*/
+  api.addLike(object)
+    .then((result) => {
+      valueCard.class.cardLike(result.likes.length);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+const deleteLike = (object) => {
+  /*удаление лайка*/
+  api.deleteLike(object)
+    .then((result) => {
+      valueCard.class.cardLike(result.likes.length);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
 const popupWithImage = new PopupWithImage(popupBig);
 
-const addCardsToDom = (card, position) => {
+const addCards = (card, position) => {
   /*добавление карточки в DOM*/
   if (position === 'prepend') {
     defaultCardList.addItemPrepend(card);
@@ -102,33 +125,39 @@ const writeValueCard = (object, className) => {
 };
 
 const createCard = (item, userId, position) => {
-const card = new Card({
-  data: item,
-  handleCardClick: () => {
-    popupWithImage.open(item);
-  },
-  handleCardDelete: () => {
-    deleteCardConfirm.open();
-    writeValueCard(item, card);
-  }
-}, cardTemplate, userId);
-const cardElement = card.generateCard();
-addCardsToDom(cardElement, position);
-//defaultCardList.addItemPrepend(cardElement);
-//cardForm.close();
+  const card = new Card({
+    data: item,
+    handleCardClick: () => {
+      popupWithImage.open(item);
+    },
+    handleCardLike: (cardObject) => {
+      if (cardObject.like) {
+        deleteLike(cardObject);
+      } else {
+        addLike(cardObject);
+      }
+      writeValueCard(item, card);
+    },
+    handleCardDelete: () => {
+      deleteCardConfirm.open();
+      writeValueCard(item, card);
+    }
+  }, cardTemplate, userId);
+  const cardElement = card.generateCard();
+  addCards(cardElement, position);
 };
 
 const cardForm = new PopupWithForm({
   formSubmit: (item) => {
     api.addNewCard(item.name, item.link)
-          .then((result) => {
-              createCard(result, result.owner._id, prepend);
-              cardForm.close();
-          })
-          .catch((err) => {
-              console.log(err);
-          })
-    
+      .then((result) => {
+        createCard(result, result.owner._id, prepend);
+        cardForm.close();
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+
   }
 }, popupCards);
 
@@ -137,9 +166,10 @@ const openCardForm = () => {
   cardForm.open();
 };
 
-const defaultCardList = new Section({  /*класс для добавления начальных карточек*/
+const defaultCardList = new Section({
+  /*класс для добавления начальных карточек*/
   renderer: (item, userId) => {
-      createCard(item, userId);  /*третий параметр не указан, значит по умолчанию position="append"*/
+    createCard(item, userId); /*третий параметр не указан, значит по умолчанию position="append"*/
   }
 }, cardList);
 
@@ -151,24 +181,6 @@ Promise.all([api.getInfoUser(), api.getInitialCards()]) //загрузка да�
   .catch((err) => {
     console.log(err);
   });
-/*
-const defaultCardList = new Section({ //добавление картинок с сервера
-  renderer: (item) => {
-    const card = new Card({
-      data: item,
-      handleCardClick: () => {
-        popupWithImage.open(item);
-      }
-    }, cardTemplate , () => popupWithConfirm.submit(item._id) , userId); // передаём селектор темплейта при создании
-    const cardElement = card.generateCard();
-    defaultCardList.addItemAppend(cardElement);
-  }
-}, cardList);*/
-
-
-
-
-
 
 function formValidation() { // Найдём все формы с указанным классом в DOM
   const formList = Array.from(document.querySelectorAll(".popup__container")); // сделаем из них массив методом Array.from
