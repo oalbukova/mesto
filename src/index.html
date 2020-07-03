@@ -24,6 +24,7 @@
       <!--profile-->
       <section class="profile main__profile">
         <img class="profile__img" src="./images/custo.jpg" alt="#" name="avatar" />
+        <div class="profile__img-hover"></div>
         <div class="profile__container">
           <div class="profile__info">
             <h1 class="profile__title"></h1>
@@ -56,7 +57,7 @@
 
       <!--popup-cards-->
       <section class="popup" id="popupCards" novalidate>
-        <form class="popup__container" name="formcard"method="post" action="#" id="formCard">
+        <form class="popup__container" name="formcard" method="post" action="#" id="formCard">
           <button class="button-close" id="formCards-close" type="reset" aria-label="Закрыть"></button>
           <h2 class="popup__title">Новое место</h2>
           <input class="popup__input popup__input_type_place" id="place-input" type="text" required
@@ -70,6 +71,22 @@
           </button>
         </form>
       </section>
+
+<!--popup-avatar-->
+      <section class="popup" id="popupAvatar" novalidate>
+        <form class="popup__container popup__container_type_avatar" name="formavatar" method="post" action="#" id="formAvatar">
+          <button class="button-close" id="formAvatar-close" type="reset" aria-label="Закрыть"></button>
+          <h2 class="popup__title">Обновить аватар</h2>
+          <input class="popup__input popup__input_type_avatar" id="avatar-input" type="url" required
+            placeholder="Ссылка на картинку" name="link" />
+          <span class="popup__span-error" id="link-input-error"></span>
+          <button class="popup__button-save" id="avatar-save" type="submit">
+            Создать
+          </button>
+        </form>
+      </section>
+
+
 
       <!--popup-confirm-->
       <section class="popup" id="popupСonfirm">

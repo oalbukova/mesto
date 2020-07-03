@@ -11,20 +11,23 @@ import Api from '../js/components/Api.js';
 import {
   editButton,
   addButton,
+  avatarButton,
   popupBig,
   cardList,
   nameInput,
   jobInput,
+  avatarInput,
   cardTemplate,
   popupProfile,
   popupCards,
   popupСonfirm,
-  profileTitle,
-  profileSubtitle,
-  profileImg,
+  popupAvatar,
+  // profileTitle,
+  // profileSubtitle,
+  //profileImg,
+  profileInfo,
+  profileAvatar,
   prepend
-
-  // deleteButton
 } from '../js/utils/constants.js';
 import {
   data
@@ -39,23 +42,34 @@ const api = new Api({
   }
 });
 
+const loading = (isLoading, form, defaultButtonText, loadingMessage) => {  /*не знаю как упростить эту функцию, делал как в тренажере*/
+  const currentButton = form.querySelector('.popup__button-save');
 
-const userInfo = new UserInfo({ //изменение информации о пользователе 
-  userName: profileTitle,
-  userInfo: profileSubtitle,
-  userImg: profileImg
-});
+  if(isLoading) {
+      currentButton.textContent = loadingMessage;
+  } else {
+      currentButton.textContent = defaultButtonText;
+  }
+}
+
+const userInfo = new UserInfo( //изменение информации о пользователе 
+  profileInfo, profileAvatar
+);
 
 const profileForm = new PopupWithForm({ //отправляем информацию, введенную пользоавателем на сервер
   formSubmit: () => {
+    loading(true, popupProfile,'Сохранить', 'Сохранение...');
     api.updateInfo(nameInput.value, jobInput.value)
       .then((result) => {
-        userInfo.setInfoUser(result)
+        userInfo.setInfoUser(result);
         profileForm.close();
       })
       .catch((err) => {
         console.log(err);
-      });
+      })
+      .finally(() => {
+        loading(false, popupProfile,'Сохранить', 'Сохранение...');
+    });
   }
 }, popupProfile);
 
@@ -67,6 +81,31 @@ const openProfileForm = () => { //при открытии формы там ст
   profileForm.open();
 };
 
+const avatarForm = new PopupWithForm({ //отправляем информацию, введенную пользоавателем на сервер
+  formSubmit: (item) => {
+    loading(true, popupAvatar, 'Сохранить', 'Сохранение...');
+    api.updateAvatar(item.link)
+      .then((item) => {
+        userInfo.
+        setUserAvatar(item);       
+      })
+      .then(() => {
+        avatarForm.close();
+    })
+      .catch((err) => {
+        console.log(err);
+      });
+      .finally(() => {
+        loading(false, popupAvatar, 'Сохранить', 'Сохранение...');
+    });
+  }
+}, popupAvatar);
+
+const openAvatarForm = () => {
+  avatarInput.value = userInfo.getUserAvatar();
+  avatarForm.cleanError();
+  avatarForm.open();
+}
 
 let valueCard;
 const deleteCardConfirm = new PopupWithForm({
@@ -83,8 +122,7 @@ const deleteCardConfirm = new PopupWithForm({
 }, popupСonfirm);
 
 
-const addLike = (object) => {
-  /*добавление лайка*/
+const addLike = (object) => { //  добавление лайка
   api.addLike(object)
     .then((result) => {
       valueCard.class.cardLike(result.likes.length);
@@ -149,6 +187,7 @@ const createCard = (item, userId, position) => {
 
 const cardForm = new PopupWithForm({
   formSubmit: (item) => {
+    loading(true, popupCards, 'Создать', 'Создание...');
     api.addNewCard(item.name, item.link)
       .then((result) => {
         createCard(result, result.owner._id, prepend);
@@ -157,7 +196,9 @@ const cardForm = new PopupWithForm({
       .catch((err) => {
         console.log(err);
       })
-
+      .finally(() => {
+        loading(false, popupCards, 'Создать', 'Создание...');
+    });
   }
 }, popupCards);
 
@@ -198,6 +239,7 @@ function formValidation() { // Найдём все формы с указанн�
 
 addButton.addEventListener("click", openCardForm); //слушатель кнопки открытия попап картинки
 editButton.addEventListener("click", openProfileForm); //слушатель кнопки открытия попап профиль
+avatarButton.addEventListener("click", openAvatarForm); //слушатель кнопки открытия попап аватар
 
 formValidation();
 

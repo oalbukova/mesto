@@ -41,7 +41,6 @@ export default class Card {
     }
   }
 
-
   _likeCardOwner(_id) {
     if (this._likes.some((user) =>
         (user._id === this._userId))) {
@@ -86,8 +85,6 @@ export default class Card {
   }
 
   generateCard() {
-    console.log(this._userId);
-    console.log(this._id);
     this._element = this._getTemplate();
     this._setEventListeners();
     const cardImg = this._element.querySelector(".card__img");
