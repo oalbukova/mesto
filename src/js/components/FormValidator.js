@@ -7,7 +7,6 @@ export default class FormValidator {
     this._errorClass = data.errorClass; //ошибка в спане
     this._formElement = formElement;
   }
-
   //formElement — html-элемент формы, в которой находится проверяемое поле ввода. Он нужен для поиска элемента ошибки в форме.
   //inputElement — проверяемое поле ввода.
   _showInputError(inputElement, errorMessage) { // Функция, которая добавляет класс с ошибкой
