@@ -28,7 +28,6 @@ import {
   data
 } from 'autoprefixer';
 
-
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-12',
   headers: {
@@ -37,7 +36,7 @@ const api = new Api({
   }
 });
 
-const loading = (isLoading, form, defaultButtonText, loadingMessage) => {  /*не знаю как упростить эту функцию, делал как в тренажере*/
+const loading = (isLoading, form, defaultButtonText, loadingMessage) => {  
   const currentButton = form.querySelector('.popup__button-save');
 
   if(isLoading) {
@@ -114,7 +113,6 @@ const deleteCardConfirm = new PopupWithForm({
       });
   }
 }, popupСonfirm);
-
 
 const addLike = (object) => { //добавление лайка
   api.addLike(object)
