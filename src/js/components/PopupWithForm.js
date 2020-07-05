@@ -31,7 +31,6 @@ export default class PopupWithForm extends Popup { //наследует от Pop
     this._popupSelector.querySelector('.popup__container').addEventListener("submit", (evt) => { // добавляет обработчик сабмита формы. 
       evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы. Так мы можем определить свою логику отправки.
       this._formSubmit(this._getInputValues());
-      this.close();
     });
   }
 

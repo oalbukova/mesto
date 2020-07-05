@@ -11,11 +11,13 @@ export default class UserInfo {//отвечает за управление от
       avatar: this._avatar.textContent
     };
   }
-  setUserInfo(data) {//принимает новые данные пользователя с сервера и добавляет их на страницу
+
+  setUserInfo(data) {//принимает новые данные пользователя и добавляет их на страницу.
     this._profileTitle.textContent = data.name;
     this._profileSubtitle.textContent = data.about;
+    this._profileTitle.id = data._id;
+    this._avatar.src = data.avatar;
     this._avatar.alt = data.name;
-    this._avatar.src =  data.avatar;
   }
   
   getUserAvatar() {
@@ -25,11 +27,5 @@ export default class UserInfo {//отвечает за управление от
       this._avatar.src = data.avatar;
   };
   
-  setInfoUser(data) {//принимает новые данные пользователя из формы и добавляет их на страницу.
-    this._profileTitle.textContent = data.name;
-    this._profileSubtitle.textContent = data.about;
-    this._profileTitle.id = data._id;
-    this._avatar.src = data.avatar;
-    this._avatar.alt = data.name;
-  }
+
 }

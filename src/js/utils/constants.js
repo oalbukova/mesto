@@ -12,8 +12,8 @@ export const avatarButton = document.querySelector(".profile__img-hover"); //к�
 export const popupProfile = document.querySelector("#popupProfile"); //id попап профиль
 export const nameInput = document.querySelector(".popup__input_type_name"); //имя в инпут
 export const jobInput = document.querySelector(".popup__input_type_job"); //профессия в инпут
-export const placeInput = document.querySelector('.popup__input_type_place');
-export const linkInput = document.querySelector('.popup__input_type_link');
+export const placeInput = document.querySelector('.popup__input_type_place');//название картинки в инпут
+export const linkInput = document.querySelector('.popup__input_type_link');//картинка в инпут
 export const profileAvatar = document.querySelector('.profile__img');
 export const profileInfo = {
   profileTitle: document.querySelector('.profile__title'),

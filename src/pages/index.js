@@ -36,13 +36,13 @@ const api = new Api({
   }
 });
 
-const loading = (isLoading, form, defaultButtonText, loadingMessage) => {  
+const loading = (isLoading, form, defaultButtonText, loadingMessage) => {
   const currentButton = form.querySelector('.popup__button-save');
 
-  if(isLoading) {
-      currentButton.textContent = loadingMessage;
+  if (isLoading) {
+    currentButton.textContent = loadingMessage;
   } else {
-      currentButton.textContent = defaultButtonText;
+    currentButton.textContent = defaultButtonText;
   }
 }
 
@@ -52,18 +52,18 @@ const userInfo = new UserInfo( //изменение информации о по
 
 const profileForm = new PopupWithForm({ //отправляем информацию, введенную пользоавателем на сервер
   formSubmit: () => {
-    loading(true, popupProfile,'Сохранить', 'Сохранение...');
+    loading(true, popupProfile, 'Сохранить', 'Сохранение...');
     api.updateInfo(nameInput.value, jobInput.value)
       .then((result) => {
-        userInfo.setInfoUser(result);
+        userInfo.setUserInfo(result);
         profileForm.close();
       })
       .catch((err) => {
-        console.log(err);// выведем ошибку в консоль
+        console.log(err); // выведем ошибку в консоль
       })
       .finally(() => {
-        loading(false, popupProfile,'Сохранить', 'Сохранение...');
-    });
+        loading(false, popupProfile, 'Сохранить', 'Сохранение...');
+      });
   }
 }, popupProfile);
 
@@ -81,17 +81,17 @@ const avatarForm = new PopupWithForm({ //отправляем информаци
     api.updateAvatar(item.link)
       .then((item) => {
         userInfo.
-        setUserAvatar(item);       
+        setUserAvatar(item);
       })
       .then(() => {
         avatarForm.close();
-    })
+      })
       .catch((err) => {
         console.log(err);
       })
       .finally(() => {
         loading(false, popupAvatar, 'Сохранить', 'Сохранение...');
-    });
+      });
   }
 }, popupAvatar);
 
@@ -124,7 +124,7 @@ const addLike = (object) => { //добавление лайка
     });
 };
 
-const deleteLike = (object) => {//удаление лайка
+const deleteLike = (object) => { //удаление лайка
   api.deleteLike(object)
     .then((result) => {
       valueCard.class.cardLike(result.likes.length);
@@ -134,9 +134,9 @@ const deleteLike = (object) => {//удаление лайка
     });
 }
 
-const popupWithImage = new PopupWithImage(popupBig);//передаем селектор по id попапа с большой картинкой
+const popupWithImage = new PopupWithImage(popupBig); //передаем селектор по id попапа с большой картинкой
 
-const addCards = (card, position) => {//добавление карточки в DOM
+const addCards = (card, position) => { //добавление карточки в DOM
   if (position === 'prepend') {
     defaultCardList.addItemPrepend(card);
   } else {
@@ -144,7 +144,7 @@ const addCards = (card, position) => {//добавление карточки в
   }
 };
 
-const writeValueCard = (object, className) => {//запись значений в текущую карточк
+const writeValueCard = (object, className) => { //запись значений в текущую карточк
   valueCard = {
     object: object,
     class: className
@@ -187,7 +187,7 @@ const cardForm = new PopupWithForm({
       })
       .finally(() => {
         loading(false, popupCards, 'Создать', 'Создание...');
-    });
+      });
   }
 }, popupCards);
 
@@ -196,14 +196,15 @@ const openCardForm = () => {
   cardForm.open();
 };
 
-const defaultCardList = new Section({//класс для добавления начальных карточек
+const defaultCardList = new Section({ //класс для добавления начальных карточек
   renderer: (item, userId) => {
-    createCard(item, userId); 
+    createCard(item, userId);
   }
 }, cardList);
 
 Promise.all([api.getInfoUser(), api.getInitialCards()]) //загрузка данных профиля и карточек 
   .then(([user, cards]) => {
+    //  userInfo.setUserInfo(user);
     userInfo.setUserInfo(user);
     defaultCardList.renderItems(cards, user._id);
   })
