@@ -4,6 +4,7 @@ export default class UserInfo {//отвечает за управление от
     this._profileSubtitle = userElement.profileSubtitle;
     this._avatar = avatarElement;
   }
+  
   getUserInfo() {//возвращает объект с данными пользователя. Этот метод пригодится когда данные пользователя нужно будет подставить в форму при открытии.
     return {
       name: this._profileTitle.textContent,
@@ -26,6 +27,4 @@ export default class UserInfo {//отвечает за управление от
   setUserAvatar(data) {
       this._avatar.src = data.avatar;
   };
-  
-
 }
