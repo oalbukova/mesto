@@ -21,9 +21,6 @@ export default class UserInfo {//отвечает за управление от
     this._avatar.alt = data.name;
   }
   
-  getUserAvatar() {
-      return this._avatar.src;
-  }
   setUserAvatar(data) {
       this._avatar.src = data.avatar;
   };

@@ -9,7 +9,6 @@
   background-image: url(../../../images/penavatar.svg);
   background-position: center;
   background-repeat: no-repeat;
-  -webkit-transition: opacity linear 0.5s;
   transition: opacity linear 0.5s;
 }
 
@@ -19,11 +18,11 @@
 }
 
 @media screen and (max-width: 831px) {
-  .profile__img-hover {   
-      margin-left: auto;
-      margin-right: auto;
-      left: 0;
-      right: 0;
-      text-align: center;
-  } 
+  .profile__img-hover {
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
 }

@@ -18,7 +18,7 @@ import {
   cardTemplate,
   popupProfile,
   popupCards,
-  popupСonfirm,
+  popupConfirm,
   popupAvatar,
   profileInfo,
   profileAvatar,
@@ -104,7 +104,7 @@ let valueCard;
 const deleteCardConfirm = new PopupWithForm({
   formSubmit: () => {
     api.deleteCard(valueCard.object._id)
-      .then((result) => {
+      .then(() => {
         valueCard.class.cardDelete();
         deleteCardConfirm.close();
       })
@@ -112,7 +112,7 @@ const deleteCardConfirm = new PopupWithForm({
         console.log(err);
       });
   }
-}, popupСonfirm);
+}, popupConfirm);
 
 const addLike = (object) => { //добавление лайка
   api.addLike(object)
@@ -204,7 +204,6 @@ const defaultCardList = new Section({ //класс для добавления �
 
 Promise.all([api.getInfoUser(), api.getInitialCards()]) //загрузка данных профиля и карточек 
   .then(([user, cards]) => {
-    //  userInfo.setUserInfo(user);
     userInfo.setUserInfo(user);
     defaultCardList.renderItems(cards, user._id);
   })
@@ -215,7 +214,7 @@ Promise.all([api.getInfoUser(), api.getInitialCards()]) //загрузка да�
 function formValidation() { // Найдём все формы с указанным классом в DOM
   const formList = Array.from(document.querySelectorAll(".popup__container")); // сделаем из них массив методом Array.from
   formList.forEach((form) => { //  Переберём полученную коллекцию
-    const validator = new FormValidator({ // создаем экземпляр клааса с валидацией
+    const validator = new FormValidator({ // создаем экземпляр класса с валидацией
       inputSelector: ".popup__input", //инпуты
       submitButtonSelector: ".popup__button-save", //кнопка сохранить/создать
       inactiveButtonClass: "popup__button-save_type_disabled", //неактивная кнопка

@@ -24,7 +24,7 @@ export default class Card {
     };
   }
 
-  _getTemplate() { //забираем размеку из HTML и клонируем элемент
+  _getTemplate() { //забираем разметку из HTML и клонируем элемент
     const cardElement = document
       .querySelector(this._cardSelector) // используем this._cardSelector
       .content.querySelector(".card")
