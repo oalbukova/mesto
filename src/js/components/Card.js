@@ -89,7 +89,7 @@ export default class Card {
     this._setEventListeners();
     const cardImg = this._element.querySelector(".card__img");
     this._element.querySelector(".card__text").textContent = this._name; //добавляем текст
-    cardImg.src = this._link;
+    cardImg.style.backgroundImage = `url(${this._link})`;
     cardImg.alt = this._name;
     this._checkCardOwner(this._owner)
     this._likeCardOwner(this._id)
