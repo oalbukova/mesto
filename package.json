@@ -23,7 +23,7 @@
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.11.0",
     "elliptic": ">=6.5.3",
-    "lodash": ">=4.17.19"
+    "lodash": ">=4.17.21"
   },
   "scripts": {
     "build": "webpack",
